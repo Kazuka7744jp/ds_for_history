@@ -1,0 +1,6 @@
+matplotlib
+japanize_matplotlib
+seaborn
+numpy
+pandas
+streamlit
