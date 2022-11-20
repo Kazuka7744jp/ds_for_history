@@ -24,26 +24,26 @@ st.write('家にこの点帖が残されていたということは、この「�
 
 
 st.header("点帖1")
-st.image("../pic/daikaku1.jpg")
+st.image("pic/daikaku1.jpg")
 
 
 # In[10]:
 
 
 st.header("点帖2")
-st.image("../pic/daikaku2.jpg")
+st.image("pic/daikaku2.jpg")
 
 
 # In[11]:
 
 
 st.header("点帖3")
-st.image("../pic/daikaku3.jpg")
+st.image("pic/daikaku3.jpg")
 
 
 # In[ ]:
 
 
-st.header("点帖3")
-st.image("../pic/daikaku3.jpg")
+st.header("点帖4")
+st.image("pic/daikaku4.jpg")
 
