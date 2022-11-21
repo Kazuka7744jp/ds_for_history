@@ -75,7 +75,7 @@ freq = df2["年俸"].value_counts(bins=bins, sort=False)
 # In[12]:
 
 
-st.write("2020年プロ野球選手年俸の度数分布表")
+st.write("■2020年プロ野球選手年俸の度数分布表")
 class_value = (bins[:-1] + bins[1:]) / 2  # 階級値
 rel_freq = freq / df2["年俸"].count()  # 相対度数
 cum_freq = freq.cumsum()  # 累積度数
