@@ -122,19 +122,7 @@ st.pyplot(fig)
 # In[16]:
 
 
-df2["年俸"].mean()
-
-
-# In[17]:
-
-
-df2["年俸"].mode()
-
-
-# ## 共分散
-
-# In[18]:
-
-
-df1.cov()
+nenpou_mean = df2["年俸"].mean()
+nenpou_median = df2["年俸"].mode()
+st.write(f"プロ野球選手の年俸の平均は{nenpou_mean}円だが、その中央値は{nenpou_median}であり、華やかなのは一部であり、選手生命も考えると、現実は非常に厳しい世界だと感じる。")
 
