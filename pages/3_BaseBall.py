@@ -103,7 +103,7 @@ dist = pd.DataFrame(
 )
 dist['階級値(万円)'] = dist['階級値(万円)'].astype('int')
 st.dataframe(dist)
-
+st.write("■ヒストグラム")
 fig, ax1 = plt.subplots(figsize=(30, 10))
 dist.plot.bar(x="階級値(万円)", y="度数(人数)", ax=ax1, width=1, ec="k", lw=2)
 
@@ -118,7 +118,7 @@ st.pyplot(fig)
 
 # In[16]:
 
-
+st.write("■所感")
 nenpou_mean = df2["年俸"].mean()
 nenpou_median = df2["年俸"].median()
 st.write(f"プロ野球選手の年俸の平均は{nenpou_mean:.1f}万円だが、その中央値は{nenpou_median}万円であり、華やかなのは一部と言える。選手生命も考えると、非常に厳しい世界だと感じる。")
