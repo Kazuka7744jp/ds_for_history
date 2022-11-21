@@ -100,6 +100,7 @@ dist = pd.DataFrame(
     },
     index=freq.index
 )
+dist['階級値(万円)'] = dist['階級値(万円)'].astype('int')
 st.dataframe(dist)
 
 
