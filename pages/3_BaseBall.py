@@ -30,7 +30,7 @@ df2 = pd.read_pickle("data/bb.pkl")
 
 markdown = """
 ### プロ野球選手の年俸のヒストグラム
-2020年のプロ野球選手の年俸からヒストグラムを作成しました
+2020年のプロ野球選手の年俸データからヒストグラムを作成しました。
 """
 st.write(markdown)
 
@@ -103,9 +103,7 @@ dist = pd.DataFrame(
 dist['階級値(万円)'] = dist['階級値(万円)'].astype('int')
 st.dataframe(dist)
 
-
-# In[21]:
-
+st.write("2020年プロ野球選手年俸の度数分布表")
 
 fig, ax1 = plt.subplots(figsize=(30, 10))
 dist.plot.bar(x="階級値(万円)", y="度数(人数)", ax=ax1, width=1, ec="k", lw=2)
