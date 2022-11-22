@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
-
-
 # !pip install streamlit
 
 import matplotlib.pyplot as plt
@@ -30,10 +27,7 @@ df2["年俸"] = df2["年俸"].astype('int')
 df2["年俸"] = df2["年俸"].apply(lambda x: x/10000)
 df2["年俸"] = df2["年俸"].astype('int')
 
-# In[9]:
-
-
-bins = np.linspace(0, df2["年俸"].max(), 91)
+bins = np.linspace(0, df2["年俸"].max(), 91).astype("int")
 bins
 
 # In[10]:
