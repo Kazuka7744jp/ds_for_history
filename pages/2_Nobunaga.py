@@ -16,7 +16,7 @@ m = folium.Map(
     # ズームを指定
     zoom_start=13
 )
-st_data = st_folium(m, width=1200, height=800)
+st_data = st_folium(m, width=2000, height=1500)
 
 # In[ ]:
 
