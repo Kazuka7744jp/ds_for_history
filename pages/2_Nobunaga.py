@@ -11,6 +11,11 @@ import matplotlib.pyplot as plt
 from matplotlib import patches
 import japanize_matplotlib
 
+markdown = """
+### 賤ケ岳の7本槍の能力比較（散布図）
+"""
+st.write(markdown)
+
 df = pd.read_csv("data/taishi.csv")
 sevens = ["加藤清正", "福島正則", "加藤嘉明", "平野長泰",  "脇坂安治", "糟屋武則", "片桐且元"]
 
@@ -25,6 +30,7 @@ def busho_finder(df, list):
 
 
 df = df.iloc[busho_finder(df, sevens)]
+st.write("■7本槍の能力データ")
 st.dataframe(df)
 
 fig, ax = plt.subplots()
@@ -42,7 +48,12 @@ for i, name in enumerate(df["武将姓"]):
         ax.text(df["戦闘"].iloc[i], df["政治"].iloc[i], df["武将姓"].iloc[i]+df["武将名"].iloc[i][:1])
     else:
         ax.text(df["戦闘"].iloc[i], df["政治"].iloc[i], name)
+st.write("■戦闘・政治能力に基づく散布図")
 st.pyplot(fig)
+st.write("■所感")
+st.write("加藤清正・福島正則・加藤嘉明とそれ以外で群が分かれた格好となった。加藤嘉明は、他の二人や片桐に比べ知名度は低いが、\
+         秀吉に見いだされ数々の武功を挙げ、秀吉子飼いでありながら、大阪夏の陣も乗り越えた武将。松山城築城でも知られる。")
+
 
 
 # https://welovepython.net/streamlit-folium/
