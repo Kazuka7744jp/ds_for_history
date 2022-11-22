@@ -3,7 +3,7 @@
 
 import streamlit as st
 
-st.set_page_config(page_title="東烏", page_icon=st.image("pic/daikaku1.jpg"), layout="centered", initial_sidebar_state="expanded", menu_items=None)
+st.set_page_config(page_title="東烏", page_icon="pic/.jpg", layout="centered", initial_sidebar_state="expanded", menu_items=None)
 
 st.title("東烏")
 st.header('「鬼神をも涙する」俳諧と生きた男')
