@@ -37,12 +37,12 @@ plt.rcParams["font.size"] = 12
 ax.set_title("賤ヶ岳7本槍の能力値　散布図")
 ax.set_xlabel("戦闘能力値　合計")
 ax.set_ylabel("政治能力値　合計")
-# for idx, row in df.iterrows():
-#     plt.annotate(row["武将姓"]+row["武将名"], (row["統率"], row["知略"]))
-for i, name in enumerate(sevens):
+
+for i, name in enumerate(df["武将姓"]):
     ax.text(df["戦闘"].iloc[i], df["政治"].iloc[i], name)
 st.pyplot(fig)
-# st.header('Under Construction')
+
+
 # https://welovepython.net/streamlit-folium/
 # m = folium.Map(
 #     # 地図の中心位置の指定(今回は栃木県の県庁所在地を指定)
