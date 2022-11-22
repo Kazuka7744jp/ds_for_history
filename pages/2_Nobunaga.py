@@ -14,7 +14,7 @@ m = folium.Map(
     tiles='https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png',
     attr='都道府県庁所在地、人口、面積(2016年)',
     # ズームを指定
-    zoom_start=6
+    zoom_start=1
 )
 st_data = st_folium(m, width=1200, height=800)
 
