@@ -28,30 +28,13 @@ df2["年俸"] = df2["年俸"].apply(lambda x: x/10000)
 df2["年俸"] = df2["年俸"].astype('int')
 
 bins = np.linspace(0, df2["年俸"].max(), 91).astype("int")
-bins
-
 freq = df2["年俸"].value_counts(bins=bins, sort=False)
-freq
-
-
-# In[12]:
-
 
 st.write("■2020年プロ野球選手年俸の度数分布表")
 class_value = (bins[:-1] + bins[1:]) / 2  # 階級値
 rel_freq = freq / df2["年俸"].count()  # 相対度数
 cum_freq = freq.cumsum()  # 累積度数
 rel_cum_freq = rel_freq.cumsum()  # 相対累積度数
-
-
-# In[13]:
-
-
-pd.set_option('display.max_rows', 101)
-
-
-# In[1]:
-
 
 dist = pd.DataFrame(
     {
