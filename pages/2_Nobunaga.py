@@ -27,8 +27,6 @@ def busho_finder(df, list):
 df = df.iloc[busho_finder(df, sevens)]
 df
 
-df = pd.read_csv("taishi.csv")
-
 plt.scatter("戦闘", "政治", s=100, alpha=1, data=df)
 plt.figure(figsize=(10,10))
 # plt.rcParams['figure.figsize'] = (10.0, 10.0)
