@@ -6,10 +6,6 @@
 
 # !pip install streamlit
 
-
-# In[2]:
-
-
 import matplotlib.pyplot as plt
 import japanize_matplotlib
 import seaborn as sns
@@ -17,16 +13,8 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 
-
-# In[3]:
-
-
 df1 = pd.read_pickle("data/taishi.pkl")
 df2 = pd.read_pickle("data/bb.pkl")
-
-
-# In[20]:
-
 
 markdown = """
 ### プロ野球選手の年俸のヒストグラム
@@ -34,16 +22,8 @@ markdown = """
 """
 st.write(markdown)
 
-
-# In[5]:
-
-
 df2 = df2[df2["年俸"]!="#VALUE!"]
 df2 = df2.reset_index(drop=True)
-
-
-# In[6]:
-
 
 df2["年俸"] = df2["年俸"].apply(lambda x:x.replace(",",""))
 df2["年俸"] = df2["年俸"].astype('int')
@@ -54,7 +34,7 @@ df2["年俸"] = df2["年俸"].astype('int')
 
 
 bins = np.linspace(0, df2["年俸"].max(), 91)
-
+bins
 
 # In[10]:
 
