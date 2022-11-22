@@ -46,18 +46,7 @@ df2 = df2.reset_index(drop=True)
 
 
 df2["年俸"] = df2["年俸"].apply(lambda x:x.replace(",",""))
-
-
-# In[7]:
-
-
-df2["年俸"] = df2["年俸"].astype('int')
-
-
-# In[8]:
-
-
-df2["年俸"] = df2["年俸"].apply(lambda x: x/10000)
+df2["年俸"] = df2["年俸"].apply(lambda x: x/10000).astype('int')
 
 
 # In[9]:
