@@ -30,7 +30,7 @@ st.dataframe(df)
 
 fig, ax = plt.subplots()
 
-ax.scatter("戦闘", "政治", s=100, alpha=1, data=df)
+ax.scatter("戦闘", "政治", s=100, alpha=, data=df)
 plt.figure(figsize=(10,10))
 # plt.rcParams['figure.figsize'] = (10.0, 10.0)
 plt.rcParams["font.size"] = 8
