@@ -30,9 +30,6 @@ df2["年俸"] = df2["年俸"].astype('int')
 bins = np.linspace(0, df2["年俸"].max(), 91).astype("int")
 bins
 
-# In[10]:
-
-
 freq = df2["年俸"].value_counts(bins=bins, sort=False)
 freq
 
@@ -64,7 +61,7 @@ dist = pd.DataFrame(
         "累積度数": cum_freq,
         "相対累積度数": rel_cum_freq,
     },
-    index=freq.index
+    index=freq.index.astype(int)
 )
 dist['階級値(万円)'] = dist['階級値(万円)'].astype('int')
 st.dataframe(dist)
