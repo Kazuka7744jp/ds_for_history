@@ -5,11 +5,10 @@ import streamlit as st
 # from streamlit_folium import st_folium
 # import folium
 
-import seaborn as sns
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-# sns.set()
+from matplotlib import patches
 import japanize_matplotlib
 
 df = pd.read_csv("data/taishi.csv")
