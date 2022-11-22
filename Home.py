@@ -5,7 +5,8 @@ import streamlit as st
 
 st.set_page_config(page_title="東烏", page_icon="pic/karasu.jpg", layout="centered", initial_sidebar_state="expanded", menu_items=None)
 
-st.title("東烏 ～鬼神をも涙する」俳諧と生きた男～")
+st.title("東烏")
+st.header(" ～「鬼神をも涙する」俳諧と生きた男～")
 st.write('このページでは、江戸時代の刈谷の油屋「久右衛門（?~1803年?　俳号「東烏」)が残した和歌に関する日記「和歌芽籠」を読み解きながら、江戸時代の三河俳諧を調査するページです。あわせて管理人のPythonによるデータ可視化の練習結果も掲載しています。')
 
 
