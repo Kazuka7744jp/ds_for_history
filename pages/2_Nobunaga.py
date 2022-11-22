@@ -34,9 +34,9 @@ ax.scatter("戦闘", "政治", s=100, alpha=1, data=df)
 plt.figure(figsize=(10,10))
 # plt.rcParams['figure.figsize'] = (10.0, 10.0)
 plt.rcParams["font.size"] = 15
-plt.title("賤ヶ岳7本槍の能力値　散布図")
-plt.xlabel("戦闘能力値　合計")
-plt.ylabel("政治能力値　合計")
+ax.set_title("賤ヶ岳7本槍の能力値　散布図")
+ax.set_xlabel("戦闘能力値　合計")
+ax.set_ylabel("政治能力値　合計")
 for idx, row in df.iterrows():
     plt.annotate(row["武将姓"]+row["武将名"], (row["統率"], row["知略"]))
 # for i, label in enumerate(labels):
