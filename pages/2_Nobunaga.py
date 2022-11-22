@@ -12,7 +12,7 @@ from matplotlib import patches
 import japanize_matplotlib
 
 markdown = """
-### 賤ケ岳の7本槍の能力比較（散布図）
+### 「賤ケ岳の7本槍」の能力比較（散布図）
 """
 st.write(markdown)
 
@@ -48,6 +48,13 @@ for i, name in enumerate(df["武将姓"]):
         ax.text(df["戦闘"].iloc[i], df["政治"].iloc[i], df["武将姓"].iloc[i]+df["武将名"].iloc[i][:1])
     else:
         ax.text(df["戦闘"].iloc[i], df["政治"].iloc[i], name)
+
+circle1 = patches.Circle(xy=(160, 125), radius=2, alpha=0.1)
+circle2 = patches.Circle(xy=(127, 98), radius=2, alpha=0.1)
+                         
+ax.add_patch(circle1)
+ax.add_patch(circle2)
+                         
 st.write("■戦闘・政治能力に基づく散布図")
 st.pyplot(fig)
 st.write("■所感")
