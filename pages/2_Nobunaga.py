@@ -6,7 +6,7 @@ from streamlit_folium import st_folium
 import folium
 
 # st.header('Under Construction')
-
+# https://welovepython.net/streamlit-folium/
 m = folium.Map(
     # 地図の中心位置の指定(今回は栃木県の県庁所在地を指定)
     location=[35.02968298040031, 137.0168353420444], 
