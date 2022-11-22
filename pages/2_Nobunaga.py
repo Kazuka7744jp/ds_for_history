@@ -40,7 +40,7 @@ ax.set_ylabel("政治能力値　合計")
 # for idx, row in df.iterrows():
 #     plt.annotate(row["武将姓"]+row["武将名"], (row["統率"], row["知略"]))
 for i, name in enumerate(sevens):
-    ax.text(df["戦闘"]iloc[i], df["政治"]iloc[i], name)
+    ax.text(df["戦闘"].iloc[i], df["政治"].iloc[i], name)
 st.pyplot(fig)
 # st.header('Under Construction')
 # https://welovepython.net/streamlit-folium/
