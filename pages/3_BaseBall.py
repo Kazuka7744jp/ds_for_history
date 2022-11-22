@@ -61,7 +61,7 @@ dist = pd.DataFrame(
         "累積度数": cum_freq,
         "相対累積度数": rel_cum_freq,
     },
-    index=freq.index.astype(int)
+    index=freq.index
 )
 dist['階級値(万円)'] = dist['階級値(万円)'].astype('int')
 st.dataframe(dist)
@@ -74,11 +74,6 @@ ax2.plot(np.arange(len(dist)), dist["相対累積度数"], "--o", color="k")
 ax2.set_ylabel("累積相対度数")
 ax2.legend()
 st.pyplot(fig)
-
-
-# ## ローレンツ曲線
-
-# In[16]:
 
 st.write("■所感")
 nenpou_mean = df2["年俸"].mean()
