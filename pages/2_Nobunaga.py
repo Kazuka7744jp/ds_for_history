@@ -5,7 +5,6 @@ import streamlit as st
 # from streamlit_folium import st_folium
 # import folium
 
-import pandas as pd                         # CSVをデータフレームとして読み込む
 import seaborn as sns
 import numpy as np
 import pandas as pd
@@ -16,6 +15,7 @@ import japanize_matplotlib
 df = pd.read_csv("data/taishi.csv")
 sevens = ["加藤清正", "福島正則", "加藤嘉明", "平野長泰",  "脇坂安治", "糟屋武則", "片桐且元"]
 
+@st.cache
 def busho_finder(df, list):
     index_list=[]
     for idx1, name in enumerate(list):
@@ -24,20 +24,25 @@ def busho_finder(df, list):
                 index_list.append(idx2)
     return index_list
 
-df = df.iloc[busho_finder(df, sevens)]
-df
 
-plt.scatter("戦闘", "政治", s=100, alpha=1, data=df)
+df = df.iloc[busho_finder(df, sevens)]
+st.dataframe(df)
+
+fig, ax = plt.subplots()
+
+ax.scatter("戦闘", "政治", s=100, alpha=1, data=df)
 plt.figure(figsize=(10,10))
 # plt.rcParams['figure.figsize'] = (10.0, 10.0)
 plt.rcParams["font.size"] = 15
-plt.title("信長の野望大志　賤ヶ岳7本槍の能力値　散布図")
+plt.title("賤ヶ岳7本槍の能力値　散布図")
 plt.xlabel("戦闘能力値　合計")
 plt.ylabel("政治能力値　合計")
 for idx, row in df.iterrows():
     plt.annotate(row["武将姓"]+row["武将名"], (row["統率"], row["知略"]))
+# for i, label in enumerate(labels):
+#     plt.text(x[i], y[i],label)
 
-
+st.pyplot(fig)
 # st.header('Under Construction')
 # https://welovepython.net/streamlit-folium/
 # m = folium.Map(
