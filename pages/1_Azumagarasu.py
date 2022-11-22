@@ -6,7 +6,7 @@
 
 import streamlit as st
 
-st.title(東烏に関する調査ページ)
+st.title("東烏に関する調査ページ")
 
 st.set_page_config(layout="wide")
 #セレクトボックスのリストを作成
