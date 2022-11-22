@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 # sns.set()
 import japanize_matplotlib
 
-df = pd.read_csv("taishi.csv")
+df = pd.read_csv("data/taishi.csv")
 sevens = ["加藤清正", "福島正則", "加藤嘉明", "平野長泰",  "脇坂安治", "糟屋武則", "片桐且元"]
 
 def busho_finder(df, list):
