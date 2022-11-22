@@ -49,8 +49,8 @@ for i, name in enumerate(df["武将姓"]):
     else:
         ax.text(df["戦闘"].iloc[i], df["政治"].iloc[i], name)
 
-circle1 = patches.Circle(xy=(165, 125), radius=26, alpha=0.1)
-circle2 = patches.Circle(xy=(117, 90), radius=20, alpha=0.1)
+circle1 = patches.Circle(xy=(165, 120), radius=25, alpha=0.1)
+circle2 = patches.Circle(xy=(117, 92), radius=21, alpha=0.1)
                          
 ax.add_patch(circle1)
 ax.add_patch(circle2)
