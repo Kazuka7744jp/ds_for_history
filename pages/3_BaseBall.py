@@ -60,6 +60,7 @@ bins = np.linspace(0, df2["年俸"].max(), 91)
 
 
 freq = df2["年俸"].value_counts(bins=bins, sort=False)
+freq
 
 
 # In[12]:
