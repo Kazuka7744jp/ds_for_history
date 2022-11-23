@@ -43,7 +43,7 @@ for i, name in enumerate(df["武将姓"]):
     if name == "加藤":
         ax.text(df["戦闘"].iloc[i], df["政治"].iloc[i], df["武将姓"].iloc[i]+df["武将名"].iloc[i][:1])
     else:
-        ax.text(df["戦闘"].iloc[i], df["政治"].iloc[i], name)")
+        ax.text(df["戦闘"].iloc[i], df["政治"].iloc[i], name)
 
 # 2グループを円で囲む
 circle1 = patches.Circle(xy=(165, 120), radius=25, alpha=0.1)
