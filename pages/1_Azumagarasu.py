@@ -16,7 +16,7 @@ selector=st.sidebar.selectbox( "ページ選択", pagelist)
 if selector=="はじめに":
   st.header('はじめに')
   st.write('このページは、愛知県刈谷市の東海道沿いの家に残された古文書などに基づく、先祖の在りし日の姿の調査記録になります。')
-  st.write('調査者：')
+  st.write('調査者：さとる部長（某研究所歴史アーカイ部部長）、りゅうじえもん（子孫））
   
 
 elif selector=="残された点帖":
