@@ -61,6 +61,13 @@ st.write("加藤清正・福島正則・加藤嘉明とそれ以外で群が分�
 st.write("■コード")
 """
 ```python
+import japanize_matplotlib
+import matplotlib.pyplot as plt
+from matplotlib import patches
+import numpy as np
+import pandas as pd
+import streamlit as st
+
 df = pd.read_csv("data/taishi.csv")
 sevens = ["加藤清正", "福島正則", "加藤嘉明", "平野長泰",  "脇坂安治", "糟屋武則", "片桐且元"]
 
