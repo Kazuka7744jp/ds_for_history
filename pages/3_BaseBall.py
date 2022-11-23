@@ -21,7 +21,7 @@ df = df.reset_index(drop=True)
 df["年俸"] = df["年俸"].apply(lambda x:x.replace(",",""))
 df["年俸"] = df["年俸"].astype('int')
 df["年俸"] = df["年俸"].apply(lambda x: x/10000)
-df["年俸"] = df["年俸"].astype('int')
+# df["年俸"] = df["年俸"].astype('int')
 
 bins = np.linspace(0, df["年俸"].max(), 91).astype("int")
 freq = df["年俸"].value_counts(bins=bins, sort=False)
@@ -69,13 +69,6 @@ import pandas as pd
 import streamlit as st
 
 df = pd.read_pickle("data/bb.pkl")
-
-markdown = """
-### プロ野球選手の年俸のヒストグラム
-2020年のプロ野球選手の年俸データからヒストグラムを作成しました。
-"""
-st.write(markdown)
-
 df = df[df["年俸"]!="#VALUE!"]
 df = df.reset_index(drop=True)
 
