@@ -4,6 +4,7 @@ japanize_matplotlib
 seaborn
 numpy
 pandas
+PIL
 plotly
 streamlit
 streamlit_folium
