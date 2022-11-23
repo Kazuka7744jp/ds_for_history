@@ -39,3 +39,5 @@ elif selector=="残された点帖":
   left_column2.image("pic/daikaku3.jpg")
   right_column2.write("点帖 最後")
   right_column2.image("pic/daikaku4.jpg")
+  
+  st.write('あわせて、専門家の先生により、その句会の採点者が「竹内（大鶴庵）塊翁」であることが分かった。')
