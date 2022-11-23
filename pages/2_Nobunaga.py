@@ -58,6 +58,53 @@ st.write("■所感")
 st.write("加藤清正・福島正則・加藤嘉明とそれ以外で群が分かれた格好となった。加藤嘉明は、他の二人や片桐に比べ知名度は低いが、\
          秀吉に見いだされ数々の武功を挙げ、秀吉子飼いでありながら、大阪夏の陣も乗り越えた武将。松山城築城でも知られる。")
 
+"""
+'''python
+df = pd.read_csv("data/taishi.csv")
+sevens = ["加藤清正", "福島正則", "加藤嘉明", "平野長泰",  "脇坂安治", "糟屋武則", "片桐且元"]
+
+#csvから該当する武将のインデックスのリストをつくるための関数
+@st.cache
+def busho_finder(df, list):
+    index_list=[]
+    for idx1, name in enumerate(list):
+        for idx2, row in df.iterrows():
+            if (row["武将姓"] + row["武将名"]) == name:
+                index_list.append(idx2)
+    return index_list
+
+
+df = df.iloc[busho_finder(df, sevens)]
+st.write("■7本槍の能力データ")
+st.dataframe(df)
+
+fig, ax = plt.subplots()
+ax.scatter("戦闘", "政治", s=100, alpha=0.4, data=df)
+plt.figure(figsize=(10,10))
+plt.rcParams["font.size"] = 8
+ax.set_title("賤ヶ岳7本槍の能力値　散布図")
+ax.set_xlabel("戦闘能力値　合計")
+ax.set_ylabel("政治能力値　合計")
+
+for i, name in enumerate(df["武将姓"]):
+    if name == "加藤":
+        ax.text(df["戦闘"].iloc[i], df["政治"].iloc[i], df["武将姓"].iloc[i]+df["武将名"].iloc[i][:1])
+    else:
+        ax.text(df["戦闘"].iloc[i], df["政治"].iloc[i], name)
+
+# 2グループを円で囲む
+circle1 = patches.Circle(xy=(165, 120), radius=25, alpha=0.1)
+circle2 = patches.Circle(xy=(117, 92), radius=21, alpha=0.1)
+ax.add_patch(circle1)
+ax.add_patch(circle2)
+                         
+st.write("■戦闘・政治能力に基づく散布図")
+st.pyplot(fig)
+
+'''
+"""
+
+
 # import streamlit as st
 # # from streamlit_folium import st_folium
 # # import folium
