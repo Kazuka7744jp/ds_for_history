@@ -1,7 +1,6 @@
 folium 
 matplotlib
 japanize_matplotlib
-seaborn
 numpy
 pandas
 plotly
