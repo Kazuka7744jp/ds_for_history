@@ -16,5 +16,5 @@ right_column1.write('''**「Azumagarasu」東烏に関する調査ページ**'''
 right_column1.write('「Nobunaga」信長の野望のデータセットを利用したデータ可視化練習')
 right_column1.write('「BaseBall」2020年のプロ野球選手データを利用したデータ可視化練習')
 
-st.sidebar.st.image("pic/logo.jpg")
+st.sidebar.image("pic/logo.jpg")
 
