@@ -4,7 +4,7 @@
 import streamlit as st
 
 st.set_page_config(page_title="東烏", page_icon="pic/karasu.jpg", layout="wide", initial_sidebar_state="auto", menu_items=None)
-st.image("pic/logo.jpg")
+# st.image("pic/logo.jpg")
 st.subheader(" 「鬼神もあわれむ俳諧と生きた男」")
 left_column1, right_column1 = st.columns(2)
 left_column1.image("pic/wakamegomo.jpg")
@@ -15,4 +15,6 @@ right_column1.write('''**■ページ一覧（左のサイドバーから選択�
 right_column1.write('''**「Azumagarasu」東烏に関する調査ページ**''')
 right_column1.write('「Nobunaga」信長の野望のデータセットを利用したデータ可視化練習')
 right_column1.write('「BaseBall」2020年のプロ野球選手データを利用したデータ可視化練習')
+
+st.sidebar.st.image("pic/logo.jpg")
 
