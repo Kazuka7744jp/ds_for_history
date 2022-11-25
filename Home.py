@@ -4,9 +4,9 @@
 import streamlit as st
 
 st.set_page_config(page_title="東烏", page_icon="pic/karasu.jpg", layout="wide", initial_sidebar_state="auto", menu_items=None)
-
+st.image("pic/logo.jpg")
 st.title("東烏")
-st.subheader(" 「鬼神にもあわれと思わせる俳諧と生きた男の生きざま」")
+st.subheader(" 「鬼神もあわれむ俳諧と生きた男」")
 left_column1, right_column1 = st.columns(2)
 left_column1.image("pic/wakamegomo.jpg")
 right_column1 .write('このページでは、江戸時代の刈谷の油屋「加塚久右衛門（かづか きゅうえもん　?~1803年?　俳号「東烏」)が残した和歌に\
