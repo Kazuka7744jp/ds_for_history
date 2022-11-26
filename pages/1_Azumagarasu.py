@@ -6,6 +6,8 @@
 
 import streamlit as st
 
+df = pd.read_csv("data/nenpyo.csv")
+
 st.title("東烏に関する調査ページ")
 
 # st.set_page_config(layout="wide")
@@ -24,7 +26,7 @@ if selector=="はじめに":
   st.write("「りゅうじえもん」（久右衛門の子孫。当サイト管理人。データ可視化担当）")
 
   st.write("■加塚家年表（随時更新中）")
-  st.table("data/nenpyo.csv")
+  st.table(df)
 
 elif selector=="残された点帖":
   st.header("残された点帖")
