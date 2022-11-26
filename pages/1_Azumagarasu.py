@@ -23,9 +23,9 @@ if selector=="はじめに":
         ''')
   st.subheader("調査者")
   st.image("pic/kiyomasa2.jpg")
-  st.write("「さとる部長」（某研究所歴史アーカイ部部長。独学でくずし字を読むすごい人）")
+  st.write("「さとる部長－某研究所歴史アーカイ部部長。独学でくずし字を読むすごい人")
   st.image("pic/ryujiemon2.jpg")
-  st.write("「りゅうじえもん」（久右衛門の子孫。当サイト管理人。データ可視化担当）")
+  st.write("「りゅうじえもん」－久右衛門の子孫。当サイト管理人。データ可視化担当")
 
 #   st.write("■加塚家年表（随時更新中）")
 #   st.table(df)
