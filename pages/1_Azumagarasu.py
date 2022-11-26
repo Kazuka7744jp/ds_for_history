@@ -23,8 +23,8 @@ if selector=="はじめに":
   st.write("「さとる部長」（某研究所歴史アーカイ部部長。独学でくずし字を読むすごい人）")
   st.write("「りゅうじえもん」（久右衛門の子孫。当サイト管理人。データ可視化担当）")
 
-  st.write("■先祖の年表（随時更新中）")
-  
+  st.write("■加塚家年表（随時更新中）")
+  st.table("data/nenpyo.csv")
 
 elif selector=="残された点帖":
   st.header("残された点帖")
