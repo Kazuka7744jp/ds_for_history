@@ -12,7 +12,7 @@ st.title("東烏に関する調査ページ")
 
 # st.set_page_config(layout="wide")
 #セレクトボックスのリストを作成
-pagelist = ["はじめに", "プロローグ", "残された点帖"]
+pagelist = ["はじめに", "01.プロローグ", "残された点帖"]
 #サイドバーのセレクトボックスを配置
 selector=st.sidebar.selectbox( "ページ選択", pagelist)
 if selector=="はじめに":
