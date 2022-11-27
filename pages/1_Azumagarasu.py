@@ -48,7 +48,7 @@ elif selector=="01.プロローグ":
   st.write("気が付くと、さとる部長は、一心不乱に翻刻作業に取り掛かっていた。")
   
   if st.button(label='次の調査へ進む'):
-    selector = "残された点帖":
+    selector = "残された点帖"
 
 elif selector=="残された点帖":
   st.header("残された点帖")
