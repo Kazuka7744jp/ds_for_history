@@ -63,6 +63,14 @@ elif selector=="01.プロローグ":
   st.write("「これは雑記帳ではない。読んでくれ。」")
   st.write("東烏がそう自分に語りかけてくる気がした。")
   st.write("気が付くと、さとる部長は、一心不乱に翻刻作業に取り掛かっていた。")
+  st.markdown(
+  """
+  <script>
+    window.scrollTo(0, 0);
+  </script>
+  """,
+  unsafe_allow_html=True,
+  )
 
 elif selector=="残された点帖":
   st.markdown(
