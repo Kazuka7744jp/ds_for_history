@@ -16,13 +16,14 @@ pagelist = ["はじめに", "01.プロローグ", "残された点帖"]
 #サイドバーのセレクトボックスを配置
 selector=st.sidebar.selectbox( "ページ選択", pagelist)
 if selector=="はじめに":
-  st.markdown(
-    """
-    <script>
-      window.scrollTo(0, 0);
-    </script>
-    """,
-    unsafe_allow_html=True,
+  st.scroll(0, 0)
+#   st.markdown(
+#     """
+#     <script>
+#       window.scrollTo(0, 0);
+#     </script>
+#     """,
+#     unsafe_allow_html=True,
   )
   st.header("はじめに")
   st.write("このページは、愛知県刈谷市の東海道沿いの家に残された古文書などに基づく、先祖の在りし日の姿の調査記録になります。")
