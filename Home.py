@@ -15,30 +15,30 @@ st.write('''**「Azumagarasu」東烏に関する調査ページ**''')
 st.write('「Nobunaga」信長の野望のデータセットを利用したデータ可視化練習')
 st.write('「BaseBall」2020年のプロ野球選手データを利用したデータ可視化練習')
 
-# カウンターの初期値を0に設定
-counter = 0
+# # カウンターの初期値を0に設定
+# counter = 0
 
-# カウンターを表示
-st.write("閲覧人数：", counter)
+# # カウンターを表示
+# st.write("閲覧人数：", counter)
 
-# カウンターをインクリメント
-@st.cache
-def increment_counter():
-    global counter
-    counter += 1
+# # カウンターをインクリメント
+# @st.cache
+# def increment_counter():
+#     global counter
+#     counter += 1
 
-increment_counter()
+# increment_counter()
 
-# qliteのデータベースと接続
-conn = sqlite3.connect("counter.db")
+# # qliteのデータベースと接続
+# conn = sqlite3.connect("counter.db")
 
-# カーソルを生成
-cur = conn.cursor()
+# # カーソルを生成
+# cur = conn.cursor()
 
-# counterテーブルを作成
-cur.execute("CREATE TABLE IF NOT EXISTS counter (count INTEGER)")
+# # counterテーブルを作成
+# cur.execute("CREATE TABLE IF NOT EXISTS counter (count INTEGER)")
 
-# counterテーブル
+# # counterテーブル
 
 
 
