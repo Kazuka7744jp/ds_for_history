@@ -16,7 +16,14 @@ pagelist = ["はじめに", "01.プロローグ", "残された点帖"]
 #サイドバーのセレクトボックスを配置
 selector=st.sidebar.selectbox( "ページ選択", pagelist)
 if selector=="はじめに":
-  st.javascript("window.scrollTo(0, 0)")
+  st.markdown(
+    """
+    <script>
+      window.scrollTo(0, 0);
+    </script>
+    """,
+    unsafe_allow_html=True,
+  )
   st.header("はじめに")
   st.write("このページは、愛知県刈谷市の東海道沿いの家に残された古文書などに基づく、先祖の在りし日の姿の調査記録になります。")
   st.write('''
@@ -32,7 +39,14 @@ if selector=="はじめに":
 #   st.table(df)
 
 elif selector=="01.プロローグ":
-  st.javascript("window.scrollTo(0, 0)")
+  st.markdown(
+    """
+    <script>
+      window.scrollTo(0, 0);
+    </script>
+    """,
+    unsafe_allow_html=True,
+  )
   st.header(selector)
   st.write("さとる部長は、りゅうじえもんから送られてきた大量の画像に目を通していた。以前、りゅうじえもんの家にある古文書を翻刻した縁で、\
   りゅうじえもんとはその後もやりとりが続いていた。")
@@ -48,12 +62,16 @@ elif selector=="01.プロローグ":
   st.write("「これは雑記帳ではない。読んでくれ。」")
   st.write("東烏がそう自分に語りかけてくる気がした。")
   st.write("気が付くと、さとる部長は、一心不乱に翻刻作業に取り掛かっていた。")
-  
-#   if st.button(label='次の調査へ進む'):
-#     selector = "残された点帖"
 
 elif selector=="残された点帖":
-  st.javascript("window.scrollTo(0, 0)")
+  st.markdown(
+    """
+    <script>
+      window.scrollTo(0, 0);
+    </script>
+    """,
+    unsafe_allow_html=True,
+  )
   st.header("残された点帖")
   st.write('当初、これが一体なんなのかが皆目見当がつかなかったため、さとる部長と専門の先生にご相談した結果、句会の「点帖」であることが分かった。')
   st.write('点帖とは句会の記録であり、「執筆」が書いたものを「点者」「宗匠」が批点・押印、最終的には、秀逸の者の褒美として贈られるものである。')
