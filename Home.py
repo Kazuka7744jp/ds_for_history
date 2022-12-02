@@ -2,7 +2,7 @@
 # coding: utf-8
 
 import streamlit as st
-import sqlite3
+# import sqlite3
 
 st.set_page_config(page_title="東烏", page_icon="pic/karasu.jpg", layout="wide", initial_sidebar_state="auto", menu_items=None)
 st.subheader(" 「鬼神もあわれむ俳諧と生きた男」")
