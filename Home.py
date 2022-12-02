@@ -22,7 +22,7 @@ counter = 0
 st.write("閲覧人数：", counter)
 
 # カウンターをインクリメント
-# @st.cache
+@st.cache
 def increment_counter():
     global counter
     counter += 1
