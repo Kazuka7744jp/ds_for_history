@@ -6,4 +6,4 @@ pandas
 plotly
 streamlit
 streamlit_folium
-pysqlite3 
+pysqlite3
