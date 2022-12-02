@@ -16,14 +16,6 @@ pagelist = ["はじめに", "01.プロローグ", "残された点帖"]
 #サイドバーのセレクトボックスを配置
 selector=st.sidebar.selectbox( "ページ選択", pagelist)
 if selector=="はじめに":
-#   st.markdown(
-#     """
-#     <script>
-#       window.scrollTo(0, 0);
-#     </script>
-#     """,
-#     unsafe_allow_html=True,
-#   )
   st.header("はじめに")
   st.write("このページは、愛知県刈谷市の東海道沿いの家に残された古文書などに基づく、先祖の在りし日の姿の調査記録になります。")
   st.write('''
@@ -34,7 +26,15 @@ if selector=="はじめに":
   st.write("「さとる部長」 －某研究所歴史アーカイブ同好会部長。独学でくずし字を読むすごい人")
   st.image("pic/ryujiemon2.jpg")
   st.write("「りゅうじえもん」 －久右衛門の子孫。当サイト管理人。データ可視化担当")
-  st.scroll(0, 0)
+#   st.scroll(0, 0)
+  st.markdown(
+  """
+  <script>
+    window.scrollTo(0, 0);
+  </script>
+  """,
+  unsafe_allow_html=True,
+  )
 
 #   st.write("■加塚家年表（随時更新中）")
 #   st.table(df)
