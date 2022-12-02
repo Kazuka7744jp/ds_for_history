@@ -24,7 +24,7 @@ if selector=="はじめに":
 #     </script>
 #     """,
 #     unsafe_allow_html=True,
-  )
+#   )
   st.header("はじめに")
   st.write("このページは、愛知県刈谷市の東海道沿いの家に残された古文書などに基づく、先祖の在りし日の姿の調査記録になります。")
   st.write('''
