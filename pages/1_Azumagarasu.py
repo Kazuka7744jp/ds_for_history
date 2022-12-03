@@ -63,15 +63,17 @@ elif selector=="01.プロローグ":
   st.write("「これは雑記帳ではない。読んでくれ。」")
   st.write("東烏がそう自分に語りかけてくる気がした。")
   st.write("気が付くと、さとる部長は、一心不乱に翻刻作業に取り掛かっていた。")
-  st.markdown(
-  """
-  <script>
+#   st.markdown(
+#   """
+#   <script>
+#     window.scrollTo(0, 0);
+#   </script>
+#   """,
+#   unsafe_allow_html=True,
+#   )
+  st.script("""
     window.scrollTo(0, 0);
-  </script>
-  """,
-  unsafe_allow_html=True,
-  )
-
+  """)
 elif selector=="残された点帖":
   st.header("残された点帖")
   st.write('当初、これが一体なんなのかが皆目見当がつかなかったため、さとる部長と専門の先生にご相談した結果、句会の「点帖」であることが分かった。')
