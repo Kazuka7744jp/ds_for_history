@@ -10,13 +10,13 @@ import seaborn as sns
 import streamlit as st
 
 df = pd.read_csv("data/taishi.csv")
-
+st.header("信長の野望データセットのページ")
 pagelist = ["はじめに", "賤ケ岳7本槍（散布図）", "猪武者（相関係数）"]
 #サイドバーのセレクトボックスを配置
 selector=st.sidebar.selectbox( "ページ選択", pagelist)
 if selector==pagelist[0]:
     st.header(selector)
-    st.write("このページは、信長の野望「大志」のデータベースに基づき、データの可視化を練習するページです。")
+    st.write("このページは、信長の野望「大志」のデータセットに基づき、データの可視化を練習するページです。")
     st.write('''
         練習結果をご覧になる場合は、**左側のサイドバーの「ページ選択」よりプルダウンで選択**をお願いいたします。
         ''')
@@ -134,7 +134,7 @@ elif selector==pagelist[2]:
 
     df_inoshishi = df[(df[clm1] < df[clm1].quantile(q=clm1_param)) & (df[clm2] > df[clm2].quantile(q=clm2_param))]
 
-    st.write(f"選抜条件は、{clm1}の能力値が、下位{int(clm1_param*100)}%、かつ、{clm2}の能力値が上位50％以上の武将。\
+    st.write(f"選抜条件は、{clm1}の能力値が、下位{int(clm1_param*100)}%、かつ、{clm2}の能力値が上位50％の武将。\
     その結果、全武将{len(df)}人の中から、{len(df_inoshishi)}人の猪武者たちが選抜された。")
     st.write("■選ばれし、猪武者たち")
     st.write(df_inoshishi)
@@ -178,6 +178,10 @@ elif selector==pagelist[2]:
     st.write("■コード")
     """
     ```python
+    import matplotlib.pyplot as plt
+    import pandas as pd
+    import seaborn as sns
+    import streamlit as st
     
     # パラメーターを指定
     clm1 = "知略" 
