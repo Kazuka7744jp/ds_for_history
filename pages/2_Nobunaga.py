@@ -143,9 +143,9 @@ elif selector==pagelist[2]:
     st.write(df_daihyo)
     dname = df_daihyo["武将姓"].iloc[0] + df_daihyo["武将名"].iloc[0]
     st.write(f"最も知略の低い（知略20）{dname}は、齢は56歳の時であるものの、実際に天正十年、河合戦で討死している。これは期待（？）ができる。")
-    st.write(f"ちなみに猪武者たちの{clm1},{clm2}のヒストグラムは以下のような感じ。歪んだ分布になっている。")
+    st.write(f"ちなみに猪武者たちの{clm1}、{clm2}のヒストグラムは以下のような感じ。歪んだ分布になっている。")
 
-    fig, (ax1, ax2) = plt.subplots(1,2)
+    fig, (ax1, ax2) = plt.subplots(1, 2)
     fig.set_size_inches(10, 5)
     ax1.hist(df_inoshishi[clm1])
     ax1.set_title(f'「{clm1}」に関するヒストグラム')
@@ -178,18 +178,22 @@ elif selector==pagelist[2]:
     st.write("■コード")
     """
     ```python
-
-    clm1 = "知略"
+    
+    # パラメーターを指定
+    clm1 = "知略" 
     clm2 = "武勇"
     clm1_param = 0.25
     clm2_param = 0.5
-
+    
+    # 猪武者だけのデータを抽出
     df_inoshishi = df[(df[clm1] < df[clm1].quantile(q=clm1_param)) & (df[clm2] > df[clm2].quantile(q=clm2_param))]
     st.write(df_inoshishi)
-
+    
+    # 最も知略が低い武将を抽出
     df_daihyo = df_inoshishi[df_inoshishi["知略"] == df["知略"].min()]
     st.write(df_daihyo)
-
+    
+　　# 武勇と知略に関するヒヒストグラムを作成 
     fig, (ax1, ax2) = plt.subplots(1,2)
     fig.set_size_inches(10, 5)
     ax1.hist(df_inoshishi[clm1])
@@ -201,19 +205,20 @@ elif selector==pagelist[2]:
     ax2.set_xlabel(clm2)
     ax2.set_ylabel("人数")
     st.write(fig)
-
+    
+    # 相関係数（R）
     r = np.corrcoef(df_inoshishi["知略"], df_inoshishi["寿命"])[0, 1]
 
+    # ヒートマップで全相関係数を表示
     fig, ax = plt.subplots()
     fig.set_size_inches(8, 5)
     sns.heatmap(df_inoshishi[["統率", "武勇", "知略", "内政", "外政","寿命", "野心"]].corr(), ax=ax, cmap="coolwarm", annot=True)
     st.write(fig)
 
+    ♯ 平均寿命を算出
     lifespan_all = int(df["寿命"].mean())
     lifespan_inoshishi = int(df_inoshishi["寿命"].mean())
     """
-
-
 # import streamlit as st
 # # from streamlit_folium import st_folium
 # # import folium
