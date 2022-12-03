@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 from matplotlib import patches
 import numpy as np
 import pandas as pd
+import seaborn as sns
 import streamlit as st
 
 df = pd.read_csv("data/taishi.csv")
@@ -123,6 +124,95 @@ elif selector==pagelist[1]:
     """
 elif selector==pagelist[2]:
     st.header("猪武者ほどすぐに死ぬ（相関係数）")
+    st.write("武勇が高いが、統率能力が平均以下の武将は、討ち死になどが要因で、寿命が短めなのではないかと思い\
+    相関係数を見てみることにした")
+
+    clm1 = "知略"
+    clm2 = "武勇"
+    clm1_param = 0.25
+    clm2_param = 0.5
+
+    df_inoshishi = df[(df[clm1] < df[clm1].quantile(q=clm1_param)) & (df[clm2] > df[clm2].quantile(q=clm2_param))]
+
+    st.write(f"選抜条件は、{clm1}の能力値が、下位{int(clm1_param*100)}%、かつ、{clm2}の能力値が平均以上の武将。\
+    その結果、全武将{len(df)}人の中から、{len(df_inoshishi)}人の猪武者たちが選抜された。")
+    st.write("■選ばれし、猪武者たち")
+    st.write(df_inoshishi)
+    df_daihyo = df_inoshishi[df_inoshishi["知略"] == df["知略"].min()]
+    st.write("■最も「知略」が低い武将")
+    st.write(df_daihyo)
+    dname = df_daihyo["武将姓"].iloc[0] + df_daihyo["武将名"].iloc[0]
+    st.write(f"最も知略の低い（知略20）{dname}は、齢は56歳の時であるものの、実際に天正十年、河合戦で討死している。これは期待（？）ができる。")
+    st.write(f"ちなみに猪武者たちの{clm1},{clm2}のヒストグラムは以下のような感じ。歪んだ分布になっている。")
+
+    fig, (ax1, ax2) = plt.subplots(1,2)
+    fig.set_size_inches(10, 5)
+    ax1.hist(df_inoshishi[clm1])
+    ax1.set_title(f'「{clm1}」に関するヒストグラム')
+    ax1.set_xlabel(clm1)
+    ax1.set_ylabel("人数")
+    ax2.hist(df_inoshishi[clm2])
+    ax2.set_title(f'「{clm2}」に関するヒストグラム')
+    ax2.set_xlabel(clm2)
+    ax2.set_ylabel("人数")
+    st.write(fig)
+
+    st.write(f"では、{clm1}と{clm2}の相関係数を求めてみる。仮説は、「知略が低い場合、武勇が高ければ高いほど、\
+    自分の力を過信し、命を落としている結果、寿命が短くなる傾向がある」だ。")
+
+    r = np.corrcoef(df_inoshishi["知略"], df_inoshishi["寿命"])[0, 1]
+
+    st.subheader(f"相関係数は「{r:.3f}」という結果で、相関は全くなかった。")
+
+    st.write(f"一応、猪武者たちのすべての能力値の相関を見てみる。")
+
+    fig, ax = plt.subplots()
+    fig.set_size_inches(8, 5)
+    sns.heatmap(df_inoshishi[["統率", "武勇", "知略", "内政", "外政","寿命", "野心"]].corr(), ax=ax, cmap="coolwarm", annot=True)
+    st.write(fig)
+
+    lifespan_all = int(df["寿命"].mean())
+    lifespan_inoshishi = int(df_inoshishi["寿命"].mean())
+
+    st.write(f"ちなみに、全武将の平均寿命が「{lifespan_all}才」に対して、猪武者たちの平均寿命は、「{lifespan_inoshishi}才」だった。やはり若干早めに亡くなっている。")
+    st.write("■コード")
+    """
+    ```python
+
+    clm1 = "知略"
+    clm2 = "武勇"
+    clm1_param = 0.25
+    clm2_param = 0.5
+
+    df_inoshishi = df[(df[clm1] < df[clm1].quantile(q=clm1_param)) & (df[clm2] > df[clm2].quantile(q=clm2_param))]
+    st.write(df_inoshishi)
+
+    df_daihyo = df_inoshishi[df_inoshishi["知略"] == df["知略"].min()]
+    st.write(df_daihyo)
+
+    fig, (ax1, ax2) = plt.subplots(1,2)
+    fig.set_size_inches(10, 5)
+    ax1.hist(df_inoshishi[clm1])
+    ax1.set_title(f'「{clm1}」に関するヒストグラム')
+    ax1.set_xlabel(clm1)
+    ax1.set_ylabel("人数")
+    ax2.hist(df_inoshishi[clm2])
+    ax2.set_title(f'「{clm2}」に関するヒストグラム')
+    ax2.set_xlabel(clm2)
+    ax2.set_ylabel("人数")
+    st.write(fig)
+
+    r = np.corrcoef(df_inoshishi["知略"], df_inoshishi["寿命"])[0, 1]
+
+    fig, ax = plt.subplots()
+    fig.set_size_inches(8, 5)
+    sns.heatmap(df_inoshishi[["統率", "武勇", "知略", "内政", "外政","寿命", "野心"]].corr(), ax=ax, cmap="coolwarm", annot=True)
+    st.write(fig)
+
+    lifespan_all = int(df["寿命"].mean())
+    lifespan_inoshishi = int(df_inoshishi["寿命"].mean())
+    """
+
 
 # import streamlit as st
 # # from streamlit_folium import st_folium
