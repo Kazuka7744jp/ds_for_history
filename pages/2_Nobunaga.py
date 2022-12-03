@@ -10,18 +10,18 @@ import streamlit as st
 
 df = pd.read_csv("data/taishi.csv")
 
-pagelist = ["はじめに", "「賤ケ岳の7本槍」の能力比較（散布図）", "猪武者ほど早く亡くなる（相関係数）"]
+pagelist = ["はじめに", "賤ケ岳7本槍（散布図）", "猪武者（相関係数）"]
 #サイドバーのセレクトボックスを配置
 selector=st.sidebar.selectbox( "ページ選択", pagelist)
-if selector=="はじめに":
+if selector==pagelist[0]:
     st.header(selector)
     st.write("このページは、信長の野望「大志」のデータベースに基づき、データの可視化を練習するページです。")
     st.write('''
         練習結果をご覧になる場合は、**左側のサイドバーの「ページ選択」よりプルダウンで選択**をお願いいたします。
         ''')
 
-elif selector=="「賤ケ岳の7本槍」の能力比較（散布図）":
-    st.header(selector)
+elif selector==pagelist[1]:
+    st.header("「賤ケ岳の7本槍」の能力比較（散布図）")
 
 
     sevens = ["加藤清正", "福島正則", "加藤嘉明", "平野長泰",  "脇坂安治", "糟屋武則", "片桐且元"]
@@ -121,7 +121,8 @@ elif selector=="「賤ケ岳の7本槍」の能力比較（散布図）":
 
     ```
     """
-
+elif selector==pagelist[2]:
+    st.header("猪武者ほどすぐに死ぬ（相関係数）")
 
 # import streamlit as st
 # # from streamlit_folium import st_folium
