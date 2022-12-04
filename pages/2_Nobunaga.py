@@ -295,11 +295,9 @@ elif selector==pagelist[3]:
     st.write("「領土を保全する」という野心が、みんなあるんですね。")
 
     df_daihyo_amb = df_hozen[df_hozen["野心"] == df_hozen["野心"].max()]
-    st.write("■「領土保全で」最も「野心」が高い武将は以下の通りだった。")
+    st.write(f"「ちなみに領土保全」で最も野心が高い武将は以下の方々です。(野心の値は{df_hozen["野心"].max()})。失礼いたしました。")
     st.write(df_daihyo_amb)
-    for idx, _ in df_daihyo_amb.iterrows():
-        st.write(df_daihyo_amb["武将姓"].iloc[idx] + df_daihyo_amb["武将名"].iloc[idx])
-
+ 
     st.write("■コード")
     st.code("""
     ```python
