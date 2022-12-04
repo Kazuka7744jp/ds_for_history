@@ -239,7 +239,6 @@ elif selector==pagelist[3]:
     import seaborn as sns
     import streamlit as st
 
-    df = pd.read_csv("taishi.csv")
     df = df[df["野心"]!=309]
 
     st.write("信長の野望「大志」には、武将ごとに志という設定があるが、その中で最も多いのが「領地保全」である。\
