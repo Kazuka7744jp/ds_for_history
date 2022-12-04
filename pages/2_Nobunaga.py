@@ -231,7 +231,7 @@ elif selector==pagelist[2]:
     """
     )
 
-elif selector==pagelist[2]:
+elif selector==pagelist[3]:
     st.header("「領土保全」ばかり考えている武将に野心はない（連関係数）")
     import numpy as np
     from scipy import stats
