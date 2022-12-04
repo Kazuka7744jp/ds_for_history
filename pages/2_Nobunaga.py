@@ -14,7 +14,6 @@ df = pd.read_csv("data/taishi.csv")
 
 pagelist = ["はじめに", "賤ケ岳7本槍（散布図）", "猪武者（相関係数）", "領土保全と野心（連関係数）"]
 st.header("信長の野望データセットのページ")
-pagelist = ["はじめに", "賤ケ岳7本槍（散布図）", "猪武者（相関係数）"]
 
 #サイドバーのセレクトボックスを配置
 selector=st.sidebar.selectbox( "ページ選択", pagelist)
