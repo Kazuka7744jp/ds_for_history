@@ -245,9 +245,6 @@ elif selector==pagelist[3]:
         領地保全という言葉には、自分の土地に安寧するイメージがあり、天下統一などの「野心」を持たない武将が多いのではと考え、\
             連続データの「野心」をカテゴリ変数に置き換えたうえで、クラメールの連関係数を見てみることにした。")
 
-    ambition_ave = df["野心"].mean()
-
-    st.write(f"なお、全武将の野心の平均は{ambition_ave:.2f}である。")
     st.write("ヒストグラムはこんな感じ。")
     fig, ax = plt.subplots()
     ax.hist(df["野心"])
@@ -255,6 +252,9 @@ elif selector==pagelist[3]:
     ax.set_xlabel("野心")
     ax.set_ylabel("人数")
     st.write(fig)
+    
+    ambition_ave = df["野心"].mean()
+    st.write(f"なお、全武将の野心の平均は{ambition_ave:.2f}であり、平均より上か下かで、それぞれの武将を「野心あり」「野心なし」のカテゴリ変数で分けることにした。")
 
     # 志が領地保全かどうかの列を追加
     df["志_領地保全"] = df["志"].apply(lambda x: "領地保全" if x=="領地保全" else "領地保全以外")
