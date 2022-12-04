@@ -182,8 +182,8 @@ elif selector==pagelist[2]:
 
     st.write(f"ちなみに、全武将の平均寿命が「{lifespan_all}才」に対して、猪武者たちの平均寿命は、「{lifespan_inoshishi}才」だった。やはり若干早めに亡くなっている。")
     st.write("■コード")
-    st.code("""
-    ```python
+    st.code(
+    """
     import matplotlib.pyplot as plt
     import pandas as pd
     import seaborn as sns
@@ -301,7 +301,8 @@ elif selector==pagelist[3]:
     st.write(df_daihyo_amb)
  
     st.write("■コード")
-    st.code("""
+    st.code(
+    """
     import numpy as np
     from scipy import stats
     import pandas as pd
@@ -351,8 +352,6 @@ elif selector==pagelist[3]:
 
     df_daihyo_amb = df_hozen[df_hozen["野心"] == df_hozen["野心"].max()]
     st.write(df_daihyo_amb)
-    for idx, _ in df_daihyo_amb.iterrows():
-        st.write(df_daihyo_amb["武将姓"].iloc[idx] + df_daihyo_amb["武将名"].iloc[idx])
     """)
 
 # import streamlit as st
