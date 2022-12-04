@@ -4,7 +4,7 @@ japanize_matplotlib
 numpy
 pandas
 plotly
-scipy
+seaborn
 streamlit
 streamlit_folium
 pysqlite3

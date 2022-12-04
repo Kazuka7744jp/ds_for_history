@@ -11,13 +11,18 @@ import seaborn as sns
 import streamlit as st
 
 df = pd.read_csv("data/taishi.csv")
+<<<<<<< HEAD
 
 pagelist = ["はじめに", "賤ケ岳7本槍（散布図）", "猪武者（相関係数）", "領土保全と野心（連関係数）"]
+=======
+st.header("信長の野望データセットのページ")
+pagelist = ["はじめに", "賤ケ岳7本槍（散布図）", "猪武者（相関係数）"]
+>>>>>>> 355012e18d4db4d18db3cd2d2984b62d56fe87ec
 #サイドバーのセレクトボックスを配置
 selector=st.sidebar.selectbox( "ページ選択", pagelist)
 if selector==pagelist[0]:
     st.header(selector)
-    st.write("このページは、信長の野望「大志」のデータベースに基づき、データの可視化を練習するページです。")
+    st.write("このページは、信長の野望「大志」のデータセットに基づき、データの可視化を練習するページです。")
     st.write('''
         練習結果をご覧になる場合は、**左側のサイドバーの「ページ選択」よりプルダウンで選択**をお願いいたします。
         ''')
@@ -128,7 +133,7 @@ elif selector==pagelist[1]:
 
 elif selector==pagelist[2]:
     st.header("猪武者ほどすぐに死ぬ（相関係数）")
-    st.write("武勇が高いが、統率能力が平均以下の武将は、討ち死になどが要因で、寿命が短めなのではないかと思い\
+    st.write("武勇が高いが、知略が低い武将は、討ち死になどが要因で、寿命が短めなのではないかと思い\
     相関係数を見てみることにした")
 
     clm1 = "知略"
@@ -138,7 +143,7 @@ elif selector==pagelist[2]:
 
     df_inoshishi = df[(df[clm1] < df[clm1].quantile(q=clm1_param)) & (df[clm2] > df[clm2].quantile(q=clm2_param))]
 
-    st.write(f"選抜条件は、{clm1}の能力値が、下位{int(clm1_param*100)}%、かつ、{clm2}の能力値が平均以上の武将。\
+    st.write(f"選抜条件は、{clm1}の能力値が、下位{int(clm1_param*100)}%、かつ、{clm2}の能力値が上位50％の武将。\
     その結果、全武将{len(df)}人の中から、{len(df_inoshishi)}人の猪武者たちが選抜された。")
     st.write("■選ばれし、猪武者たち")
     st.write(df_inoshishi)
@@ -147,9 +152,9 @@ elif selector==pagelist[2]:
     st.write(df_daihyo)
     dname = df_daihyo["武将姓"].iloc[0] + df_daihyo["武将名"].iloc[0]
     st.write(f"最も知略の低い（知略20）{dname}は、齢は56歳の時であるものの、実際に天正十年、河合戦で討死している。これは期待（？）ができる。")
-    st.write(f"ちなみに猪武者たちの{clm1},{clm2}のヒストグラムは以下のような感じ。歪んだ分布になっている。")
+    st.write(f"ちなみに猪武者たちの{clm1}、{clm2}のヒストグラムは以下のような感じ。歪んだ分布になっている。")
 
-    fig, (ax1, ax2) = plt.subplots(1,2)
+    fig, (ax1, ax2) = plt.subplots(1, 2)
     fig.set_size_inches(10, 5)
     ax1.hist(df_inoshishi[clm1])
     ax1.set_title(f'「{clm1}」に関するヒストグラム')
@@ -182,18 +187,26 @@ elif selector==pagelist[2]:
     st.write("■コード")
     st.code("""
     ```python
-
-    clm1 = "知略"
+    import matplotlib.pyplot as plt
+    import pandas as pd
+    import seaborn as sns
+    import streamlit as st
+    
+    # パラメーターを指定
+    clm1 = "知略" 
     clm2 = "武勇"
     clm1_param = 0.25
     clm2_param = 0.5
-
+    
+    # 猪武者だけのデータを抽出
     df_inoshishi = df[(df[clm1] < df[clm1].quantile(q=clm1_param)) & (df[clm2] > df[clm2].quantile(q=clm2_param))]
     st.write(df_inoshishi)
-
+    
+    # 最も知略が低い武将を抽出
     df_daihyo = df_inoshishi[df_inoshishi["知略"] == df["知略"].min()]
     st.write(df_daihyo)
-
+    
+　　# 武勇と知略に関するヒヒストグラムを作成 
     fig, (ax1, ax2) = plt.subplots(1,2)
     fig.set_size_inches(10, 5)
     ax1.hist(df_inoshishi[clm1])
@@ -205,17 +218,21 @@ elif selector==pagelist[2]:
     ax2.set_xlabel(clm2)
     ax2.set_ylabel("人数")
     st.write(fig)
-
+    
+    # 相関係数（R）
     r = np.corrcoef(df_inoshishi["知略"], df_inoshishi["寿命"])[0, 1]
 
+    # ヒートマップで全相関係数を表示
     fig, ax = plt.subplots()
     fig.set_size_inches(8, 5)
     sns.heatmap(df_inoshishi[["統率", "武勇", "知略", "内政", "外政","寿命", "野心"]].corr(), ax=ax, cmap="coolwarm", annot=True)
     st.write(fig)
 
+    ♯ 平均寿命を算出
     lifespan_all = int(df["寿命"].mean())
     lifespan_inoshishi = int(df_inoshishi["寿命"].mean())
     """
+<<<<<<< HEAD
     )
 
 elif selector==pagelist[2]:
@@ -345,6 +362,8 @@ elif selector==pagelist[2]:
     """)
 
 
+=======
+>>>>>>> 355012e18d4db4d18db3cd2d2984b62d56fe87ec
 # import streamlit as st
 # # from streamlit_folium import st_folium
 # # import folium
