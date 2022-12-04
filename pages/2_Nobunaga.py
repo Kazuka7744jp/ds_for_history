@@ -6,12 +6,13 @@ import matplotlib.pyplot as plt
 from matplotlib import patches
 import numpy as np
 import pandas as pd
+from scipy import stats
 import seaborn as sns
 import streamlit as st
 
 df = pd.read_csv("data/taishi.csv")
 
-pagelist = ["はじめに", "賤ケ岳7本槍（散布図）", "猪武者（相関係数）"]
+pagelist = ["はじめに", "賤ケ岳7本槍（散布図）", "猪武者（相関係数）", "領土保全と野心（連関係数）"]
 #サイドバーのセレクトボックスを配置
 selector=st.sidebar.selectbox( "ページ選択", pagelist)
 if selector==pagelist[0]:
@@ -70,6 +71,7 @@ elif selector==pagelist[1]:
             秀吉に見いだされ数々の武功を挙げ、秀吉子飼いでありながら、大阪夏の陣も乗り越えた武将。松山城築城でも知られる。")
 
     st.write("■コード")
+    st.code(
     """
     ```python
     import japanize_matplotlib
@@ -122,6 +124,8 @@ elif selector==pagelist[1]:
 
     ```
     """
+    )
+
 elif selector==pagelist[2]:
     st.header("猪武者ほどすぐに死ぬ（相関係数）")
     st.write("武勇が高いが、統率能力が平均以下の武将は、討ち死になどが要因で、寿命が短めなのではないかと思い\
@@ -176,7 +180,7 @@ elif selector==pagelist[2]:
 
     st.write(f"ちなみに、全武将の平均寿命が「{lifespan_all}才」に対して、猪武者たちの平均寿命は、「{lifespan_inoshishi}才」だった。やはり若干早めに亡くなっている。")
     st.write("■コード")
-    """
+    st.code("""
     ```python
 
     clm1 = "知略"
@@ -212,6 +216,133 @@ elif selector==pagelist[2]:
     lifespan_all = int(df["寿命"].mean())
     lifespan_inoshishi = int(df_inoshishi["寿命"].mean())
     """
+    )
+
+elif selector==pagelist[2]:
+    st.header("「領土保全」ばかり考えている武将に野心はない（連関係数）")
+    import numpy as np
+    from scipy import stats
+    import pandas as pd
+    import seaborn as sns
+    import streamlit as st
+
+    df = pd.read_csv("taishi.csv")
+    df = df[df["野心"]!=309]
+
+    st.write("信長の野望「大志」には、武将ごとに志という設定があるが、その中で最も多いのが「領地保全」である。\
+        領地保全という言葉には、自分の土地に安寧するイメージがあり、天下統一などの「野心」を持たない武将が多いのではと考え、\
+            連続データの「野心」をカテゴリ変数に置き換えたうえで、クラメールの連関係数を見てみることにした。")
+
+    ambition_ave = df["野心"].mean()
+
+    st.write(f"なお、全武将の野心の平均は{ambition_ave:.2f}である。")
+    st.write("ヒストグラムはこんな感じ。")
+    fig, ax = plt.subplots()
+    ax.hist(df["野心"])
+    ax.set_title(f'「野心に関するヒストグラム')
+    ax.set_xlabel("野心")
+    ax.set_ylabel("人数")
+    st.write(fig)
+
+    # 志が領地保全かどうかの列を追加
+    df["志_領地保全"] = df["志"].apply(lambda x: "領地保全" if x=="領地保全" else "領地保全以外")
+
+    # 野心が平均以上かどうかの列を追加
+    df["野心有無"] = df["野心"].apply(lambda x: "野心あり" if x >= ambition_ave else "野心なし")
+
+    cont_table = pd.crosstab(df["野心有無"],df["志_領地保全"])
+    st.write("■分割表")
+    st.write(cont_table)
+
+    expected_table = pd.DataFrame(stats.chi2_contingency(cont_table, correction=False)[3], index=cont_table.index, columns=cont_table.columns).round(0)
+    st.write("■期待度数の分割表")
+    st.write(expected_table)
+    st.subheader("あ、これ連関ないな・・・")
+    
+    # クラメールの連関係数
+    def cramers_v(x, y):
+        cont_table = pd.crosstab(x, y)
+        chi2 = stats.chi2_contingency(cont_table, correction=False)[0]
+        min_d = min(cont_table.shape) - 1
+        n = len(x)
+        v = np.sqrt(chi2/(min_d*n))
+        return v
+
+
+    cram = cramers_v(df["野心有無"], df["志_領地保全"]).round(4)
+    st.write(f"ちなみにクラメールの連関係数は{cram}でした。")
+
+    df_hozen = df[df["志_領地保全"]=="領地保全"]
+    df_not_hozen = df[df["志_領地保全"]=="領地保全以外"]
+
+    std_table = pd.DataFrame([df["野心"].std(), df_hozen["野心"].std(), df_not_hozen["野心"].std()], index=["全体", "志_領地保全", "志_それ以外"], columns=["標準偏差",]).T.round(2)
+    st.write("いちおう、ばらつきも見てみる。")
+    st.write("■「野心」の能力値の標準偏差")
+    st.write(std_table)
+
+    st.write("「領土を保全する」という野心が、みんなあるんですね。")
+
+    df_daihyo_amb = df_hozen[df_hozen["野心"] == df_hozen["野心"].max()]
+    st.write("■「領土保全で」最も「野心」が高い武将は以下の通りだった。")
+    st.write(df_daihyo_amb)
+    for idx, _ in df_daihyo_amb.iterrows():
+        st.write(df_daihyo_amb["武将姓"].iloc[idx] + df_daihyo_amb["武将名"].iloc[idx])
+
+    st.write("■コード")
+    st.code("""
+    ```python
+    import numpy as np
+    from scipy import stats
+    import pandas as pd
+    import seaborn as sns
+    import streamlit as st
+
+    df = pd.read_csv("taishi.csv")
+
+    ambition_ave = df["野心"].mean()
+
+    fig, ax = plt.subplots()
+    ax.hist(df["野心"])
+    ax.set_title(f'「野心に関するヒストグラム')
+    ax.set_xlabel("野心")
+    ax.set_ylabel("人数")
+    st.write(fig)
+
+    # 志が領地保全かどうかの列を追加
+    df["志_領地保全"] = df["志"].apply(lambda x: "領地保全" if x=="領地保全" else "領地保全以外")
+
+    # 野心が平均以上かどうかの列を追加
+    df["野心有無"] = df["野心"].apply(lambda x: "野心あり" if x >= ambition_ave else "野心なし")
+
+    cont_table = pd.crosstab(df["野心有無"],df["志_領地保全"])
+    st.write(cont_table)
+
+    expected_table = pd.DataFrame(stats.chi2_contingency(cont_table, correction=False)[3], index=cont_table.index, columns=cont_table.columns).round(0)
+    st.write(expected_table)
+    
+    # クラメールの連関係数
+    def cramers_v(x, y):
+        cont_table = pd.crosstab(x, y)
+        chi2 = stats.chi2_contingency(cont_table, correction=False)[0]
+        min_d = min(cont_table.shape) - 1
+        n = len(x)
+        v = np.sqrt(chi2/(min_d*n))
+        return v
+
+
+    cram = cramers_v(df["野心有無"], df["志_領地保全"]).round(4)
+
+    df_hozen = df[df["志_領地保全"]=="領地保全"]
+    df_not_hozen = df[df["志_領地保全"]=="領地保全以外"]
+
+    std_table = pd.DataFrame([df["野心"].std(), df_hozen["野心"].std(), df_not_hozen["野心"].std()], index=["全体", "志_領地保全", "志_それ以外"], columns=["標準偏差",]).T.round(2)
+    st.write(std_table)
+
+    df_daihyo_amb = df_hozen[df_hozen["野心"] == df_hozen["野心"].max()]
+    st.write(df_daihyo_amb)
+    for idx, _ in df_daihyo_amb.iterrows():
+        st.write(df_daihyo_amb["武将姓"].iloc[idx] + df_daihyo_amb["武将名"].iloc[idx])
+    """)
 
 
 # import streamlit as st
