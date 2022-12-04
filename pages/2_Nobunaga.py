@@ -11,13 +11,11 @@ import seaborn as sns
 import streamlit as st
 
 df = pd.read_csv("data/taishi.csv")
-<<<<<<< HEAD
 
 pagelist = ["はじめに", "賤ケ岳7本槍（散布図）", "猪武者（相関係数）", "領土保全と野心（連関係数）"]
-=======
 st.header("信長の野望データセットのページ")
 pagelist = ["はじめに", "賤ケ岳7本槍（散布図）", "猪武者（相関係数）"]
->>>>>>> 355012e18d4db4d18db3cd2d2984b62d56fe87ec
+
 #サイドバーのセレクトボックスを配置
 selector=st.sidebar.selectbox( "ページ選択", pagelist)
 if selector==pagelist[0]:
@@ -232,7 +230,6 @@ elif selector==pagelist[2]:
     lifespan_all = int(df["寿命"].mean())
     lifespan_inoshishi = int(df_inoshishi["寿命"].mean())
     """
-<<<<<<< HEAD
     )
 
 elif selector==pagelist[2]:
@@ -361,9 +358,6 @@ elif selector==pagelist[2]:
         st.write(df_daihyo_amb["武将姓"].iloc[idx] + df_daihyo_amb["武将名"].iloc[idx])
     """)
 
-
-=======
->>>>>>> 355012e18d4db4d18db3cd2d2984b62d56fe87ec
 # import streamlit as st
 # # from streamlit_folium import st_folium
 # # import folium
