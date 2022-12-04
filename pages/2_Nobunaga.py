@@ -282,7 +282,7 @@ elif selector==pagelist[3]:
 
 
     cram = cramers_v(df["野心有無"], df["志_領地保全"]).round(4)
-    st.write(f"ちなみにクラメールの連関係数は{cram}でした。")
+    st.write(f"ちなみに、見るまでもなかったのですが、クラメールの連関係数は{cram}でした。")
 
     df_hozen = df[df["志_領地保全"]=="領地保全"]
     df_not_hozen = df[df["志_領地保全"]=="領地保全以外"]
@@ -293,9 +293,11 @@ elif selector==pagelist[3]:
     st.write(std_table)
 
     st.write("「領土を保全する」という野心が、みんなあるんですね。")
+    amb_max = df_hozen["野心"].max()
 
-    df_daihyo_amb = df_hozen[df_hozen["野心"] == df_hozen["野心"].max()]
-    st.write(f"「ちなみに領土保全」で最も野心が高い武将は以下の方々です。(野心の値は{df_hozen["野心"].max()})。失礼いたしました。")
+    df_daihyo_amb = df_hozen[df_hozen["野心"] == amb_max]
+    
+    st.write(f"「ちなみに領土保全」で最も野心が高い武将は以下の方々です。(野心の値は{amb_max})。失礼いたしました。")
     st.write(df_daihyo_amb)
  
     st.write("■コード")
