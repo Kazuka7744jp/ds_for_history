@@ -302,7 +302,6 @@ elif selector==pagelist[3]:
  
     st.write("■コード")
     st.code("""
-    ```python
     import numpy as np
     from scipy import stats
     import pandas as pd
