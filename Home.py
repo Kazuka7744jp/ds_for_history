@@ -23,8 +23,6 @@ def fetch_all_poets():
     res = db.fetch()
     return res.items
 
-poets = pd.DataFrame(data)
-
 insert_view(time.time())
 data = fetch_all_poets()
 poets = pd.DataFrame(data)
