@@ -1,10 +1,13 @@
 #!/usr/bin/env python
 # coding: utf-8
 from deta import Deta
+from dotenv import load_dotenv
 import streamlit as st
 import sqlite3
 
-DETA_KEY = "c05k0iha_kzHdrrsmGrr1njjvBX5MLPRq3aeZHTKF"
+load_dotenv(".env")
+
+DETA_KEY = os.getenv("DETA_KEY")
 
 deta = Deta(DETA_KEY)
 
