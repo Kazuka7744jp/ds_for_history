@@ -28,7 +28,7 @@ data = fetch_all_poets()
 poets = pd.DataFrame(data)
 
 # カウンターを表示
-# st.write("閲覧人数：", len(poets))
+st.write("閲覧人数：", len(poets))
 
 # name = "東烏"
 # area = "三河"
