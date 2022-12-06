@@ -6,9 +6,7 @@ numpy
 pandas
 plotly
 python-dotenv
-pysqlite
 scipy
 seaborn
 streamlit
 streamlit_folium
-time
