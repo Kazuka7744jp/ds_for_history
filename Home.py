@@ -16,8 +16,8 @@ deta = Deta(DETA_KEY)
 # Deta上のデータベースに接続
 db = deta.Base('view_count')
 
-def insert_view(time):
-    return db.put({"閲覧日時": time})
+def insert_view(_time):
+    return db.put({"閲覧日時": _time})
 
 def fetch_all_poets():
     res = db.fetch()
