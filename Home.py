@@ -41,7 +41,7 @@ poets = pd.DataFrame(data)
 
 st.markdown("---")
 # カウンターを表示
-st.write(f"これまで、累計{len(poets)}人の方に、東烏の生き方に触れていただきました。ありがとうございます:bamboo:")
+st.write(f"これまで、累計:star2:{len(poets)}人:star2:の方に、東烏の生き方に触れていただきました。ありがとうございます:bamboo:")
 
 # name = "東烏"
 # area = "三河"
