@@ -21,9 +21,7 @@ st.write('「Nobunaga」信長の野望のデータセットを利用したデ�
 st.write('「BaseBall」2020年のプロ野球選手データを利用したデータ可視化練習')
 
 load_dotenv(".env")
-
 DETA_KEY = os.getenv("DETA_KEY")
-
 deta = Deta(DETA_KEY)
 
 # Deta上のデータベースに接続
@@ -32,17 +30,19 @@ db = deta.Base("view_count")
 def insert_view(_time):
     return db.put({"閲覧日時": _time})
 
+
 def fetch_all_poets():
     res = db.fetch()
     return res.items
 
+
 insert_view(str(datetime.datetime.now()))
 data = fetch_all_poets()
-poets = pd.DataFrame(data)
+views = pd.DataFrame(data)
 
 st.markdown("---")
 # カウンターを表示
-st.write(f"これまで、:star:累計{len(poets)}人:star:の方に、東烏の生き方に触れていただきました。ありがとうございます:bamboo:")
+st.write(f"これまで、:star:累計{len(views)}人:star:の方に、東烏の生き方に触れていただきました。ありがとうございます:bamboo:")
 # name = "東烏"
 # area = "三河"
 # occupation = "油屋"
