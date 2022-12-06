@@ -7,28 +7,28 @@ import streamlit as st
 import time
 import os
 
-load_dotenv(".env")
+# load_dotenv(".env")
 
-DETA_KEY = os.getenv("DETA_KEY")
+# DETA_KEY = os.getenv("DETA_KEY")
 
-deta = Deta(DETA_KEY)
+# deta = Deta(DETA_KEY)
 
-# Deta上のデータベースに接続
-db = deta.Base("view_count")
+# # Deta上のデータベースに接続
+# db = deta.Base("view_count")
 
-def insert_view(_time):
-    return db.put({"閲覧日時": _time})
+# def insert_view(_time):
+#     return db.put({"閲覧日時": _time})
 
-def fetch_all_poets():
-    res = db.fetch()
-    return res.items
+# def fetch_all_poets():
+#     res = db.fetch()
+#     return res.items
 
 # insert_view(time.time())
 # data = fetch_all_poets()
 # poets = pd.DataFrame(data)
 
 # カウンターを表示
-st.write("閲覧人数：", len(poets))
+# st.write("閲覧人数：", len(poets))
 
 # name = "東烏"
 # area = "三河"
