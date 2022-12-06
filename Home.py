@@ -50,6 +50,8 @@ submitted = st.button(label="Save Data")
 
 if submitted:
     insert_poet(key, area, occupation, detail)
-    st.write(db)
-#     st.write(fetch_all_poets())
-#     st.write(get_poet("東烏"))
+    # Detaからデータを取得する
+    data = fetch_all_poets()
+    # DataFrameに変換する
+    poets = pd.DataFrame(data)
+    st.dataframe(poets[['key', 'area', 'occupation']], max_rows=20)
