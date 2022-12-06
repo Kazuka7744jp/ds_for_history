@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
+import datetime
 from deta import Deta
 from dotenv import load_dotenv
 import pandas as pd
@@ -34,7 +35,7 @@ def fetch_all_poets():
     res = db.fetch()
     return res.items
 
-insert_view(time())
+insert_view(datetime.datetime.now())
 data = fetch_all_poets()
 poets = pd.DataFrame(data)
 
