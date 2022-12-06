@@ -55,4 +55,4 @@ if submitted:
     data = fetch_all_poets()
     # DataFrameに変換する
     poets = pd.DataFrame(data)
-    st.dataframe(poets, max_rows=20)
+    st.write(poets)
