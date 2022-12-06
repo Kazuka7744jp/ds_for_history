@@ -35,7 +35,7 @@ def fetch_all_poets():
     res = db.fetch()
     return res.items
 
-insert_view(datetime.datetime.now())
+insert_view(str(datetime.datetime.now()))
 data = fetch_all_poets()
 poets = pd.DataFrame(data)
 
