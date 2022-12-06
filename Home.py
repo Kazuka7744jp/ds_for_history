@@ -12,7 +12,7 @@ st.set_page_config(page_title="東烏", page_icon="pic/karasu.jpg", layout="wide
 st.subheader(" 「鬼神もあわれむ俳諧と生きた男」")
 st.image("pic/logo.jpg")
 st.markdown("---")
-st.write(":seedling:<About this site>:seedling:")
+st.write(''':seedling:**<About this website>**:seedling:''')
 st.write('このサイトでは、江戸時代の刈谷の油屋「加塚久右衛門（かづか きゅうえもん　?~1803年?　俳号「東烏」)が残した和歌に\
 関する日記「和歌芽籠」を読み解きながら、久右衛門の人生や、それから派生した江戸時代の三河俳諧の調査結果をまとめています。あわせて管理人のPythonによるデータ可視化の練習結果も掲載しています。')
 
