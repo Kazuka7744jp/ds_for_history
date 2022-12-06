@@ -1,4 +1,5 @@
 deta
+dot_env
 folium 
 matplotlib
 japanize_matplotlib
