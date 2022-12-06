@@ -13,17 +13,27 @@ DETA_KEY = os.getenv("DETA_KEY")
 
 deta = Deta(DETA_KEY)
 
-db = deta.Base("azumagarasu")
+# Deta上のデータベースに接続
+db = deta.Base('view_count')
 
-def insert_poet(name, area, occupation, detail):
-    return db.put({"名前": name, "地域": area, "職業": occupation, "人物": detail})
+# ページの閲覧回数を取得
+view_count = db.get('view_count')
 
-def fetch_all_poets():
-    res = db.fetch()
-    return res.items
+# 閲覧回数が取得できなかった場合は、初期値として0を設定
+if view_count is None:
+    view_count = 0
 
-def get_poet(name):
-    return db.get(name)
+# 閲覧回数を1増やす
+view_count += 1
+
+# 閲覧回数をデータベースに保存
+db.put('view_count', view_count)
+
+# 閲覧回数を表示
+st.write(f'This page has been viewed {view_count} times.')
+
+# カウンターを表示
+st.write("閲覧人数：", view_count)
 
 name = "東烏"
 area = "三河"
@@ -41,18 +51,24 @@ st.write('''**「Azumagarasu」東烏に関する調査ページ**''')
 st.write('「Nobunaga」信長の野望のデータセットを利用したデータ可視化練習')
 st.write('「BaseBall」2020年のプロ野球選手データを利用したデータ可視化練習')
 
-# カウンターの初期値を0に設定
-counter = 0
+# db = deta.Base("azumagarasu")
 
-# カウンターを表示
-st.write("閲覧人数：", counter)
+# def insert_poet(name, area, occupation, detail):
+#     return db.put({"名前": name, "地域": area, "職業": occupation, "人物": detail})
 
-submitted = st.button(label="Save Data")
+# def fetch_all_poets():
+#     res = db.fetch()
+#     return res.items
 
-if submitted:
-    insert_poet(name, area, occupation, detail)
-    # Detaからデータを取得する
-    data = fetch_all_poets()
-    # DataFrameに変換する
-    poets = pd.DataFrame(data)
-    st.write(poets.loc[:, ["名前", "地域", "職業", "人物"]])
+# def get_poet(name):
+#     return db.get(name)
+
+# submitted = st.button(label="Save Data")
+
+# if submitted:
+#     insert_poet(name, area, occupation, detail)
+#     # Detaからデータを取得する
+#     data = fetch_all_poets()
+#     # DataFrameに変換する
+#     poets = pd.DataFrame(data)
+#     st.write(poets.loc[:, ["名前", "地域", "職業", "人物"]])
