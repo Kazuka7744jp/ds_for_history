@@ -15,17 +15,17 @@ deta = Deta(DETA_KEY)
 
 db = deta.Base("azumagarasu")
 
-def insert_poet(key, area, occupation, detail):
-    return db.put({"名前": key, "地域": area, "職業": occupation, "人物": detail})
+def insert_poet(name, area, occupation, detail):
+    return db.put({"名前": name, "地域": area, "職業": occupation, "人物": detail})
 
 def fetch_all_poets():
     res = db.fetch()
     return res.items
 
-def get_poet(key):
-    return db.get(key)
+def get_poet(name):
+    return db.get(name)
 
-key = "東烏"
+name = "東烏"
 area = "三河"
 occupation = "油屋"
 detail = "刈谷の今川で油屋を営む。「和歌芽籠」を執筆。"
@@ -50,9 +50,9 @@ st.write("閲覧人数：", counter)
 submitted = st.button(label="Save Data")
 
 if submitted:
-    insert_poet(key, area, occupation, detail)
+    insert_poet(name, area, occupation, detail)
     # Detaからデータを取得する
     data = fetch_all_poets()
     # DataFrameに変換する
     poets = pd.DataFrame(data)
-    st.write(poets)
+    st.write(poets.loc[["名前", "地域", "職業", "人物"]])
