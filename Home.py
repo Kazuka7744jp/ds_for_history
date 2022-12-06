@@ -13,22 +13,20 @@ deta = Deta(DETA_KEY)
 
 db = deta.Base("azumagarasu")
 
-def insert_poet(name, area, occupation, detail):
-    return db.put({"名前": name, "地域": area, "職業": occupation, "人物": detail})
+def insert_poet(key, area, occupation, detail):
+    return db.put({"名前": key, "地域": area, "職業": occupation, "人物": detail})
 
 def fetch_all_poets():
     res = db.fetch()
     return res.items
 
-def get_poet(name):
-    return db.get(name)
+def get_poet(key):
+    return db.get(key)
 
-name = "東烏"
+key = "東烏"
 area = "三河"
 occupation = "油屋"
 detail = "刈谷の今川で油屋を営む。「和歌芽籠」を執筆。"
-
-insert_poet(name, area, occupation, detail)
 
 st.set_page_config(page_title="東烏", page_icon="pic/karasu.jpg", layout="wide", initial_sidebar_state="auto", menu_items=None)
 st.subheader(" 「鬼神もあわれむ俳諧と生きた男」")
@@ -47,23 +45,8 @@ counter = 0
 # カウンターを表示
 st.write("閲覧人数：", counter)
 
-# カウンターをインクリメント
-@st.cache
-def increment_counter():
-    global counter
-    counter += 1
-
-increment_counter()
-
-# qliteのデータベースと接続
-conn = sqlite3.connect("counter.db")
-
-# カーソルを生成
-cur = conn.cursor()
-
-# counterテーブルを作成
-cur.execute("CREATE TABLE IF NOT EXISTS counter (count INTEGER)")
-
-# counterテーブル
-
-
+submitted = st.form_submit_button("Save Data")
+if submitted:
+    insert_poet(key, area, occupation, detail)
+    st.write(fetch_all_poets())
+    st.write(get_poet("東烏"))
