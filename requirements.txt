@@ -3,6 +3,7 @@ folium
 matplotlib
 japanize_matplotlib
 numpy
+os
 pandas
 plotly
 python-dotenv
