@@ -38,6 +38,7 @@ insert_view(time())
 data = fetch_all_poets()
 poets = pd.DataFrame(data)
 
+st.markdown("---")
 # カウンターを表示
 st.write(f"これまで、累計{len(poets)}人の方に、東烏の生き方に触れていただきました。ありがとうございます。")
 
