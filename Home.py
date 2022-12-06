@@ -46,7 +46,7 @@ counter = 0
 # カウンターを表示
 st.write("閲覧人数：", counter)
 
-submitted = st.form_submit_button("Save Data")
+submitted = st.form_submit_button(label="Save Data")
 
 if submitted:
     insert_poet(key, area, occupation, detail)
