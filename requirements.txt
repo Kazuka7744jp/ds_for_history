@@ -1,3 +1,4 @@
+deta
 folium 
 matplotlib
 japanize_matplotlib
