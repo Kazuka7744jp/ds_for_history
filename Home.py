@@ -47,6 +47,7 @@ counter = 0
 st.write("閲覧人数：", counter)
 
 submitted = st.form_submit_button("Save Data")
+
 if submitted:
     insert_poet(key, area, occupation, detail)
     st.write(fetch_all_poets())
