@@ -55,4 +55,4 @@ if submitted:
     data = fetch_all_poets()
     # DataFrameに変換する
     poets = pd.DataFrame(data)
-    st.write(poets.loc[["key", "名前", "地域", "職業", "人物"]])
+    st.write(poets.loc[:, ["key", "名前", "地域", "職業", "人物"]])
