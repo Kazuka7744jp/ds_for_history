@@ -39,7 +39,7 @@ data = fetch_all_poets()
 poets = pd.DataFrame(data)
 
 # カウンターを表示
-st.write("閲覧人数：", len(poets))
+st.write(f"これまで、累計{len(poets)}人の方に、東烏の生き方に触れていただきました。ありがとうございます。")
 
 # name = "東烏"
 # area = "三河"
