@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 import pandas as pd
 import streamlit as st
 import sqlite3
+import time
 import os
 
 load_dotenv(".env")
@@ -16,29 +17,26 @@ deta = Deta(DETA_KEY)
 # Deta上のデータベースに接続
 db = deta.Base('view_count')
 
-# ページの閲覧回数を取得
-view_count = db.get('view_count')
+def insert_view(time):
+    return db.put({"閲覧日時": time})
 
-# 閲覧回数が取得できなかった場合は、初期値として0を設定
-if view_count is None:
-    view_count = 0
+def fetch_all_poets():
+    res = db.fetch()
+    return res.items
 
-# 閲覧回数を1増やす
-view_count += 1
+poets = pd.DataFrame(data)
 
-# 閲覧回数をデータベースに保存
-db.put('view_count', view_count)
-
-# 閲覧回数を表示
-st.write(f'This page has been viewed {view_count} times.')
+insert_view(time.time())
+data = fetch_all_poets()
+poets = pd.DataFrame(data)
 
 # カウンターを表示
-st.write("閲覧人数：", view_count)
+st.write("閲覧人数：", len(poets))
 
-name = "東烏"
-area = "三河"
-occupation = "油屋"
-detail = "刈谷の今川で油屋を営む。「和歌芽籠」を執筆。"
+# name = "東烏"
+# area = "三河"
+# occupation = "油屋"
+# detail = "刈谷の今川で油屋を営む。「和歌芽籠」を執筆。"
 
 st.set_page_config(page_title="東烏", page_icon="pic/karasu.jpg", layout="wide", initial_sidebar_state="auto", menu_items=None)
 st.subheader(" 「鬼神もあわれむ俳諧と生きた男」")
