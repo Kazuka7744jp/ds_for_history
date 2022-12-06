@@ -36,7 +36,7 @@ def fetch_all_poets():
 
 insert_view(time())
 data = fetch_all_poets()
-# poets = pd.DataFrame(data)
+poets = pd.DataFrame(data)
 
 st.markdown("---")
 # カウンターを表示
