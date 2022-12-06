@@ -1,8 +1,31 @@
 #!/usr/bin/env python
 # coding: utf-8
-
+from deta import Deta
 import streamlit as st
 import sqlite3
+
+DETA_KEY = "c05k0iha_kzHdrrsmGrr1njjvBX5MLPRq3aeZHTKF"
+
+deta = Deta(DETA_KEY)
+
+db = deta.Base("azumagarasu")
+
+def insert_poet(name, area, occupation, detail):
+    return db.put({"名前": name, "地域": area, "職業": occupation, "人物": detail})
+
+def fetch_all_poets():
+    res = db.fetch()
+    return res.items
+
+def get_poet(name):
+    return db.get(name)
+
+name = "東烏"
+area = "三河"
+occupation = "油屋"
+detail = "刈谷の今川で油屋を営む。「和歌芽籠」を執筆。"
+
+insert_poet(name, area, occupation, detail)
 
 st.set_page_config(page_title="東烏", page_icon="pic/karasu.jpg", layout="wide", initial_sidebar_state="auto", menu_items=None)
 st.subheader(" 「鬼神もあわれむ俳諧と生きた男」")
