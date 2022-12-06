@@ -5,6 +5,7 @@ japanize_matplotlib
 numpy
 pandas
 plotly
+python-dotenv
 scipy
 seaborn
 streamlit
