@@ -4,6 +4,7 @@ from deta import Deta
 from dotenv import load_dotenv
 import streamlit as st
 import sqlite3
+import os
 
 load_dotenv(".env")
 
