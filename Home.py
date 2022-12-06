@@ -50,5 +50,6 @@ submitted = st.button(label="Save Data")
 
 if submitted:
     insert_poet(key, area, occupation, detail)
-    st.write(fetch_all_poets())
-    st.write(get_poet("東烏"))
+    st.write(db)
+#     st.write(fetch_all_poets())
+#     st.write(get_poet("東烏"))
