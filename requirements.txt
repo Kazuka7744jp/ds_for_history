@@ -12,3 +12,4 @@ scipy
 seaborn
 streamlit
 streamlit_folium
+time
