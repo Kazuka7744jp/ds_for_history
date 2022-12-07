@@ -32,7 +32,6 @@ db = deta.Base("view_count")
 count = 0
 
 def insert_view(_time):
-    count += 1
     return db.put({"閲覧日時": _time})
 
 
@@ -42,6 +41,7 @@ def fetch_all_poets():
 
 if count == 0:
     insert_view(str(datetime.datetime.now()))
+
 data = fetch_all_poets()
 views = pd.DataFrame(data)
 
