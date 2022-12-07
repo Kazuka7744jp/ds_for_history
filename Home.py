@@ -18,9 +18,9 @@ st.write('このサイトでは、江戸時代の刈谷の油屋「加塚久右�
 
 st.write(''':seedling: **ページ一覧** :seedling:''')
 st.write("各ページは、左側のサイドバーから選択してください")
-st.write('''**「Azumagarasu」東烏に関する調査ページ**''')
-st.write('「Nobunaga」信長の野望のデータセットを利用したデータ可視化練習')
-st.write('「BaseBall」2020年のプロ野球選手データを利用したデータ可視化練習')
+st.write(''':one:**「Azumagarasu」東烏に関する調査ページ**''')
+st.write(':two:「Nobunaga」信長の野望のデータセットを利用したデータ可視化練習')
+st.write(':three:「BaseBall」2020年のプロ野球選手データを利用したデータ可視化練習')
 
 load_dotenv(".env")
 DETA_KEY = os.getenv("DETA_KEY")
