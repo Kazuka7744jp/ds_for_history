@@ -30,9 +30,9 @@ deta = Deta(DETA_KEY)
 db = deta.Base("view_count")
 
 count = 0
-@st.cache
+
 def insert_view(_time):
-    global count +=1
+    count += 1
     return db.put({"閲覧日時": _time})
 
 
