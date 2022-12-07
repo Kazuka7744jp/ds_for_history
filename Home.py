@@ -29,6 +29,7 @@ deta = Deta(DETA_KEY)
 # Deta上のデータベースに接続
 db = deta.Base("view_count")
 
+@st.c
 def insert_view(_time):
     return db.put({"閲覧日時": _time})
 
