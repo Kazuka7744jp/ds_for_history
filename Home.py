@@ -29,8 +29,10 @@ deta = Deta(DETA_KEY)
 # Deta上のデータベースに接続
 db = deta.Base("view_count")
 
+count = 0
 @st.cache
 def insert_view(_time):
+    count +=1
     return db.put({"閲覧日時": _time})
 
 
@@ -38,8 +40,8 @@ def fetch_all_poets():
     res = db.fetch()
     return res.items
 
-
-insert_view(str(datetime.datetime.now()))
+if count == 0:
+    insert_view(str(datetime.datetime.now()))
 data = fetch_all_poets()
 views = pd.DataFrame(data)
 
