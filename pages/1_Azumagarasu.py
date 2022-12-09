@@ -95,7 +95,7 @@ elif selector=="三河俳人検索DB":
 
 # データフレームの列名を新しい列名に更新
 #   df_haijin.columns = new_col_names
-  df.write(new_col_names)
+  st.write(new_col_names)
   
   st.write(df_haijin)
 #   st.write(df_kusyu)
