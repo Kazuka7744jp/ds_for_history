@@ -86,8 +86,16 @@ elif selector=="三河俳人検索DB":
   df_haijin = pd.read_csv("data/haijin.csv", header=[0,1], keep_default_na=False)
 #   df_kusyu = pd.read_csv("data/kusyu.csv")
 #   df_kusyu.astype({'No.': int})
+# データフレームから二行目の列名を取得
+  col_names = df_haijin.columns[1]
+
+# 一行目の列名と二行目の列名を連結し、新しい列名を作成
+  new_col_names = [f'{col1}_{col2}' for col1, col2 in zip(df_haijin.columns[0], col_names)]
+
+# データフレームの列名を新しい列名に更新
+  df_haijin.columns = new_col_names
 
   st.write(df_haijin)
-  st.write(df_kusyu)
+#   st.write(df_kusyu)
 
 # %%
