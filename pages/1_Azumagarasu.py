@@ -2,7 +2,7 @@
 # coding: utf-8
 
 # In[1]:
-st.set_page_config(layout="wide")
+
 import pandas as pd
 import streamlit as st
 
