@@ -12,7 +12,7 @@ st.title("東烏に関する調査ページ")
 
 # st.set_page_config(layout="wide")
 #セレクトボックスのリストを作成
-pagelist = ["はじめに", "01.プロローグ", "残された点帖"]
+pagelist = ["はじめに", "01.プロローグ", "残された点帖", "三河俳人検索DB"]
 #サイドバーのセレクトボックスを配置
 selector=st.sidebar.selectbox( "ページ選択", pagelist)
 if selector=="はじめに":
@@ -40,14 +40,6 @@ if selector=="はじめに":
 #   st.table(df)
 
 elif selector=="01.プロローグ":
-  st.markdown(
-    """
-    <script>
-      window.scrollTo(0, 0);
-    </script>
-    """,
-    unsafe_allow_html=True,
-  )
   st.header(selector)
   st.write("さとる部長は、りゅうじえもんから送られてきた大量の画像に目を通していた。以前、りゅうじえもんの家にある古文書を翻刻した縁で、\
   りゅうじえもんとはその後もやりとりが続いていた。")
@@ -63,17 +55,7 @@ elif selector=="01.プロローグ":
   st.write("「これは雑記帳ではない。読んでくれ。」")
   st.write("東烏がそう自分に語りかけてくる気がした。")
   st.write("気が付くと、さとる部長は、一心不乱に翻刻作業に取り掛かっていた。")
-#   st.markdown(
-#   """
-#   <script>
-#     window.scrollTo(0, 0);
-#   </script>
-#   """,
-#   unsafe_allow_html=True,
-#   )
-  st.script("""
-    window.scrollTo(0, 0);
-  """)
+
 elif selector=="残された点帖":
   st.header("残された点帖")
   st.write('当初、これが一体なんなのかが皆目見当がつかなかったため、さとる部長と専門の先生にご相談した結果、句会の「点帖」であることが分かった。')
@@ -98,11 +80,13 @@ elif selector=="残された点帖":
   st.write("「竹内（大鶴庵）塊翁」 1764－1829　江戸時代中期-後期の俳人。明和元年生まれ。加藤暁台(きょうたい),井上士朗にまなぶ。名古屋で俳諧(はいかい)点者をつとめた。\
   文政12年10月17日死去。66歳。尾張(おわり)(愛知県)出身。名は春政。通称は九右衛門。別号に竹有,大鶴庵。編著に「あをむしろ」「しまめくり」など。")
   st.write("「デジタル版 日本人名大辞典+Plus」より")
-  st.markdown(
-  """
-  <script>
-    window.scrollTo(0, 0);
-  </script>
-  """,
-  unsafe_allow_html=True,
-  )
+
+elif selector=="三河俳人検索DB":
+  st.header("三河俳人検索DB")
+  df_haijin = pd.read_csv("data/haijin.csv", header=[0,1])
+  df_kusyu = pd.read_csv("data/kusyu.csv")
+
+  st.write(df_haijin)
+  st.write(df_kusyu)
+
+# %%
