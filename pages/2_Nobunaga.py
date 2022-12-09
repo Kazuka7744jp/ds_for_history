@@ -11,13 +11,10 @@ import seaborn as sns
 import streamlit as st
 
 df = pd.read_csv("data/taishi.csv")
-<<<<<<< HEAD
 
-pagelist = ["はじめに", "賤ケ岳7本槍（散布図）", "猪武者（相関係数）", "領土保全と野心（連関係数）"]
-=======
+pagelist = ["0.はじめに", "01.賤ケ岳7本槍（散布図）", "02.猪武者（相関係数）", "03.領土保全と野心（連関係数）"]
 st.header("信長の野望データセットのページ")
-pagelist = ["はじめに", "賤ケ岳7本槍（散布図）", "猪武者（相関係数）"]
->>>>>>> 355012e18d4db4d18db3cd2d2984b62d56fe87ec
+
 #サイドバーのセレクトボックスを配置
 selector=st.sidebar.selectbox( "ページ選択", pagelist)
 if selector==pagelist[0]:
@@ -185,8 +182,8 @@ elif selector==pagelist[2]:
 
     st.write(f"ちなみに、全武将の平均寿命が「{lifespan_all}才」に対して、猪武者たちの平均寿命は、「{lifespan_inoshishi}才」だった。やはり若干早めに亡くなっている。")
     st.write("■コード")
-    st.code("""
-    ```python
+    st.code(
+    """
     import matplotlib.pyplot as plt
     import pandas as pd
     import seaborn as sns
@@ -232,10 +229,9 @@ elif selector==pagelist[2]:
     lifespan_all = int(df["寿命"].mean())
     lifespan_inoshishi = int(df_inoshishi["寿命"].mean())
     """
-<<<<<<< HEAD
     )
 
-elif selector==pagelist[2]:
+elif selector==pagelist[3]:
     st.header("「領土保全」ばかり考えている武将に野心はない（連関係数）")
     import numpy as np
     from scipy import stats
@@ -243,16 +239,12 @@ elif selector==pagelist[2]:
     import seaborn as sns
     import streamlit as st
 
-    df = pd.read_csv("taishi.csv")
     df = df[df["野心"]!=309]
 
     st.write("信長の野望「大志」には、武将ごとに志という設定があるが、その中で最も多いのが「領地保全」である。\
         領地保全という言葉には、自分の土地に安寧するイメージがあり、天下統一などの「野心」を持たない武将が多いのではと考え、\
             連続データの「野心」をカテゴリ変数に置き換えたうえで、クラメールの連関係数を見てみることにした。")
 
-    ambition_ave = df["野心"].mean()
-
-    st.write(f"なお、全武将の野心の平均は{ambition_ave:.2f}である。")
     st.write("ヒストグラムはこんな感じ。")
     fig, ax = plt.subplots()
     ax.hist(df["野心"])
@@ -260,6 +252,9 @@ elif selector==pagelist[2]:
     ax.set_xlabel("野心")
     ax.set_ylabel("人数")
     st.write(fig)
+    
+    ambition_ave = df["野心"].mean()
+    st.write(f"なお、全武将の野心の平均は{ambition_ave:.2f}であり、平均より上か下かで、それぞれの武将を「野心あり」「野心なし」のカテゴリ変数で分けることにした。")
 
     # 志が領地保全かどうかの列を追加
     df["志_領地保全"] = df["志"].apply(lambda x: "領地保全" if x=="領地保全" else "領地保全以外")
@@ -287,7 +282,7 @@ elif selector==pagelist[2]:
 
 
     cram = cramers_v(df["野心有無"], df["志_領地保全"]).round(4)
-    st.write(f"ちなみにクラメールの連関係数は{cram}でした。")
+    st.write(f"ちなみに、見るまでもなかったのですが、クラメールの連関係数は{cram}でした。")
 
     df_hozen = df[df["志_領地保全"]=="領地保全"]
     df_not_hozen = df[df["志_領地保全"]=="領地保全以外"]
@@ -298,16 +293,20 @@ elif selector==pagelist[2]:
     st.write(std_table)
 
     st.write("「領土を保全する」という野心が、みんなあるんですね。")
+    amb_max = df_hozen["野心"].max()
 
-    df_daihyo_amb = df_hozen[df_hozen["野心"] == df_hozen["野心"].max()]
-    st.write("■「領土保全で」最も「野心」が高い武将は以下の通りだった。")
+    df_daihyo_amb = df_hozen[df_hozen["野心"] == amb_max]
+    
+    st.write(f"ちなみに「領土保全」で最も野心が高い武将は以下の方々です。(野心の値は{amb_max})。失礼いたしました。")
     st.write(df_daihyo_amb)
-    for idx, _ in df_daihyo_amb.iterrows():
-        st.write(df_daihyo_amb["武将姓"].iloc[idx] + df_daihyo_amb["武将名"].iloc[idx])
-
+    
+    st.write("一番上の温井総貞に至っては、能登の国人で、現在の輪島を領しながら、畠山義総・義続・義綱3代にわたり仕え、\
+    義総からは「総」の字もらい、筆頭重臣。義続・義綱の時代で専横に振る舞い、畠山七人衆の筆頭。遊佐氏の当主・遊佐続光を蹴落とし、権力をほしいまま。\
+    最後は義綱たちに暗殺されるという、保全している領土内で、野心爆発という感じですね。")
+ 
     st.write("■コード")
-    st.code("""
-    ```python
+    st.code(
+    """
     import numpy as np
     from scipy import stats
     import pandas as pd
@@ -357,13 +356,8 @@ elif selector==pagelist[2]:
 
     df_daihyo_amb = df_hozen[df_hozen["野心"] == df_hozen["野心"].max()]
     st.write(df_daihyo_amb)
-    for idx, _ in df_daihyo_amb.iterrows():
-        st.write(df_daihyo_amb["武将姓"].iloc[idx] + df_daihyo_amb["武将名"].iloc[idx])
     """)
 
-
-=======
->>>>>>> 355012e18d4db4d18db3cd2d2984b62d56fe87ec
 # import streamlit as st
 # # from streamlit_folium import st_folium
 # # import folium
