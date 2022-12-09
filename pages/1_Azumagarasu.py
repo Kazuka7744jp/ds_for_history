@@ -83,5 +83,5 @@ elif selector=="残された点帖":
 
 elif selector=="三河俳人検索DB":
   st.header("三河俳人検索DB")
-  df_haijin = pd.read_csv("data/data_haijin.csv", header=[0,1], keep_default_na=False)
+  df_haijin = pd.read_csv("data/data_haijin.csv", keep_default_na=False)
   st.write(df_haijin)
