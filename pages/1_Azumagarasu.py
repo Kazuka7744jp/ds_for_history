@@ -4,6 +4,7 @@
 # In[1]:
 
 import pandas as pd
+import plost
 import streamlit as st
 
 df = pd.read_csv("data/nenpyo.csv")
