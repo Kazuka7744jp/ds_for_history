@@ -4,9 +4,7 @@
 # In[1]:
 
 import pandas as pd
-import plost
-import plotly.figure_factory as ff
-import plotly.graph_objects as go
+import plotly.express as px
 import streamlit as st
 
 df = pd.read_csv("data/nenpyo.csv")
@@ -97,11 +95,14 @@ elif selector=="三河俳人DB":
   with col3:
     st.write('■職業別人数')
     job_counts = df_haijin["職業"].value_counts()
-    st.plotly_chart(job_counts)
+    job_pie = px.pie(data_frame=job_counts,
+       names=job_counts.index,
+       hover_name=job_counts.index)
+    st.plotly_chart(job_pie)
   with col4:
     st.write('■出身別人数')
     birth_place_counts = df_haijin["出身地"].value_counts()
-    st.plotly_chart(birth_place_counts)  
+#     st.plotly_chart(birth_place_counts)  
   st.write('■句集登場回数')
   kusyu_counts = df_haijin["句集登場回数"].value_counts()
   st.bar_chart(kusyu_counts)
