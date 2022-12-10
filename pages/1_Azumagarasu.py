@@ -85,9 +85,9 @@ elif selector=="残された点帖":
 elif selector=="三河俳人DB":
   st.header("三河俳人DB")
   df_haijin = pd.read_csv("data/data_haijin.csv", keep_default_na=False)
-  haijin_input = st.text_area("俳号検索", height=20)
-  haijin_input2 = st.text_input("俳号検索")
-  
+  haijin_input = st.text_input("俳号入力欄")
+  df_selected = df_haijin[df['俳名'].str.contains(haijin_input)]
+  st.table(df_selected)
   
   st.write('■データベース一覧')
   col1, col2 = st.columns(2)
