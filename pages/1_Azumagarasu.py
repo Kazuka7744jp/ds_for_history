@@ -84,7 +84,13 @@ elif selector=="残された点帖":
 elif selector=="三河俳人DB":
   st.header("三河俳人DB")
   df_haijin = pd.read_csv("data/data_haijin.csv", keep_default_na=False)
+  st.write('■データベース一覧')
   st.write(df_haijin)
+  col1, col2 = st.columns(2)
+  col1.metric("登録人数", len(df_haijin))
+  col2.metric("調査済句集", len(df.columns)-7)
+  st.write('■')
+  st.pie_chart()
   st.write('■句集登場回数')
   kusyu_counts = df_haijin["句集登場回数"].value_counts()
   st.bar_chart(kusyu_counts)
