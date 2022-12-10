@@ -89,7 +89,7 @@ elif selector=="三河俳人検索DB":
   haijin_input = st.text_input("検索キーワード入力欄","この文字を消して入力")
   if haijin_input == "":
     st.write("何か単語を入力してください。")
-  elif:
+  else:
     df_selected = df_haijin[(df_haijin['俳名'].str.contains(haijin_input)) | (df_haijin['本名/別名'].str.contains(haijin_input))]
     if df_selected == none:
       st.write("検索条件にあてはまる俳人はいませんでした。")
