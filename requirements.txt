@@ -4,6 +4,7 @@ matplotlib
 japanize_matplotlib
 numpy
 pandas
+plost
 plotly
 python-dotenv
 scipy
