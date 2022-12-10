@@ -82,11 +82,13 @@ elif selector=="残された点帖":
   文政12年10月17日死去。66歳。尾張(おわり)(愛知県)出身。名は春政。通称は九右衛門。別号に竹有,大鶴庵。編著に「あをむしろ」「しまめくり」など。")
   st.write("「デジタル版 日本人名大辞典+Plus」より")
 
-elif selector=="三河俳人DB":
+elif selector=="三河俳人検索DB":
   st.header("三河俳人DB")
   df_haijin = pd.read_csv("data/data_haijin.csv", keep_default_na=False)
   haijin_input = st.text_input("俳号入力欄", "俳号を入力してください")
-  df_selected = df_haijin[df_haijin['俳名'].str.contains(haijin_input)]
+#   df_selected = df_haijin[df_haijin['俳名'].str.contains(haijin_input)]
+  df_selected = df_haijin[df_haijin.apply(lambda x: haijin_input in x['俳名'] and \
+                                          haijin_input in x['本名/別名'], axis=1)
   st.table(df_selected)
   
   st.write('■データベース一覧')
