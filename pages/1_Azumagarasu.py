@@ -86,14 +86,16 @@ elif selector=="三河俳人検索DB":
   st.header("三河俳人検索データベース")
   df_haijin = pd.read_csv("data/data_haijin.csv", keep_default_na=False)
   st.subheader("俳名か本名・別名を入力してください。")
-  haijin_input = st.text_input("検索キーワード入力欄","この文字を消して入力")
+  haijin_input = st.text_input("検索キーワード入力欄")
   if haijin_input == "":
     st.write("何か単語を入力してください。")
   else:
     df_selected = df_haijin[(df_haijin['俳名'].str.contains(haijin_input)) | (df_haijin['本名/別名'].str.contains(haijin_input))]
-    if df_selected == none:
-      st.write("検索条件にあてはまる俳人はいませんでした。")
-    st.table(df_selected)
+    if df_selected:
+      st.write(f"{len(df_selected)}件の検索結果がありました。")
+      st.table(df_selected)
+    else:
+      st.write(f"{haijin_input}の検索条件にあてはまる俳人はいませんでした"。)
   
   st.write('■データベース一覧')
   col1, col2 = st.columns(2)
