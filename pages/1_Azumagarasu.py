@@ -86,7 +86,7 @@ elif selector=="三河俳人DB":
   st.header("三河俳人DB")
   df_haijin = pd.read_csv("data/data_haijin.csv", keep_default_na=False)
   haijin_input = st.text_input("俳号入力欄")
-  df_selected = df_haijin[df['俳名'].str.contains(haijin_input)]
+  df_selected = df_haijin[df_haijin['俳名'].str.contains(haijin_input)]
   st.table(df_selected)
   
   st.write('■データベース一覧')
