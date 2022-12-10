@@ -91,22 +91,33 @@ elif selector=="三河俳人DB":
   col2.metric("調査済句集", len(df.columns)-7)
   st.write(df_haijin)
   
-  col3, col4 = st.columns(2)
-  with col3:
-    st.write('■職業別人数')
-    df_job = df_haijin["職業"][df_haijin["職業"] != ""]
-    df_job = pd.DataFrame(df_job)
-    df_job = df_job["職業"].value_counts()
-    df_job = pd.DataFrame(df_job)
-    job_pie = px.pie(data_frame=df_job,
-       values=df_job["職業"],
-       names=df_job.index,
-       hover_name=df_job.index)
-    st.plotly_chart(job_pie)
-  with col4:
-    st.write('■出身別人数')
-    birth_place_counts = df_haijin["出身地"].value_counts()
-#     st.plotly_chart(birth_place_counts)  
+  st.write('■職業別人数')
+#   df_job = df_haijin["職業"][df_haijin["職業"] != ""]
+#   df_job = pd.DataFrame(df_job)
+#   df_job = df_job["職業"].value_counts()
+#   df_job = pd.DataFrame(df_job)
+  # 職業列が空でない行を抽出する
+  df_job = df_haijin[df_haijin["職業"] != ""]
+  # 職業列の要素の値が何回登場したかを集計する
+  df_job = df_job["職業"].value_counts()
+  # SeriesをDataFrameに変換する
+  df_job = pd.DataFrame(df_job)
+  job_pie = px.pie(data_frame=df_job,
+     values=df_job["職業"],
+     names=df_job.index,
+     hover_name=df_job.index)
+  st.plotly_chart(job_pie)
+ 
+  st.write('■出身別人数')
+  df_birth_place = df_haijin[df_haijin["出身地"] != ""]
+  df_birth_place = df_birth_place["出身地"].value_counts()
+  df_birth_place = pd.DataFrame(df_birth_place)
+  birth_place_pie = px.pie(data_frame=df_birth_place
+     values=df_birth_place["出身地"],
+     names=df_birth_place.index,
+     hover_name=df_birth_place.index)
+  st.plotly_chart(birth_place_pie)
+  
   st.write('■句集登場回数')
   kusyu_counts = df_haijin["句集登場回数"].value_counts()
   st.bar_chart(kusyu_counts)
