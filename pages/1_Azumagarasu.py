@@ -89,13 +89,16 @@ elif selector=="三河俳人DB":
   col1.metric("登録人数", len(df_haijin))
   col2.metric("調査済句集", len(df.columns)-7)
   st.write(df_haijin)
+  
   col3, col4 = st.columns(2)
-  col3.write('■職業別人数')
-  job_counts = df_haijin["職業"].value_counts()
-  col3.pie_chart(job_counts)
-  birth_place_counts = df_haijin["出身地"].value_counts()
-  col3.write('■出身別人数')
-  col4.pie_chart(birth_place_counts)  
+  with col3:
+    st.write('■職業別人数')
+    job_counts = df_haijin["職業"].value_counts()
+    st.pie_chart(job_counts)
+  with col4:
+    st.write('■出身別人数')
+    birth_place_counts = df_haijin["出身地"].value_counts()
+    st.pie_chart(birth_place_counts)  
   st.write('■句集登場回数')
   kusyu_counts = df_haijin["句集登場回数"].value_counts()
   st.bar_chart(kusyu_counts)
