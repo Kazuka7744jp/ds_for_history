@@ -95,7 +95,7 @@ elif selector=="三河俳人検索DB":
       st.write(f"{len(df_selected)}件の検索結果がありました。")
       st.table(df_selected)
     else:
-      st.write(f"{haijin_input}の検索条件にあてはまる俳人はいませんでした"。)
+      st.write(f"{haijin_input}の検索条件にあてはまる俳人はいませんでした")
   
   st.write('■データベース一覧')
   col1, col2 = st.columns(2)
