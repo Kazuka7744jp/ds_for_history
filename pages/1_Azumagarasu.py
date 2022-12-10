@@ -12,7 +12,7 @@ st.title("東烏に関する調査ページ")
 
 # st.set_page_config(layout="wide")
 #セレクトボックスのリストを作成
-pagelist = ["はじめに", "01.プロローグ", "残された点帖", "三河俳人検索DB"]
+pagelist = ["はじめに", "01.プロローグ", "残された点帖", "三河俳人DB"]
 #サイドバーのセレクトボックスを配置
 selector=st.sidebar.selectbox( "ページ選択", pagelist)
 if selector=="はじめに":
@@ -81,8 +81,8 @@ elif selector=="残された点帖":
   文政12年10月17日死去。66歳。尾張(おわり)(愛知県)出身。名は春政。通称は九右衛門。別号に竹有,大鶴庵。編著に「あをむしろ」「しまめくり」など。")
   st.write("「デジタル版 日本人名大辞典+Plus」より")
 
-elif selector=="三河俳人検索DB":
-  st.header("三河俳人検索DB")
+elif selector=="三河俳人DB":
+  st.header("三河俳人DB")
   df_haijin = pd.read_csv("data/data_haijin.csv", keep_default_na=False)
   st.write(df_haijin)
   st.write('■句集登場回数')
