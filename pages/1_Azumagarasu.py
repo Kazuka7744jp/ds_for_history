@@ -109,14 +109,8 @@ elif selector=="三河俳人DB":
   st.plotly_chart(job_pie)
  
   st.write('■出身別人数')
-  df_birth_place = df_haijin[df_haijin["出身地"] != ""]
-  df_birth_place = df_birth_place["出身地"].value_counts()
-  df_birth_place = pd.DataFrame(df_birth_place)
-  birth_place_pie = px.pie(data_frame=df_birth_place,
-     values=df_birth_place["出身地"],
-     names=df_birth_place.index,
-     hover_name=df_birth_place.index)
-  st.plotly_chart(birth_place_pie)
+  birth_place_counts = df_haijin["出身地"].value_counts()
+  st.bar_chart(irth_place_counts)
   
   st.write('■句集登場回数')
   kusyu_counts = df_haijin["句集登場回数"].value_counts()
