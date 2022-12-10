@@ -5,6 +5,8 @@
 
 import pandas as pd
 import plost
+import plotly.figure_factory as ff
+import plotly.graph_objects as go
 import streamlit as st
 
 df = pd.read_csv("data/nenpyo.csv")
