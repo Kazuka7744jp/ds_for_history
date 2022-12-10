@@ -94,10 +94,13 @@ elif selector=="三河俳人DB":
   col3, col4 = st.columns(2)
   with col3:
     st.write('■職業別人数')
-    job_counts = df_haijin["職業"].value_counts()
-    job_pie = px.pie(data_frame=job_counts,
-       names=job_counts.index,
-       hover_name=job_counts.index)
+    df_job = df["職業"][df["職業"] != ""]
+    df_job = df_job.value_counts()
+    df_job = pd.DataFrame(df_job)
+    job_pie = px.pie(data_frame=df_job,
+       values= df_job,
+       names=df_job.index,
+       hover_name=df_job.index)
     st.plotly_chart(job_pie)
   with col4:
     st.write('■出身別人数')
