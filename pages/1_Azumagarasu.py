@@ -110,7 +110,7 @@ elif selector=="三河俳人DB":
  
   st.write('■出身別人数')
   birth_place_counts = df_haijin["出身地"].value_counts()
-  st.bar_chart(irth_place_counts)
+  st.bar_chart(birth_place_counts)
   
   st.write('■句集登場回数')
   kusyu_counts = df_haijin["句集登場回数"].value_counts()
