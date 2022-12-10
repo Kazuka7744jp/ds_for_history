@@ -63,7 +63,7 @@ elif selector=="残された点帖":
   st.write('点帖とは句会の記録であり、「執筆」が書いたものを「点者」「宗匠」が批点・押印、最終的には、秀逸の者の褒美として贈られるものである。')
   
   st.write('家にこの点帖が残されていたということは、この句会で入選した俳号「玄」が当家にまつわる人間である可能性が高まった。東烏に加え、「玄」も調査対象に加わることとなった。\
-  玄は俳号を省略したものであり、俳号は「玄〇」である可能性が高い。')
+  玄は俳号を省略したものであり、さとる部長に聞くところによると、俳号は「〇玄」である可能性が高いようだ。')
  
   left_column1, right_column1 = st.columns(2)
   left_column1.write("点帖 表紙")
@@ -91,13 +91,9 @@ elif selector=="三河俳人検索DB":
     st.write("何か単語を入力してください。")
   else:
     df_selected = df_haijin[(df_haijin['俳名'].str.contains(haijin_input)) | (df_haijin['本名/別名'].str.contains(haijin_input))]
+    st.write(f"{len(df_selected)}件の検索結果がありました。")
     st.table(df_selected)
-#     if df_selected:
-#       st.write(f"{len(df_selected)}件の検索結果がありました。")
-# #       st.table(df_selected)
-#     else:
-#       st.write(f"{haijin_input}の検索条件にあてはまる俳人はいませんでした")
-  
+    
   st.write('■データベース一覧')
   col1, col2 = st.columns(2)
   col1.metric("登録人数", len(df_haijin))
