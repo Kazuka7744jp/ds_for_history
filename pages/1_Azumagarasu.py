@@ -94,11 +94,11 @@ elif selector=="三河俳人DB":
   with col3:
     st.write('■職業別人数')
     job_counts = df_haijin["職業"].value_counts()
-    plost.pie_chart(job_counts)
+    plost.donut_chart(job_counts)
   with col4:
     st.write('■出身別人数')
     birth_place_counts = df_haijin["出身地"].value_counts()
-    plost.pie_chart(birth_place_counts)  
+    plost.donut_chart(birth_place_counts)  
   st.write('■句集登場回数')
   kusyu_counts = df_haijin["句集登場回数"].value_counts()
   st.bar_chart(kusyu_counts)
