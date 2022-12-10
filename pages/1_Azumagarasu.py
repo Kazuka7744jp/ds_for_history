@@ -91,11 +91,12 @@ elif selector=="三河俳人検索DB":
     st.write("何か単語を入力してください。")
   else:
     df_selected = df_haijin[(df_haijin['俳名'].str.contains(haijin_input)) | (df_haijin['本名/別名'].str.contains(haijin_input))]
-    if df_selected:
-      st.write(f"{len(df_selected)}件の検索結果がありました。")
-      st.table(df_selected)
-    else:
-      st.write(f"{haijin_input}の検索条件にあてはまる俳人はいませんでした")
+    st.table(df_selected)
+#     if df_selected:
+#       st.write(f"{len(df_selected)}件の検索結果がありました。")
+# #       st.table(df_selected)
+#     else:
+#       st.write(f"{haijin_input}の検索条件にあてはまる俳人はいませんでした")
   
   st.write('■データベース一覧')
   col1, col2 = st.columns(2)
