@@ -85,7 +85,8 @@ elif selector=="残された点帖":
 elif selector=="三河俳人検索DB":
   st.header("三河俳人検索データベース")
   df_haijin = pd.read_csv("data/data_haijin.csv", keep_default_na=False)
-  haijin_input = st.text_input("俳号入力欄", "俳号を入力してください")
+  st.subheader("俳名か本名・別名を入力してください。")
+  haijin_input = st.text_input("検索キーワード入力欄")
   df_selected = df_haijin[(df_haijin['俳名'].str.contains(haijin_input)) | (df_haijin['本名/別名'].str.contains(haijin_input))]
 #   df_selected = df_haijin[df_haijin.apply(lambda x: haijin_input in x['俳名'] and haijin_input in x['本名/別名'], axis=1)]
   st.table(df_selected)
