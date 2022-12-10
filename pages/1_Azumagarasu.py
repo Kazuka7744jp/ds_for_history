@@ -92,10 +92,6 @@ elif selector=="三河俳人DB":
   st.write(df_haijin)
   
   st.write('■職業別人数')
-#   df_job = df_haijin["職業"][df_haijin["職業"] != ""]
-#   df_job = pd.DataFrame(df_job)
-#   df_job = df_job["職業"].value_counts()
-#   df_job = pd.DataFrame(df_job)
   # 職業列が空でない行を抽出する
   df_job = df_haijin[df_haijin["職業"] != ""]
   # 職業列の要素の値が何回登場したかを集計する
@@ -109,8 +105,9 @@ elif selector=="三河俳人DB":
   st.plotly_chart(job_pie)
  
   st.write('■出身別人数')
-  birth_place_counts = df_haijin["出身地"].value_counts()
-  st.bar_chart(birth_place_counts)
+  df_birth_place = df_haijin[df_haijin["出身地"] != ""]
+  df_birth_place = df_birth_place["出身地"].value_counts(ascending=False)
+  st.bar_chart(df_birth_place)
   
   st.write('■句集登場回数')
   kusyu_counts = df_haijin["句集登場回数"].value_counts()
