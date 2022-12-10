@@ -86,4 +86,5 @@ elif selector=="三河俳人検索DB":
   df_haijin = pd.read_csv("data/data_haijin.csv", keep_default_na=False)
   st.write(df_haijin)
   st.write('This is a bar_chart.')
-  st.bar_chart(df_haijin["句集登場回数"])
+  kusyu_counts = df_haijin["句集登場回数"].value_counts()
+  st.bar_chart(kusyu_counts)
