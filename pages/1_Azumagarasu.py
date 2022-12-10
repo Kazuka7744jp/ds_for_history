@@ -95,7 +95,7 @@ elif selector=="三河俳人DB":
   with col3:
     st.write('■職業別人数')
     df_job = df_haijin["職業"][df_haijin["職業"] != ""]
-    df_job["職業"] = df_job["職業"].value_counts()
+    df_job = df_job["職業"].value_counts()
     df_job = pd.DataFrame(df_job)
     job_pie = px.pie(data_frame=df_job,
        values=df_job["職業"],
