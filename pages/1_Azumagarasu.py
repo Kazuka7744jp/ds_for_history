@@ -112,7 +112,7 @@ elif selector=="三河俳人DB":
   df_birth_place = df_haijin[df_haijin["出身地"] != ""]
   df_birth_place = df_birth_place["出身地"].value_counts()
   df_birth_place = pd.DataFrame(df_birth_place)
-  birth_place_pie = px.pie(data_frame=df_birth_place
+  birth_place_pie = px.pie(data_frame=df_birth_place,
      values=df_birth_place["出身地"],
      names=df_birth_place.index,
      hover_name=df_birth_place.index)
