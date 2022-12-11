@@ -27,7 +27,6 @@ if selector==pagelist[0]:
 elif selector==pagelist[1]:
     st.header("「賤ケ岳の7本槍」の能力比較（散布図）")
 
-
     sevens = ["加藤清正", "福島正則", "加藤嘉明", "平野長泰",  "脇坂安治", "糟屋武則", "片桐且元"]
 
     #csvから該当する武将のインデックスのリストをつくるための関数
@@ -238,8 +237,6 @@ elif selector==pagelist[3]:
     import pandas as pd
     import seaborn as sns
     import streamlit as st
-
-    df = df[df["野心"]!=309]
 
     st.write("信長の野望「大志」には、武将ごとに志という設定があるが、その中で最も多いのが「領地保全」である。\
         領地保全という言葉には、自分の土地に安寧するイメージがあり、天下統一などの「野心」を持たない武将が多いのではと考え、\
