@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
-
 import pandas as pd
 import plotly.express as px
 import streamlit as st
@@ -93,11 +91,15 @@ elif selector=="三河俳人検索DB":
     df_selected = df_haijin[(df_haijin['俳名'].str.contains(haijin_input)) | (df_haijin['本名/別名'].str.contains(haijin_input))]
     st.write(f"{len(df_selected)}件の検索結果がありました。")
     st.table(df_selected)
-    
+  
+  df_len = len(df_haijin)
   st.write('■データベース一覧')
   col1, col2 = st.columns(2)
-  col1.metric("登録人数", len(df_haijin))
-  col2.metric("調査済句集", len(df.columns)-7)
+  col1.metric("登録人数", df_len)
+  col2.metric("調査済句集", len(df_haijin.columns)-9)
+  col3, col4 = st.columns(2)
+  col3.metric("本名判明率", (df_haijin["本名/別名"]!="").sum()/df_len
+  col2.metric("職業判明率", (df_haijin["職業_詳細"]!="").sum()/df_len
   st.write(df_haijin)
   
   st.write('■職業別人数')
@@ -112,6 +114,8 @@ elif selector=="三河俳人検索DB":
      names=df_job.index,
      hover_name=df_job.index)
   st.plotly_chart(job_pie)
+  
+  st.write()
  
   st.write('■出身別人数')
   df_birth_place = df_haijin[df_haijin["出身地"] != ""]
