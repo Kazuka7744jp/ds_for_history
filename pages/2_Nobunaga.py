@@ -136,11 +136,12 @@ elif selector==pagelist[2]:
     clm2 = "武勇"
     clm1_param = 0.25
     clm2_param = 0.5
+    df_inoshishi = pd.read_csv("data/df_inoshishi.csv")
 
 #     df_inoshishi = df[(df[clm1] < df[clm1].quantile(q=clm1_param)) & (df[clm2] > df[clm2].quantile(q=clm2_param))]
 
-    st.write(f"選抜条件は、{clm1}の能力値が、下位{int(clm1_param*100)}%、かつ、{clm2}の能力値が上位50％の武将。\
-    その結果、全武将{len(df)}人の中から、{len(df_inoshishi)}人の猪武者たちが選抜された。")
+    st.write("選抜条件は、知略の能力値が、下位25%、かつ、武勇の能力値が上位50％の武将。\
+    その結果、全武将2161人の中から、198人の猪武者たちが選抜された。")
     st.write("■選ばれし、猪武者たち")
     st.write(df_inoshishi)
     df_daihyo = df_inoshishi[df_inoshishi["知略"] == df["知略"].min()]
@@ -148,7 +149,7 @@ elif selector==pagelist[2]:
     st.write(df_daihyo)
     dname = df_daihyo["武将姓"].iloc[0] + df_daihyo["武将名"].iloc[0]
     st.write(f"最も知略の低い（知略20）{dname}は、齢は56歳の時であるものの、実際に天正十年、河合戦で討死している。これは期待（？）ができる。")
-    st.write(f"ちなみに猪武者たちの{clm1}、{clm2}のヒストグラムは以下のような感じ。歪んだ分布になっている。")
+    st.write("ちなみに猪武者たちの知略、武勇のヒストグラムは以下のような感じ。歪んだ分布になっている。")
 
 #     fig, (ax1, ax2) = plt.subplots(1, 2)
 #     fig.set_size_inches(10, 5)
@@ -163,7 +164,7 @@ elif selector==pagelist[2]:
 #     st.write(fig)
     st.image("pic/inoshishi.png")
 
-    st.write(f"では、{clm1}と{clm2}の相関係数を求めてみる。仮説は、「知略が低い場合、武勇が高ければ高いほど、\
+    st.write("では、知略と武勇の相関係数を求めてみる。仮説は、「知略が低い場合、武勇が高ければ高いほど、\
     自分の力を過信し、命を落としている結果、寿命が短くなる傾向がある」だ。")
 
 #     r = np.corrcoef(df_inoshishi["知略"], df_inoshishi["寿命"])[0, 1]
@@ -180,10 +181,10 @@ elif selector==pagelist[2]:
     st.image("pic/inoshishi_heatmap.png")
 #     st.write(fig)
 
-    lifespan_all = int(df["寿命"].mean())
-    lifespan_inoshishi = int(df_inoshishi["寿命"].mean())
+#     lifespan_all = int(df["寿命"].mean())
+#     lifespan_inoshishi = int(df_inoshishi["寿命"].mean())
 
-    st.write(f"ちなみに、全武将の平均寿命が「{lifespan_all}才」に対して、猪武者たちの平均寿命は、「{lifespan_inoshishi}才」だった。やはり若干早めに亡くなっている。")
+    st.write("ちなみに、全武将の平均寿命が「57才」に対して、猪武者たちの平均寿命は、「54才」だった。やはり若干早めに亡くなっている。")
     st.write("■コード")
     st.code(
     """
