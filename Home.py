@@ -22,27 +22,27 @@ st.write(''':one:**「Azumagarasu」東烏に関する調査ページ**''')
 st.write(':two:「Nobunaga」信長の野望のデータセットを利用したデータ可視化練習')
 st.write(':three:「BaseBall」2020年のプロ野球選手データを利用したデータ可視化練習')
 
-load_dotenv(".env")
-DETA_KEY = os.getenv("DETA_KEY")
-deta = Deta(DETA_KEY)
+# load_dotenv(".env")
+# DETA_KEY = os.getenv("DETA_KEY")
+# deta = Deta(DETA_KEY)
 
-# Deta上のデータベースに接続
-db = deta.Base("view_count")
+# # Deta上のデータベースに接続
+# db = deta.Base("view_count")
 
-@st.cache
-def insert_view(_time):
-    return db.put({"閲覧日時": _time})
+# @st.cache
+# def insert_view(_time):
+#     return db.put({"閲覧日時": _time})
 
-@st.cache
-def fetch_all_poets():
-    res = db.fetch()
-    return res.items
+# @st.cache
+# def fetch_all_poets():
+#     res = db.fetch()
+#     return res.items
 
-insert_view(str(datetime.datetime.now()))
+# insert_view(str(datetime.datetime.now()))
 
-data = fetch_all_poets()
-views = pd.DataFrame(data)
+# data = fetch_all_poets()
+# views = pd.DataFrame(data)
 
-st.markdown("---")
-# カウンターを表示
-st.write(f"これまで、:star:累計{len(views)}人:star:の方に、東烏の生き方に触れていただきました。ありがとうございます:bamboo:")
+# st.markdown("---")
+# # カウンターを表示
+# st.write(f"これまで、:star:累計{len(views)}人:star:の方に、東烏の生き方に触れていただきました。ありがとうございます:bamboo:")
