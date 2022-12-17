@@ -29,18 +29,16 @@ deta = Deta(DETA_KEY)
 # Deta上のデータベースに接続
 db = deta.Base("view_count")
 
-count = 0
-
+@st.cache
 def insert_view(_time):
     return db.put({"閲覧日時": _time})
 
-
+@st.cache
 def fetch_all_poets():
     res = db.fetch()
     return res.items
 
-if count == 0:
-    insert_view(str(datetime.datetime.now()))
+insert_view(str(datetime.datetime.now()))
 
 data = fetch_all_poets()
 views = pd.DataFrame(data)
@@ -48,29 +46,3 @@ views = pd.DataFrame(data)
 st.markdown("---")
 # カウンターを表示
 st.write(f"これまで、:star:累計{len(views)}人:star:の方に、東烏の生き方に触れていただきました。ありがとうございます:bamboo:")
-# name = "東烏"
-# area = "三河"
-# occupation = "油屋"
-# detail = "刈谷の今川で油屋を営む。「和歌芽籠」を執筆。"
-
-# db = deta.Base("azumagarasu")
-
-# def insert_poet(name, area, occupation, detail):
-#     return db.put({"名前": name, "地域": area, "職業": occupation, "人物": detail})
-
-# def fetch_all_poets():
-#     res = db.fetch()
-#     return res.items
-
-# def get_poet(name):
-#     return db.get(name)
-
-# submitted = st.button(label="Save Data")
-
-# if submitted:
-#     insert_poet(name, area, occupation, detail)
-#     # Detaからデータを取得する
-#     data = fetch_all_poets()
-#     # DataFrameに変換する
-#     poets = pd.DataFrame(data)
-#     st.write(poets.loc[:, ["名前", "地域", "職業", "人物"]])
