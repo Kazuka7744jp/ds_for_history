@@ -44,28 +44,29 @@ elif selector==pagelist[1]:
     st.write("■7本槍の能力データ")
     st.dataframe(df)
 
-    fig, ax = plt.subplots()
-    ax.scatter("戦闘", "政治", s=100, alpha=0.4, data=df)
-    plt.figure(figsize=(10,10))
-    plt.rcParams["font.size"] = 8
-    ax.set_title("賤ヶ岳7本槍の能力値　散布図")
-    ax.set_xlabel("戦闘能力値　合計")
-    ax.set_ylabel("政治能力値　合計")
+#     fig, ax = plt.subplots()
+#     ax.scatter("戦闘", "政治", s=100, alpha=0.4, data=df)
+#     plt.figure(figsize=(10,10))
+#     plt.rcParams["font.size"] = 8
+#     ax.set_title("賤ヶ岳7本槍の能力値　散布図")
+#     ax.set_xlabel("戦闘能力値　合計")
+#     ax.set_ylabel("政治能力値　合計")
 
-    for i, name in enumerate(df["武将姓"]):
-        if name == "加藤":
-            ax.text(df["戦闘"].iloc[i], df["政治"].iloc[i], df["武将姓"].iloc[i]+df["武将名"].iloc[i][:1])
-        else:
-            ax.text(df["戦闘"].iloc[i], df["政治"].iloc[i], name)
+#     for i, name in enumerate(df["武将姓"]):
+#         if name == "加藤":
+#             ax.text(df["戦闘"].iloc[i], df["政治"].iloc[i], df["武将姓"].iloc[i]+df["武将名"].iloc[i][:1])
+#         else:
+#             ax.text(df["戦闘"].iloc[i], df["政治"].iloc[i], name)
 
-    # 2グループを円で囲む
-    circle1 = patches.Circle(xy=(165, 120), radius=25, alpha=0.1)
-    circle2 = patches.Circle(xy=(117, 92), radius=21, alpha=0.1)
-    ax.add_patch(circle1)
-    ax.add_patch(circle2)
+#     # 2グループを円で囲む
+#     circle1 = patches.Circle(xy=(165, 120), radius=25, alpha=0.1)
+#     circle2 = patches.Circle(xy=(117, 92), radius=21, alpha=0.1)
+#     ax.add_patch(circle1)
+#     ax.add_patch(circle2)
                             
     st.write("■戦闘・政治能力に基づく散布図")
-    st.pyplot(fig)
+#     st.pyplot(fig)
+    st.image("pic/7spear.png")
 
     st.write("■所感")
     st.write("加藤清正・福島正則・加藤嘉明とそれ以外で群が分かれた格好となった。加藤嘉明は、他の二人や片桐に比べ知名度は低いが、\
