@@ -138,7 +138,7 @@ elif selector=="三河俳人検索DB":
 
     return(fig)
   
-  st.write(monka_job_pie(df, "門下", "職業"))
+  st.write(monka_job_pie(df_haijin, "門下", "職業"))
    
   st.write('■出身別人数')
   df_birth_place = df_haijin[df_haijin["出身地"] != ""]
