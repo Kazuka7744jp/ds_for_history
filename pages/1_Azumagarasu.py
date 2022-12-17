@@ -140,11 +140,11 @@ elif selector=="三河俳人検索DB":
   
   st.write(monka_job_pie(df_haijin, "門下", "職業"))
    
-  st.write('■出身別人数')
-  df_birth_place = df_haijin[df_haijin["出身地"] != ""]
-  df_birth_place = df_birth_place["出身地"].value_counts(ascending=False)
-  st.bar_chart(df_birth_place)
+#   st.write('■出身別人数')
+#   df_birth_place = df_haijin[df_haijin["出身地"] != ""]
+#   df_birth_place = df_birth_place["出身地"].value_counts(ascending=False)
+#   st.bar_chart(df_birth_place)
   
-  st.write('■句集登場回数')
-  kusyu_counts = df_haijin["句集登場回数"].value_counts()
-  st.bar_chart(kusyu_counts)
+#   st.write('■句集登場回数')
+#   kusyu_counts = df_haijin["句集登場回数"].value_counts()
+#   st.bar_chart(kusyu_counts)
