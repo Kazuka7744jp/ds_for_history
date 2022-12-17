@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-import japanize_matplotlib
-import matplotlib.pyplot as plt
-from matplotlib import patches
-import numpy as np
+# import japanize_matplotlib
+# import matplotlib.pyplot as plt
+# from matplotlib import patches
+# import numpy as np
 import pandas as pd
-from scipy import stats
-import seaborn as sns
+# from scipy import stats
+# import seaborn as sns
 import streamlit as st
 
 df = pd.read_csv("data/taishi.csv")
