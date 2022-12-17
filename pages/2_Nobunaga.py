@@ -10,11 +10,7 @@ import pandas as pd
 # import seaborn as sns
 import streamlit as st
 
-@st.cache
-def dataload_taishi():
-    df = pd.read_csv("data/taishi.csv")
-
-dataload_taishi()
+df = pd.read_csv("data/taishi.csv")
 
 pagelist = ["0.はじめに", "01.賤ケ岳7本槍（散布図）", "02.猪武者（相関係数）", "03.領土保全と野心（連関係数）"]
 st.header("信長の野望データセットのページ")
@@ -34,7 +30,6 @@ elif selector==pagelist[1]:
     sevens = ["加藤清正", "福島正則", "加藤嘉明", "平野長泰",  "脇坂安治", "糟屋武則", "片桐且元"]
 
     #csvから該当する武将のインデックスのリストをつくるための関数
-    @st.cache
     def busho_finder(df, list):
         index_list=[]
         for idx1, name in enumerate(list):
