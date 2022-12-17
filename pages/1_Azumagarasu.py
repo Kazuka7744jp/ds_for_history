@@ -106,39 +106,39 @@ elif selector=="三河俳人検索DB":
   
 #   st.write("■門下別の職業内訳")
   
-  def monka_job_pie(df, group_clm, pie_clm):
-    # pie_clm の値が空の行をフィルタリングする
-    df = df[df[pie_clm] != ""]
+#   def monka_job_pie(df, group_clm, pie_clm):
+#     # pie_clm の値が空の行をフィルタリングする
+#     df = df[df[pie_clm] != ""]
 
-    # group_clm でデータをグループ化する
-    df_grouped = df.groupby(group_clm)
+#     # group_clm でデータをグループ化する
+#     df_grouped = df.groupby(group_clm)
 
-    # グループ名のリストを取得する
-    master_list = list(df_grouped.groups.keys())[1:-1]
+#     # グループ名のリストを取得する
+#     master_list = list(df_grouped.groups.keys())[1:-1]
 
-    # サブプロットの行数と列数を計算する
-    num_plots = len(master_list)
-    rows = num_plots // 2 + num_plots % 2
-    clms = 2
+#     # サブプロットの行数と列数を計算する
+#     num_plots = len(master_list)
+#     rows = num_plots // 2 + num_plots % 2
+#     clms = 2
 
-    # 図とサブプロットを作成する
-    fig, axes = plt.subplots(rows, clms, figsize=(20, 20), tight_layout=True)
+#     # 図とサブプロットを作成する
+#     fig, axes = plt.subplots(rows, clms, figsize=(20, 20), tight_layout=True)
 
-    # 各グループを反復処理し、グループごとのパイチャートをプロットする
-    for idx, master in enumerate(master_list):
-        # グループデータを取得する
-        df_temp = pd.DataFrame(df_grouped.get_group(master)[pie_clm].value_counts(dropna=True))
+#     # 各グループを反復処理し、グループごとのパイチャートをプロットする
+#     for idx, master in enumerate(master_list):
+#         # グループデータを取得する
+#         df_temp = pd.DataFrame(df_grouped.get_group(master)[pie_clm].value_counts(dropna=True))
 
-        # グループ内の行数を取得する
-        df_num = len(df_grouped.get_group(master))
+#         # グループ内の行数を取得する
+#         df_num = len(df_grouped.get_group(master))
 
-        # パイチャートをプロットする
-        axes[idx // 2, idx % 2].set_title(f"{master}の門下生の職業（n={df_num}）")
-        axes[idx // 2, idx % 2].pie(df_temp.values.flatten(), labels=df_temp.index, autopct='%1.1f%%')
+#         # パイチャートをプロットする
+#         axes[idx // 2, idx % 2].set_title(f"{master}の門下生の職業（n={df_num}）")
+#         axes[idx // 2, idx % 2].pie(df_temp.values.flatten(), labels=df_temp.index, autopct='%1.1f%%')
 
-    return(fig)
+#     return(fig)
   
-  st.write(monka_job_pie(df_haijin, "門下", "職業"))
+#   st.write(monka_job_pie(df_haijin, "門下", "職業"))
    
 #   st.write('■出身別人数')
 #   df_birth_place = df_haijin[df_haijin["出身地"] != ""]
