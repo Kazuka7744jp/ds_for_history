@@ -72,6 +72,8 @@ elif selector=="残された点帖":
 elif selector=="三河俳人検索DB":
   st.header("三河俳人検索データベース")
   st.image("pic/header.jpg")
+  st.write("三河俳人に関する情報をお持ちの方は、ぜひ情報提供をお願いいたします。japanhistorydiscovery@gmail.com")
+  
   df_haijin = pd.read_csv("data/data_haijin.csv", keep_default_na=False)
   st.subheader("「俳名」か「本名・別名」を入力してください。")
   haijin_input = st.text_input("検索キーワード入力欄")
