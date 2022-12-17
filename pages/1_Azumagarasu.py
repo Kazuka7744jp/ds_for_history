@@ -134,10 +134,10 @@ elif selector=="三河俳人検索DB":
         axes[idx//2,idx%2].set_title(f"{master}の門下生の職業（n={df_num}）")
         axes[idx//2,idx%2].pie(df_temp.values.flatten(), labels=df_temp.index, autopct='%1.1f%%')
         idx += 1
-    return fig
+    st.write(fig)
     
 
-    st.write(monka_job_pie(df_haijin, "門下", "職業"))
+    monka_job_pie(df_haijin, "門下", "職業")
    
   st.write('■出身別人数')
   df_birth_place = df_haijin[df_haijin["出身地"] != ""]
