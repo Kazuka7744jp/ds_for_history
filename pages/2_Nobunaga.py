@@ -236,13 +236,13 @@ elif selector==pagelist[2]:
     )
 
 elif selector==pagelist[3]:
-    df = pd.read_csv("data/taishi.csv")
-    st.header("「領土保全」ばかり考えている武将に野心はない（連関係数）")
-    import numpy as np
-    from scipy import stats
-    import pandas as pd
-    import seaborn as sns
-    import streamlit as st
+#     df = pd.read_csv("data/taishi.csv")
+#     st.header("「領土保全」ばかり考えている武将に野心はない（連関係数）")
+#     import numpy as np
+#     from scipy import stats
+#     import pandas as pd
+#     import seaborn as sns
+#     import streamlit as st
 
     st.write("信長の野望「大志」には、武将ごとに志という設定があるが、その中で最も多いのが「領地保全」である。\
         領地保全という言葉には、自分の土地に安寧するイメージがあり、天下統一などの「野心」を持たない武将が多いのではと考え、\
