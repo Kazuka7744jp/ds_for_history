@@ -10,7 +10,7 @@ import pandas as pd
 # import seaborn as sns
 import streamlit as st
 
-@st.cashe
+@st.cache
 def dataload_taishi():
     df = pd.read_csv("data/taishi.csv")
 
