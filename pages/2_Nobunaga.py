@@ -162,7 +162,7 @@ elif selector==pagelist[2]:
 #     ax2.set_xlabel(clm2)
 #     ax2.set_ylabel("人数")
 #     st.write(fig)
-    st.image("pic/inoshishi.png")
+    st.image("pic/inoshishi_hist.png")
 
     st.write("では、知略と武勇の相関係数を求めてみる。仮説は、「知略が低い場合、武勇が高ければ高いほど、\
     自分の力を過信し、命を落としている結果、寿命が短くなる傾向がある」だ。")
