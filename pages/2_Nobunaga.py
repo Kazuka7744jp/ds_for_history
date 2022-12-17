@@ -87,7 +87,6 @@ elif selector==pagelist[1]:
     sevens = ["加藤清正", "福島正則", "加藤嘉明", "平野長泰",  "脇坂安治", "糟屋武則", "片桐且元"]
 
     #csvから該当する武将のインデックスのリストをつくるための関数
-    @st.cache
     def busho_finder(df, list):
         index_list=[]
         for idx1, name in enumerate(list):
@@ -166,9 +165,11 @@ elif selector==pagelist[2]:
     st.write(f"では、{clm1}と{clm2}の相関係数を求めてみる。仮説は、「知略が低い場合、武勇が高ければ高いほど、\
     自分の力を過信し、命を落としている結果、寿命が短くなる傾向がある」だ。")
 
-    r = np.corrcoef(df_inoshishi["知略"], df_inoshishi["寿命"])[0, 1]
+#     r = np.corrcoef(df_inoshishi["知略"], df_inoshishi["寿命"])[0, 1]
 
-    st.subheader(f"相関係数は「{r:.3f}」という結果で、相関は全くなかった。")
+#     st.subheader(f"相関係数は「{r:.3f}」という結果で、相関は全くなかった。")
+    st.subheader(f"相関係数は「0.079」という結果で、相関は全くなかった。")
+    
 
     st.write(f"一応、猪武者たちのすべての能力値の相関を見てみる。")
 
