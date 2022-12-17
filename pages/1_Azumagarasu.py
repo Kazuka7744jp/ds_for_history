@@ -70,6 +70,7 @@ elif selector=="残された点帖":
   st.write("「デジタル版 日本人名大辞典+Plus」より")
 
 elif selector=="三河俳人検索DB":
+  st.image("pic/header.jpg")
   st.header("三河俳人検索データベース")
   df_haijin = pd.read_csv("data/data_haijin.csv", keep_default_na=False)
   st.subheader("「俳名」か「本名・別名」を入力してください。")
