@@ -118,6 +118,7 @@ elif selector=="三河俳人検索DB":
   
   st.write("■門下別の職業内訳")
   
+  @st.cache
   def monka_job_pie(df, group_clm, pie_clm):
     df = df[df[pie_clm]!=""]
     df = df.groupby(group_clm)
