@@ -10,7 +10,11 @@ import pandas as pd
 # import seaborn as sns
 import streamlit as st
 
-df = pd.read_csv("data/taishi.csv")
+@st.cashe
+def dataload_taishi():
+    df = pd.read_csv("data/taishi.csv")
+
+dataload_taishi()
 
 pagelist = ["0.はじめに", "01.賤ケ岳7本槍（散布図）", "02.猪武者（相関係数）", "03.領土保全と野心（連関係数）"]
 st.header("信長の野望データセットのページ")
