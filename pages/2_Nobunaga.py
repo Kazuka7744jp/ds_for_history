@@ -144,7 +144,7 @@ elif selector==pagelist[2]:
     その結果、全武将2161人の中から、198人の猪武者たちが選抜された。")
     st.write("■選ばれし、猪武者たち")
     st.write(df_inoshishi)
-    df_daihyo = df_inoshishi[df_inoshishi["知略"] == df["知略"].min()]
+    df_daihyo = df_inoshishi[df_inoshishi["知略"] == df_inoshishi["知略"].min()]
     st.write("■最も「知略」が低い武将")
     st.write(df_daihyo)
     dname = df_daihyo["武将姓"].iloc[0] + df_daihyo["武将名"].iloc[0]
