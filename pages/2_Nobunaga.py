@@ -137,7 +137,7 @@ elif selector==pagelist[2]:
     clm1_param = 0.25
     clm2_param = 0.5
 
-    df_inoshishi = df[(df[clm1] < df[clm1].quantile(q=clm1_param)) & (df[clm2] > df[clm2].quantile(q=clm2_param))]
+#     df_inoshishi = df[(df[clm1] < df[clm1].quantile(q=clm1_param)) & (df[clm2] > df[clm2].quantile(q=clm2_param))]
 
     st.write(f"選抜条件は、{clm1}の能力値が、下位{int(clm1_param*100)}%、かつ、{clm2}の能力値が上位50％の武将。\
     その結果、全武将{len(df)}人の中から、{len(df_inoshishi)}人の猪武者たちが選抜された。")
@@ -150,17 +150,18 @@ elif selector==pagelist[2]:
     st.write(f"最も知略の低い（知略20）{dname}は、齢は56歳の時であるものの、実際に天正十年、河合戦で討死している。これは期待（？）ができる。")
     st.write(f"ちなみに猪武者たちの{clm1}、{clm2}のヒストグラムは以下のような感じ。歪んだ分布になっている。")
 
-    fig, (ax1, ax2) = plt.subplots(1, 2)
-    fig.set_size_inches(10, 5)
-    ax1.hist(df_inoshishi[clm1])
-    ax1.set_title(f'「{clm1}」に関するヒストグラム')
-    ax1.set_xlabel(clm1)
-    ax1.set_ylabel("人数")
-    ax2.hist(df_inoshishi[clm2])
-    ax2.set_title(f'「{clm2}」に関するヒストグラム')
-    ax2.set_xlabel(clm2)
-    ax2.set_ylabel("人数")
-    st.write(fig)
+#     fig, (ax1, ax2) = plt.subplots(1, 2)
+#     fig.set_size_inches(10, 5)
+#     ax1.hist(df_inoshishi[clm1])
+#     ax1.set_title(f'「{clm1}」に関するヒストグラム')
+#     ax1.set_xlabel(clm1)
+#     ax1.set_ylabel("人数")
+#     ax2.hist(df_inoshishi[clm2])
+#     ax2.set_title(f'「{clm2}」に関するヒストグラム')
+#     ax2.set_xlabel(clm2)
+#     ax2.set_ylabel("人数")
+#     st.write(fig)
+    st.image("pic/inoshishi.png")
 
     st.write(f"では、{clm1}と{clm2}の相関係数を求めてみる。仮説は、「知略が低い場合、武勇が高ければ高いほど、\
     自分の力を過信し、命を落としている結果、寿命が短くなる傾向がある」だ。")
@@ -173,10 +174,11 @@ elif selector==pagelist[2]:
 
     st.write(f"一応、猪武者たちのすべての能力値の相関を見てみる。")
 
-    fig, ax = plt.subplots()
-    fig.set_size_inches(8, 5)
-    sns.heatmap(df_inoshishi[["統率", "武勇", "知略", "内政", "外政","寿命", "野心"]].corr(), ax=ax, cmap="coolwarm", annot=True)
-    st.write(fig)
+#     fig, ax = plt.subplots()
+#     fig.set_size_inches(8, 5)
+#     sns.heatmap(df_inoshishi[["統率", "武勇", "知略", "内政", "外政","寿命", "野心"]].corr(), ax=ax, cmap="coolwarm", annot=True)
+    st.image("pic/inoshishi_heatmap.png")
+#     st.write(fig)
 
     lifespan_all = int(df["寿命"].mean())
     lifespan_inoshishi = int(df_inoshishi["寿命"].mean())
