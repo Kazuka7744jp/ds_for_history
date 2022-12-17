@@ -103,7 +103,7 @@ elif selector=="三河俳人検索DB":
   col4.metric("職業判明率", "{:.1%}".format((df_haijin["職業_詳細"]!="").sum()/df_len))
   st.write(df_haijin)
   
-  st.write('■職業別人数')
+  st.write('■職業別の人数')
   # 職業列が空でない行を抽出する
   df_job = df_haijin[df_haijin["職業"] != ""]
   # 職業列の要素の値が何回登場したかを集計する
@@ -116,8 +116,8 @@ elif selector=="三河俳人検索DB":
      hover_name=df_job.index)
   st.plotly_chart(job_pie)
   
-  st.write("門下別の職業")
-#   @st.cache
+  st.write("■門下別の職業内訳")
+  @st.cache
   def monka_job_pie(df, group_clm, pie_clm):
     df = df[df[pie_clm]!=""]
     df = df.groupby(group_clm)
