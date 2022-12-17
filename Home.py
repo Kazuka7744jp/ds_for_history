@@ -1,12 +1,11 @@
 #!/usr/bin/env python
 # coding: utf-8
-import datetime
-from deta import Deta
-from dotenv import load_dotenv
-import pandas as pd
+# import datetime
+# from deta import Deta
+# from dotenv import load_dotenv
 import streamlit as st
-from time import time
-import os
+# from time import time
+# import os
 
 st.set_page_config(page_title="東烏", page_icon="pic/karasu.jpg", layout="wide", initial_sidebar_state="auto", menu_items=None)
 st.subheader(" 「鬼神もあわれむ俳諧と生きた男」")
