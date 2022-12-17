@@ -88,10 +88,10 @@ elif selector=="三河俳人検索DB":
   
   df_len = len(df_haijin)
   st.write('■データベース一覧')
-  col1, col2 = st.columns(2)
+  col1, col2, col3, col4 = st.columns(4)
   col1.metric("登録人数", df_len)
   col2.metric("調査済句集", len(df_haijin.columns)-9)
-  col3, col4 = st.columns(2)
+#   col3, col4 = st.columns(2)
   col3.metric("本名判明率", "{:.1%}".format((df_haijin["本名/別名"]!="").sum()/df_len))
   col4.metric("職業判明率", "{:.1%}".format((df_haijin["職業_詳細"]!="").sum()/df_len))
   st.write(df_haijin)
