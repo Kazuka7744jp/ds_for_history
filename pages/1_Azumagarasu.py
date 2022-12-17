@@ -26,18 +26,6 @@ if selector=="はじめに":
   st.write("「さとる部長」 －某研究所歴史アーカイブ同好会部長。独学でくずし字を読むすごい人")
   st.image("pic/ryujiemon2.jpg")
   st.write("「りゅうじえもん」 －久右衛門の子孫。当サイト管理人。データ可視化担当")
-#   st.scroll(0, 0)
-  st.markdown(
-  """
-  <script>
-    window.scrollTo(0, 0);
-  </script>
-  """,
-  unsafe_allow_html=True,
-  )
-
-#   st.write("■加塚家年表（随時更新中）")
-#   st.table(df)
 
 elif selector=="01.プロローグ":
   st.header(selector)
@@ -116,27 +104,27 @@ elif selector=="三河俳人検索DB":
      hover_name=df_job.index)
   st.plotly_chart(job_pie)
   
-  st.write("■門下別の職業内訳")
+#   st.write("■門下別の職業内訳")
   
-  @st.cache
-  def monka_job_pie(df, group_clm, pie_clm):
-    df = df[df[pie_clm]!=""]
-    df = df.groupby(group_clm)
-    master_list = list(df.groups.keys())[1:-1]
-    clms = 2
-    rows = len(master_list)//2 + len(master_list)%2
-    master_num = len(master_list)
-    fig, axes = plt.subplots(rows, clms, figsize=(20,20), tight_layout=True)
-    idx = 0
-    for master in master_list:
-        df_temp = pd.DataFrame(df.get_group(master)[pie_clm].value_counts(dropna=True))
-        df_num = len(df.get_group(master))
-        axes[idx//2,idx%2].set_title(f"{master}の門下生の職業（n={df_num}）")
-        axes[idx//2,idx%2].pie(df_temp.values.flatten(), labels=df_temp.index, autopct='%1.1f%%')
-        idx += 1
-    st.write(fig)
+#   @st.cache
+#   def monka_job_pie(df, group_clm, pie_clm):
+#     df = df[df[pie_clm]!=""]
+#     df = df.groupby(group_clm)
+#     master_list = list(df.groups.keys())[1:-1]
+#     clms = 2
+#     rows = len(master_list)//2 + len(master_list)%2
+#     master_num = len(master_list)
+#     fig, axes = plt.subplots(rows, clms, figsize=(20,20), tight_layout=True)
+#     idx = 0
+#     for master in master_list:
+#         df_temp = pd.DataFrame(df.get_group(master)[pie_clm].value_counts(dropna=True))
+#         df_num = len(df.get_group(master))
+#         axes[idx//2,idx%2].set_title(f"{master}の門下生の職業（n={df_num}）")
+#         axes[idx//2,idx%2].pie(df_temp.values.flatten(), labels=df_temp.index, autopct='%1.1f%%')
+#         idx += 1
+#     st.write(fig)
     
-  monka_job_pie(df_haijin, "門下", "職業")
+#   monka_job_pie(df_haijin, "門下", "職業")
    
   st.write('■出身別人数')
   df_birth_place = df_haijin[df_haijin["出身地"] != ""]
