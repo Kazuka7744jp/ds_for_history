@@ -27,19 +27,20 @@ if selector==pagelist[0]:
 elif selector==pagelist[1]:
     st.header("「賤ケ岳の7本槍」の能力比較（散布図）")
 
-    sevens = ["加藤清正", "福島正則", "加藤嘉明", "平野長泰",  "脇坂安治", "糟屋武則", "片桐且元"]
+#     sevens = ["加藤清正", "福島正則", "加藤嘉明", "平野長泰",  "脇坂安治", "糟屋武則", "片桐且元"]
 
-    #csvから該当する武将のインデックスのリストをつくるための関数
-    def busho_finder(df, list):
-        index_list=[]
-        for idx1, name in enumerate(list):
-            for idx2, row in df.iterrows():
-                if (row["武将姓"] + row["武将名"]) == name:
-                    index_list.append(idx2)
-        return index_list
+#     #csvから該当する武将のインデックスのリストをつくるための関数
+#     def busho_finder(df, list):
+#         index_list=[]
+#         for idx1, name in enumerate(list):
+#             for idx2, row in df.iterrows():
+#                 if (row["武将姓"] + row["武将名"]) == name:
+#                     index_list.append(idx2)
+#         return index_list
 
 
-    df = df.iloc[busho_finder(df, sevens)]
+#     df = df.iloc[busho_finder(df, sevens)]
+    df = pd.read_csv("data/7.csv")
     st.write("■7本槍の能力データ")
     st.dataframe(df)
 
