@@ -1,12 +1,5 @@
-deta
-folium 
 matplotlib
-japanize_matplotlib
 numpy
 pandas
 plotly
-python-dotenv
-scipy
-seaborn
 streamlit
-streamlit_folium
