@@ -7,6 +7,7 @@ import streamlit as st
 # from time import time
 # import os
 
+
 st.set_page_config(page_title="東烏", page_icon="pic/karasu.jpg", layout="wide", initial_sidebar_state="auto", menu_items=None)
 
 df_haijin = pd.read_csv("data/data_haijin.csv", keep_default_na=False)
