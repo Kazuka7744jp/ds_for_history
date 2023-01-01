@@ -22,11 +22,13 @@ else:
 
 df_len = len(df_haijin)
 st.write('■データベース一覧')
-col1, col2, col3, col4 = st.columns(4)
+col1, col2, col3, col4, col5 = st.columns(5)
 col1.metric("登録人数", df_len)
-col2.metric("調査済句集", len(df_haijin.columns)-9)
+col2.metric("調査済句集", 223)
 col3.metric("本名判明率", "{:.1%}".format((df_haijin["本名/別名"]!="").sum()/df_len))
 col4.metric("職業判明率", "{:.1%}".format((df_haijin["職業_詳細"]!="").sum()/df_len))
+col5.metric("出身判明率", "{:.1%}".format((df_haijin["出身地"]!="").sum()/df_len))
+
 st.write(df_haijin)
 
 st.write('■職業別の人数の割合')
@@ -42,5 +44,21 @@ job_pie = px.pie(data_frame=df_job,
    hover_name=df_job.index)
 st.plotly_chart(job_pie)
 
-st.write("■門下別の職業の割合")
+st.write('■出身別の人数の割合')
+# 職業列が空でない行を抽出する
+df_job = df_haijin[df_haijin["出身地"] != ""]
+# 職業列の要素の値が何回登場したかを集計する
+df_job = df_job["出身地"].value_counts()
+# SeriesをDataFrameに変換する
+df_job = pd.DataFrame(df_job)
+job_pie = px.pie(data_frame=df_job,
+   values=df_job["出身地"],
+   names=df_job.index,
+   hover_name=df_job.index)
+st.plotly_chart(job_pie)
+
+st.write("■門下別の職業の割合「卓池」")
+st.image("pic/takuchi.png")
+
+st.write("■門下別の職業の割合「卓池以外」")
 st.image("pic/monka.png")
