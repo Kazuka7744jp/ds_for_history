@@ -44,19 +44,6 @@ job_pie = px.pie(data_frame=df_job,
    hover_name=df_job.index)
 st.plotly_chart(job_pie)
 
-st.write('■出身別の人数の割合')
-# 職業列が空でない行を抽出する
-df_job = df_haijin[df_haijin["出身地"] != ""]
-# 職業列の要素の値が何回登場したかを集計する
-df_job = df_job["出身地"].value_counts()
-# SeriesをDataFrameに変換する
-df_job = pd.DataFrame(df_job)
-job_pie = px.pie(data_frame=df_job,
-   values=df_job["出身地"],
-   names=df_job.index,
-   hover_name=df_job.index)
-st.plotly_chart(job_pie)
-
 st.write("■門下別の職業の割合「卓池」")
 st.image("pic/takuchi.png")
 
