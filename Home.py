@@ -52,13 +52,13 @@ st.write("■門下別の職業の割合「卓池以外」")
 st.write("まだまだn数が足りませんので、皆様からの情報お待ちしています。")
 
 st.image("pic/monka.png")
-st.write("以下では、句集登場回数トップ100の俳人たちの関係性をネットワーク図にしました。")
-st.write("以下では、句集登場回数トップ100の俳人たちの関係性をネットワーク図にしました。")
+st.write("以下では、句集登場回数トップ300の俳人たちをネットワーク図にしました。")
+st.write("spring_layoutは登場回数の多いノードが中央に配置され、それ以外のノードがその周りに配置されるようなグラフが生成されることが特徴です。")
+st.write("ただし、同じ句集に登場している回数に比例してノード間が近くなるということはありません。（エッジの太さにそれは反映されています。）")
 
-st.write("■ネットワーク図1（networkX：spring_layout　結果にランダム性あり）")
+st.write("■ネットワーク図（networkX：spring_layout）")
 st.image("pic/network.png")
-st.write("■ネットワーク図2（networkX：kamada_kawai_layout　結果が固定的）")
-st.image("pic/network_kamada_kawai.png")
+
 
 st.write('■調査済句集一覧')
 df_kusyu = pd.read_csv("data/kusyu.csv", usecols=["資料名", "年代", "内容", "備考", "所蔵", "チェック"])
