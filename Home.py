@@ -32,18 +32,18 @@ col5.metric("出身判明率", "{:.1%}".format((df_haijin["出身地"]!="").sum(
 
 st.write(df_haijin)
 
-st.write('■職業別の人数の割合')
-# 職業列が空でない行を抽出する
-df_job = df_haijin[df_haijin["職業"] != ""]
-# 職業列の要素の値が何回登場したかを集計する
-df_job = df_job["職業"].value_counts()
-# SeriesをDataFrameに変換する
-df_job = pd.DataFrame(df_job)
-job_pie = px.pie(data_frame=df_job,
-   values=df_job["職業"],
-   names=df_job.index,
-   hover_name=df_job.index)
-st.plotly_chart(job_pie)
+# st.write('■職業別の人数の割合')
+# # 職業列が空でない行を抽出する
+# df_job = df_haijin[df_haijin["職業"] != ""]
+# # 職業列の要素の値が何回登場したかを集計する
+# df_job = df_job["職業"].value_counts()
+# # SeriesをDataFrameに変換する
+# df_job = pd.DataFrame(df_job)
+# job_pie = px.pie(data_frame=df_job,
+#    values=df_job["職業"],
+#    names=df_job.index,
+#    hover_name=df_job.index)
+# st.plotly_chart(job_pie)
 
 st.write("■門下別の職業の割合「卓池」")
 st.image("pic/takuchi.png")
@@ -52,6 +52,8 @@ st.write("■門下別の職業の割合「卓池以外」")
 st.write("まだまだn数が足りませんので、皆様からの情報お待ちしています。")
 
 st.image("pic/monka.png")
+st.write("以下では、句集登場回数トップ100の俳人たちの関係性をネットワーク図にしました。")
+st.write("以下では、句集登場回数トップ100の俳人たちの関係性をネットワーク図にしました。")
 
 st.write("■ネットワーク図1（networkX：spring_layout　結果にランダム性あり）")
 st.image("pic/network.png")
