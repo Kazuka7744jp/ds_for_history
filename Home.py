@@ -45,6 +45,9 @@ st.write(df_haijin)
 #    hover_name=df_job.index)
 # st.plotly_chart(job_pie)
 
+st.write("■門下・派閥の人数")
+st.image("pic/deshi.png")
+
 st.write("■門下別の職業の割合「卓池」")
 st.image("pic/takuchi.png")
 
