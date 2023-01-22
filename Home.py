@@ -49,10 +49,14 @@ st.write("■門下別の職業の割合「卓池」")
 st.image("pic/takuchi.png")
 
 st.write("■門下別の職業の割合「卓池以外」")
+st.write("まだまだn数が足りませんので、皆様からの情報お待ちしています。")
+
 st.image("pic/monka.png")
 
-st.write("■ネットワーク図")
+st.write("■ネットワーク図1（networkX：spring_layout　結果にランダム性あり）")
 st.image("pic/network.png")
+st.write("■ネットワーク図2（networkX：kamada_kawai_layout　結果が固定的）")
+st.image("pic/network_kamada_kawai.png")
 
 st.write('■調査済句集一覧')
 df_kusyu = pd.read_csv("data/kusyu.csv", usecols=["資料名", "年代", "内容", "備考", "所蔵", "チェック"])
