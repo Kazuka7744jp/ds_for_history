@@ -1,5 +1,5 @@
 import streamlit as st
-from st_aggrid import GridOptionsBuilder, AgGrid, GridUpdateMode, DataReturnMode
+# from st_aggrid import GridOptionsBuilder, AgGrid, GridUpdateMode, DataReturnMode
 import pandas as pd
 # import plotly.express as px
 
@@ -12,15 +12,15 @@ st.header("三河俳人検索データベース")
 st.image("pic/head2.jpeg")
 st.write("三河俳人に関する情報をお持ちの方は、ぜひ情報提供をお願いいたします。japanhistorydiscovery@gmail.com")
 
-# st.write('■俳人検索')
-# st.subheader("「俳名」か「本名・別名」を入力してください。")
-# haijin_input = st.text_input("検索キーワード入力欄")
-# if not haijin_input:
-#   st.write("何か単語を入力してください。")
-# else:
-#   df_selected = df_haijin[(df_haijin['俳名'].str.contains(haijin_input)) | (df_haijin['本名/別名'].str.contains(haijin_input))]
-#   st.write(f"{len(df_selected)}件の検索結果がありました。")
-#   st.table(df_selected)
+st.write('■俳人検索')
+st.subheader("「俳名」か「本名・別名」を入力してください。")
+haijin_input = st.text_input("検索キーワード入力欄")
+if not haijin_input:
+  st.write("何か単語を入力してください。")
+else:
+  df_selected = df_haijin[(df_haijin['俳名'].str.contains(haijin_input)) | (df_haijin['本名/別名'].str.contains(haijin_input))]
+  st.write(f"{len(df_selected)}件の検索結果がありました。")
+  st.table(df_selected)
 
 df_len = len(df_haijin)
 st.write('■データベース一覧')
@@ -45,29 +45,29 @@ col5.metric("出身判明率", "{:.1%}".format((df_haijin["出身地"]!="").sum(
 #    names=df_job.index,
 #    hover_name=df_job.index)
 # st.plotly_chart(job_pie)
+st.dataframe(df_haijin, width=None, height=500)
+# gb = GridOptionsBuilder.from_dataframe(df_haijin)
+# gb.configure_pagination(paginationAutoPageSize=True) #Add pagination
+# gb.configure_side_bar() #Add a sidebar
+# gb.configure_selection('multiple', use_checkbox=True, groupSelectsChildren="Group checkbox select children") #Enable multi-row selection
+# gridOptions = gb.build()
 
-gb = GridOptionsBuilder.from_dataframe(df_haijin)
-gb.configure_pagination(paginationAutoPageSize=True) #Add pagination
-gb.configure_side_bar() #Add a sidebar
-gb.configure_selection('multiple', use_checkbox=True, groupSelectsChildren="Group checkbox select children") #Enable multi-row selection
-gridOptions = gb.build()
+# grid_response = AgGrid(
+#     df_haijin,
+#     gridOptions=gridOptions,
+#     data_return_mode='AS_INPUT', 
+#     update_mode='MODEL_CHANGED', 
+#     fit_columns_on_grid_load=False,
+# #     theme='blue', #Add theme color to the table
+#     enable_enterprise_modules=True,
+#     height=350, 
+#     width='100%',
+#     reload_data=True
+# )
 
-grid_response = AgGrid(
-    df_haijin,
-    gridOptions=gridOptions,
-    data_return_mode='AS_INPUT', 
-    update_mode='MODEL_CHANGED', 
-    fit_columns_on_grid_load=False,
-#     theme='blue', #Add theme color to the table
-    enable_enterprise_modules=True,
-    height=350, 
-    width='100%',
-    reload_data=True
-)
-
-data = grid_response['data']
-selected = grid_response['selected_rows'] 
-df = pd.DataFrame(selected) #Pass the selected rows to a new dataframe df
+# data = grid_response['data']
+# selected = grid_response['selected_rows'] 
+# df = pd.DataFrame(selected) #Pass the selected rows to a new dataframe df
 
 st.write("■門下・派閥の人数")
 st.image("pic/deshi.png")
