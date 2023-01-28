@@ -56,4 +56,4 @@ st.image("pic/network.png")
 
 st.write('■調査済句集一覧')
 df_kusyu = pd.read_csv("data/kusyu.csv", usecols=["資料名", "年代", "内容", "備考", "所蔵", "チェック"])
-st.st.dataframe(df_kusyu)
+st.dataframe(df_kusyu)
