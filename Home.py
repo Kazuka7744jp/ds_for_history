@@ -1,4 +1,5 @@
 import streamlit as st
+from st_aggrid import GridOptionsBuilder, AgGrid, GridUpdateMode, DataReturnMode
 import pandas as pd
 # import plotly.express as px
 
@@ -30,9 +31,8 @@ col3.metric("本名判明率", "{:.1%}".format((df_haijin["本名/別名"]!="").
 col4.metric("職業判明率", "{:.1%}".format((df_haijin["職業_詳細"]!="").sum()/df_len))
 col5.metric("出身判明率", "{:.1%}".format((df_haijin["出身地"]!="").sum()/df_len))
 
-st.write(df_haijin)
-
-# st.write('■職業別の人数の割合')
+# st.write(df_haijin)
+AgGrid(df_haijin)# st.write('■職業別の人数の割合')
 # # 職業列が空でない行を抽出する
 # df_job = df_haijin[df_haijin["職業"] != ""]
 # # 職業列の要素の値が何回登場したかを集計する
