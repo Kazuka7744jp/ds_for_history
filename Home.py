@@ -12,15 +12,15 @@ st.header("三河俳人検索データベース")
 st.image("pic/head2.jpeg")
 st.write("三河俳人に関する情報をお持ちの方は、ぜひ情報提供をお願いいたします。japanhistorydiscovery@gmail.com")
 
-st.write('■俳人検索')
-st.subheader("「俳名」か「本名・別名」を入力してください。")
-haijin_input = st.text_input("検索キーワード入力欄")
-if not haijin_input:
-  st.write("何か単語を入力してください。")
-else:
-  df_selected = df_haijin[(df_haijin['俳名'].str.contains(haijin_input)) | (df_haijin['本名/別名'].str.contains(haijin_input))]
-  st.write(f"{len(df_selected)}件の検索結果がありました。")
-  st.table(df_selected)
+# st.write('■俳人検索')
+# st.subheader("「俳名」か「本名・別名」を入力してください。")
+# haijin_input = st.text_input("検索キーワード入力欄")
+# if not haijin_input:
+#   st.write("何か単語を入力してください。")
+# else:
+#   df_selected = df_haijin[(df_haijin['俳名'].str.contains(haijin_input)) | (df_haijin['本名/別名'].str.contains(haijin_input))]
+#   st.write(f"{len(df_selected)}件の検索結果がありました。")
+#   st.table(df_selected)
 
 df_len = len(df_haijin)
 st.write('■データベース一覧')
