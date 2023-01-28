@@ -32,7 +32,7 @@ if not haijin_input:
 else:
   df_selected = df_haijin[(df_haijin['俳名'].str.contains(haijin_input)) | (df_haijin['本名/別名'].str.contains(haijin_input))]
   st.write(f"{len(df_selected)}件の検索結果がありました。")
-#   df_show = st.dataframe(df_selected)
+  df_show = st.dataframe(df_selected)
 
 
 
