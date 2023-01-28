@@ -6,6 +6,7 @@ import pandas as pd
 st.set_page_config(page_title="東烏", page_icon="pic/karasu.jpg", layout="wide", initial_sidebar_state="auto", menu_items=None)
 
 df_haijin = pd.read_csv("data/data_haijin.csv", keep_default_na=False)
+df_haijin['句集登場回数'] = df['句集登場回数'].astype(int)
 # df_haijin['句集登場回数'] = df_haijin['句集登場回数'].astype("int64")
 st.image("pic/logo_small.jpg")
 st.header("三河俳人検索データベース")
@@ -20,7 +21,7 @@ if not haijin_input:
 else:
   df_selected = df_haijin[(df_haijin['俳名'].str.contains(haijin_input)) | (df_haijin['本名/別名'].str.contains(haijin_input))]
   st.write(f"{len(df_selected)}件の検索結果がありました。")
-  st.table(df_selected)
+  st.dataframe(df_selected)
 
 df_len = len(df_haijin)
 st.write('■データベース一覧')
