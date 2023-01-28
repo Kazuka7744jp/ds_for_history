@@ -32,7 +32,8 @@ col4.metric("職業判明率", "{:.1%}".format((df_haijin["職業_詳細"]!="").
 col5.metric("出身判明率", "{:.1%}".format((df_haijin["出身地"]!="").sum()/df_len))
 
 # st.write(df_haijin)
-AgGrid(df_haijin)# st.write('■職業別の人数の割合')
+# AgGrid(df_haijin)
+# st.write('■職業別の人数の割合')
 # # 職業列が空でない行を抽出する
 # df_job = df_haijin[df_haijin["職業"] != ""]
 # # 職業列の要素の値が何回登場したかを集計する
@@ -57,7 +58,7 @@ grid_response = AgGrid(
     data_return_mode='AS_INPUT', 
     update_mode='MODEL_CHANGED', 
     fit_columns_on_grid_load=False,
-    theme='blue', #Add theme color to the table
+#     theme='blue', #Add theme color to the table
     enable_enterprise_modules=True,
     height=350, 
     width='100%',
