@@ -31,7 +31,7 @@ else:
   st.write(f"{len(df_selected)}件の検索結果がありました。")
   st.dataframe(df_selected)
 
-st.write('■データベース')
+st.write('■データベース一覧')
 st.dataframe(df_haijin, width=None, height=500)
 st.write("■門下・派閥の人数")
 
@@ -56,4 +56,4 @@ st.image("pic/network.png")
 
 st.write('■調査済句集一覧')
 df_kusyu = pd.read_csv("data/kusyu.csv", usecols=["資料名", "年代", "内容", "備考", "所蔵", "チェック"])
-st.write(df_kusyu)
+st.st.dataframe(df_kusyu)
