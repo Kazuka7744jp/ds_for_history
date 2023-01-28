@@ -26,7 +26,7 @@ col3.metric("本名判明率", "{:.1%}".format((df_haijin["本名/別名"]!="").
 col4.metric("職業判明率", "{:.1%}".format((df_haijin["職業_詳細"]!="").sum()/df_len))
 col5.metric("出身判明率", "{:.1%}".format((df_haijin["出身地"]!="").sum()/df_len))
 df_show = st.dataframe(df_haijin, width=None, height=500)
-df_show 
+# df_show 
 if not haijin_input:
   st.write("何か単語を入力してください。")
 else:
