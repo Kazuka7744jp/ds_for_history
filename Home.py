@@ -18,25 +18,23 @@ st.subheader("「俳名」か「本名・別名」を入力してください。
 haijin_input = st.text_input("検索キーワード入力欄")
 df_len = len(df_haijin)
 
-st.write('■データベース')
 col1, col2, col3, col4, col5 = st.columns(5)
 col1.metric("登録人数", df_len)
 col2.metric("調査済句集", 223)
 col3.metric("本名判明率", "{:.1%}".format((df_haijin["本名/別名"]!="").sum()/df_len))
 col4.metric("職業判明率", "{:.1%}".format((df_haijin["職業_詳細"]!="").sum()/df_len))
 col5.metric("出身判明率", "{:.1%}".format((df_haijin["出身地"]!="").sum()/df_len))
-df_show = st.dataframe(df_haijin, width=None, height=500)
-# df_show 
 if not haijin_input:
   st.write("何か単語を入力してください。")
 else:
   df_selected = df_haijin[(df_haijin['俳名'].str.contains(haijin_input)) | (df_haijin['本名/別名'].str.contains(haijin_input))]
   st.write(f"{len(df_selected)}件の検索結果がありました。")
-  df_show = st.dataframe(df_selected)
+  st.dataframe(df_selected)
 
-
-
+st.write('■データベース')
+st.dataframe(df_haijin, width=None, height=500)
 st.write("■門下・派閥の人数")
+
 st.image("pic/deshi.png")
 
 st.write("■門下別の職業の割合「卓池」")
