@@ -14,12 +14,7 @@ df_haijin = load_data()
 
 # df_haijin['句集登場回数'] = df_haijin['句集登場回数'].astype("int64")
 
-@st.cache
-def load_logo():
-    logo = st.image("pic/logo_small.jpg")
-    return logo
-
-load_logo()
+st.image("pic/logo_small.jpg")
 st.header("三河俳人検索データベース")
 st.image("pic/head2.jpeg")
 st.write("三河俳人に関する情報をお持ちの方は、ぜひ情報提供をお願いいたします。japanhistorydiscovery@gmail.com")
