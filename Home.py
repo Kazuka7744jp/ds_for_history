@@ -1,7 +1,5 @@
 import streamlit as st
-# from st_aggrid import GridOptionsBuilder, AgGrid, GridUpdateMode, DataReturnMode
 import pandas as pd
-# import plotly.express as px
 
 st.set_page_config(page_title="東烏", page_icon="pic/karasu.jpg", layout="wide", initial_sidebar_state="auto", menu_items=None)
 
@@ -12,18 +10,10 @@ def load_data():
 
 df_haijin = load_data()
 
-# df_haijin['句集登場回数'] = df_haijin['句集登場回数'].astype("int64")
-
-# @st.cache(suppress_st_warning=True)
-# def logo_load():
-#     st.image("pic/logo_small.jpg")
-# logo_load()
-
 st.image("pic/logo_small.jpg")
 st.header("三河俳人検索データベース")
 st.image("pic/head2.jpeg")
 st.write("三河俳人に関する情報をお持ちの方は、ぜひ情報提供をお願いいたします。japanhistorydiscovery@gmail.com")
-
 
 st.write('■俳人検索')
 df_len = len(df_haijin)
