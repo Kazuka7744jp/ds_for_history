@@ -14,12 +14,12 @@ df_haijin = load_data()
 
 # df_haijin['句集登場回数'] = df_haijin['句集登場回数'].astype("int64")
 
-@st.cache(suppress_st_warning=True)
-def logo_load():
-    st.image("pic/logo_small.jpg")
+# @st.cache(suppress_st_warning=True)
+# def logo_load():
+#     st.image("pic/logo_small.jpg")
+# logo_load()
 
-logo_load()
-# st.image("pic/logo_small.jpg")
+st.image("pic/logo_small.jpg")
 st.header("三河俳人検索データベース")
 st.image("pic/head2.jpeg")
 st.write("三河俳人に関する情報をお持ちの方は、ぜひ情報提供をお願いいたします。japanhistorydiscovery@gmail.com")
@@ -68,5 +68,10 @@ st.image("pic/network.png")
 
 
 st.write('■調査済句集一覧')
-df_kusyu = pd.read_csv("data/kusyu.csv", usecols=["資料名", "年代", "内容", "備考", "所蔵", "チェック"])
+
+@st.cache
+def load_data_kusyu():
+    df_kusyu = pd.read_csv("data/kusyu.csv", usecols=["資料名", "年代", "内容", "備考", "所蔵", "チェック"])
+    return df_kusyu
+df_kusyu = load_data_kusyu()    
 st.dataframe(df_kusyu)
