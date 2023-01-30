@@ -19,6 +19,7 @@ def logo_load():
     logo = st.image("pic/logo_small.jpg")
     return logo
 
+logo_load()
 # st.image("pic/logo_small.jpg")
 st.header("三河俳人検索データベース")
 st.image("pic/head2.jpeg")
