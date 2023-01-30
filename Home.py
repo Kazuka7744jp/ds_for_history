@@ -36,8 +36,6 @@ col3.metric("本名判明率", "{:.1%}".format((df_haijin["本名/別名"]!="").
 col4.metric("職業判明率", "{:.1%}".format((df_haijin["職業_詳細"]!="").sum()/df_len))
 col5.metric("出身判明率", "{:.1%}".format((df_haijin["出身地"]!="").sum()/df_len))
 
-make_cols()
-
 st.subheader("「俳名」か「本名・別名」を入力してください。")
 haijin_input = st.text_input("検索キーワード入力欄")
 
