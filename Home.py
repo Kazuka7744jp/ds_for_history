@@ -16,8 +16,7 @@ df_haijin = load_data()
 
 @st.cache(suppress_st_warning=True)
 def logo_load():
-    logo = st.image("pic/logo_small.jpg")
-    return logo
+    st.image("pic/logo_small.jpg")
 
 logo_load()
 # st.image("pic/logo_small.jpg")
