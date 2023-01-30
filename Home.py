@@ -28,7 +28,7 @@ st.write("三河俳人に関する情報をお持ちの方は、ぜひ情報提�
 st.write('■俳人検索')
 df_len = len(df_haijin)
 
-@st.cache
+@st.cache(suppress_st_warning=True)
 def make_cols():
     col1, col2, col3, col4, col5 = st.columns(5)
     col1.metric("登録人数", df_len)
