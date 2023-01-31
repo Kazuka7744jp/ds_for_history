@@ -69,7 +69,9 @@ if haijin_input or location_input or job_input:
           text="本名/別名: " + person["本名/別名"] +
           "\n\n出身地: " + person["出身地"] +
           "\n\n職業: " + person["職業_詳細"],
+          image= "http://omo-shiroki.jp/images/shoin-album.PNG",
           url=""
+         
       )
 
 else:
