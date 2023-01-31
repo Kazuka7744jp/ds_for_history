@@ -35,9 +35,9 @@ if haijin_input or location_input or job_input:
     conditions = (df_haijin['俳名'].str.contains(haijin_input) | df_haijin['本名/別名'].str.contains(haijin_input)) &(df_haijin['出身地'].str.contains(location_input)) &(df_haijin['職業_詳細'].str.contains(job_input))
 # st.subheader("「俳名」か「本名・別名」を入力してください。")
 # haijin_input = st.text_input("検索キーワード入力欄")
-df_selected = df_haijin[conditions]
-st.write(f"{len(df_selected)}件の検索結果がありました。")
-st.dataframe(df_selected)
+    df_selected = df_haijin[conditions]
+    st.write(f"{len(df_selected)}件の検索結果がありました。")
+    st.dataframe(df_selected)
 else:
     st.write("条件を入力してください")
 
