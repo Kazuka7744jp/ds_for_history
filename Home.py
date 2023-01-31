@@ -5,6 +5,7 @@ from streamlit_card import card
 card(
  title="Hello World!",
  text="Some description",
+ url="https://github.com/gamcoh/st-card"
 )
     
 st.set_page_config(page_title="東烏", page_icon="pic/karasu.jpg", layout="wide", initial_sidebar_state="auto", menu_items=None)
