@@ -49,7 +49,6 @@ if haijin_input or location_input or job_input:
                  "\n職業: " + person["職業_詳細"],
             url="https://github.com/gamcoh/st-card"
         )
-)
 
 else:
     st.write("条件を入力してください")
