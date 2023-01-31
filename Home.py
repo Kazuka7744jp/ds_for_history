@@ -32,19 +32,24 @@ location_input = st.text_input("出身地")
 job_input = st.text_input("職業")
 
 if haijin_input or location_input or job_input:
-conditions = (df_haijin['俳名'].str.contains(haijin_input) |
+    conditions = (df_haijin['俳名'].str.contains(haijin_input) |
 df_haijin['本名/別名'].str.contains(haijin_input)) &
 (df_haijin['出身地'].str.contains(location_input)) &
 (df_haijin['職業_詳細'].str.contains(job_input))
 # st.subheader("「俳名」か「本名・別名」を入力してください。")
 # haijin_input = st.text_input("検索キーワード入力欄")
-
-if not haijin_input:
-  st.write("何か単語を入力してください。")
+df_selected = df_haijin[conditions]
+st.write(f"{len(df_selected)}件の検索結果がありました。")
+st.dataframe(df_selected)
 else:
-  df_selected = df_haijin[(df_haijin['俳名'].str.contains(haijin_input)) | (df_haijin['本名/別名'].str.contains(haijin_input))]
-  st.write(f"{len(df_selected)}件の検索結果がありました。")
-  st.dataframe(df_selected)
+    st.write("条件を入力してください")
+
+# if not haijin_input:
+#   st.write("何か単語を入力してください。")
+# else:
+#   df_selected = df_haijin[(df_haijin['俳名'].str.contains(haijin_input)) | (df_haijin['本名/別名'].str.contains(haijin_input))]
+#   st.write(f"{len(df_selected)}件の検索結果がありました。")
+#   st.dataframe(df_selected)
 
 st.write('■データベース一覧')
 st.dataframe(df_haijin, width=None, height=500)
