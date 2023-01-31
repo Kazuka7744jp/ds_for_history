@@ -38,6 +38,12 @@ if haijin_input or location_input or job_input:
     df_selected = df_haijin[conditions]
     st.write(f"{len(df_selected)}件の検索結果がありました。")
     st.dataframe(df_selected)
+    for index, person in df_selected.iterrows():
+        st.write(person["俳名"], card=True)
+        st.write("本名/別名: " + person["本名/別名"])
+        st.write("出身地: " + person["出身地"])
+        st.write("職業: " + person["職業_詳細"])
+        st.write("")
 else:
     st.write("条件を入力してください")
 
