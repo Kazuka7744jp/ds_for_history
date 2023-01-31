@@ -2,11 +2,7 @@ import streamlit as st
 import pandas as pd
 from streamlit_card import card
 
-card(
- title="Hello World!",
- text="Some description",
- url="https://github.com/gamcoh/st-card"
-)
+
     
 # st.set_page_config(page_title="東烏", page_icon="pic/karasu.jpg", layout="wide", initial_sidebar_state="auto", menu_items=None)
 
@@ -45,13 +41,16 @@ if haijin_input or location_input or job_input:
     df_selected = df_haijin[conditions]
     st.write(f"{len(df_selected)}件の検索結果がありました。")
     st.dataframe(df_selected)
-#     for index, person in df_selected.iterrows():
-       
-#         st.write(person["俳名"], card=True)
-#         st.write("本名/別名: " + person["本名/別名"])
-#         st.write("出身地: " + person["出身地"])
-#         st.write("職業: " + person["職業_詳細"])
-#         st.write("")
+    for index, person in df_selected.iterrows():
+        card(
+            title=person["俳名"],
+            text="本名/別名: " + person["本名/別名"] + 
+                 "\n出身地: " + person["出身地"] + 
+                 "\n職業: " + person["職業_詳細"],
+            url="https://github.com/gamcoh/st-card"
+        )
+)
+
 else:
     st.write("条件を入力してください")
 
