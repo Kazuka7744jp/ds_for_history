@@ -44,10 +44,10 @@ if haijin_input or location_input or job_input:
     for index, person in df_selected.iterrows():
         card(
             title=person["俳名"],
-            text="本名/別名: " + person["本名/別名"] + 
-                 "\n出身地: " + person["出身地"] + 
-                 "\n職業: " + person["職業_詳細"],
-            url="https://github.com/gamcoh/st-card"
+            text="本名/別名: " + person["本名/別名"] +
+            "\n\n出身地: " + person["出身地"] +
+            "\n\n職業: " + person["職業_詳細"],
+            url=""
         )
 
 else:
