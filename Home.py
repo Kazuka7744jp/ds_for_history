@@ -69,7 +69,7 @@ if haijin_input or location_input or job_input:
           "\n\n【職業】 " + person["職業_詳細"] +
           "\n\n【句集登場回数】" + person["句集登場回数"] + "回" +
           "\n\n【備考】 " + person["備考"],
-          image= "",
+          image= "pic/bushi.jpg",
           url="http://omo-shiroki.jp/"
          
       )
