@@ -24,7 +24,12 @@ import streamlit as st
 import pandas as pd
 from streamlit_card import card
 
-
+card = st.card(
+    title="Card Title",
+    subtitle="Card Subtitle",
+    body="This is the body text of the card.",
+    image="pic/logo_small.jpg", # path to image
+)
     
 # st.set_page_config(page_title="東烏", page_icon="pic/karasu.jpg", layout="wide", initial_sidebar_state="auto", menu_items=None)
 
