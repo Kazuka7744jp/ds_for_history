@@ -49,21 +49,24 @@ col3.metric("本名判明率", "{:.1%}".format((df_haijin["本名/別名"]!="").
 col4.metric("職業判明率", "{:.1%}".format((df_haijin["職業_詳細"]!="").sum()/df_len))
 col5.metric("出身判明率", "{:.1%}".format((df_haijin["出身地"]!="").sum()/df_len))
 
-st.subheader("検索条件を入力してください")
-haijin_input = st.text_input("俳名または本名・別名")
+st.subheader("検索条件を入力または選択してください")
+# haijin_input = st.text_input("俳名または本名・別名")
 # location_input = st.text_input("出身地")
 # job_input = st.text_input("職業")
+location_input = st.selectbox("俳名または本名・別名"", [""] + sorted(list(df_haijin['出身地'].unique())))
 location_input = st.selectbox("出身地", [""] + sorted(list(df_haijin['出身地'].unique())))
 job_input = st.selectbox("職業", [""] + sorted(list(df_haijin['職業_詳細'].unique())))
 
 
 if haijin_input or location_input or job_input:
     conditions = (df_haijin['俳名'].str.contains(haijin_input) | df_haijin['本名/別名'].str.contains(haijin_input)) &(df_haijin['出身地'].str.contains(location_input)) &(df_haijin['職業_詳細'].str.contains(job_input))
-# st.subheader("「俳名」か「本名・別名」を入力してください。")
-# haijin_input = st.text_input("検索キーワード入力欄")
+
     df_selected = df_haijin[conditions]
     st.write(f"{len(df_selected)}件の検索結果がありました。")
+    st.write("検索結果一覧")
     st.dataframe(df_selected)
+    st.write("検索結果個人カード　※黄色い英文字が出る場合は読み込み中です")
+                              
     for index, person in df_selected.iterrows():
       card(
           title=person["俳名"],
