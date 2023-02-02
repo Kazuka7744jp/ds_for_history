@@ -53,8 +53,9 @@ st.subheader("検索条件を入力してください")
 haijin_input = st.text_input("俳名または本名・別名")
 # location_input = st.text_input("出身地")
 # job_input = st.text_input("職業")
-location_input = st.selectbox("出身地", [""] + list(df_haijin['出身地'].unique()))
-job_input = st.selectbox("職業", [""] + list(df_haijin['職業_詳細'].unique()))
+location_input = st.selectbox("出身地", [""] + sorted(list(df_haijin['出身地'].unique())))
+job_input = st.selectbox("職業", [""] + sorted(list(df_haijin['職業_詳細'].unique())))
+
 
 if haijin_input or location_input or job_input:
     conditions = (df_haijin['俳名'].str.contains(haijin_input) | df_haijin['本名/別名'].str.contains(haijin_input)) &(df_haijin['出身地'].str.contains(location_input)) &(df_haijin['職業_詳細'].str.contains(job_input))
