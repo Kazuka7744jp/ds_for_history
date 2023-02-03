@@ -41,7 +41,6 @@ st.write("三河俳人に関する情報をお持ちの方は、ぜひ情報提�
 st.write('■俳人検索')
 df_len = len(df_haijin)
 
-
 col1, col2, col3, col4, col5 = st.columns(5)
 col1.metric("登録人数", df_len)
 col2.metric("調査済句集", 223)
@@ -74,7 +73,7 @@ if haijin_input or location_input or job_input:
           "\n\n【職業】 " + person["職業_詳細"] +
           "\n\n【句集登場回数】" + person["句集登場回数"] + "回" +
           "\n\n【備考】 " + person["備考"],
-          image= "http://omo-shiroki.jp/images/logo.png",
+          image= "http://omo-shiroki.jp/azumagarasu/images/noumin.jpg",
           url="http://omo-shiroki.jp/"
          
       )
