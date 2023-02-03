@@ -57,7 +57,7 @@ location_input = st.selectbox("出身地", [""] + sorted(list(df_haijin['出身�
 # job_input = st.selectbox("職業", [""] + sorted(list(df_haijin['職業_詳細'].unique())))
 
 if haijin_input or location_input or job_input:
-    conditions = (df_haijin['俳名'].str.contains(haijin_input) | df_haijin['本名/別名'].str.contains(haijin_input)) &(df_haijin['出身地'].str.contains(location_input)) &(df_haijin['職業'].str.contains(haijin_input) | df_haijin['職業_詳細'].str.contains(job_input))
+    conditions = (df_haijin['俳名'].str.contains(haijin_input) | df_haijin['本名/別名'].str.contains(haijin_input)) &(df_haijin['出身地'].str.contains(location_input)) &(df_haijin['職業'].str.contains(job_input) | df_haijin['職業_詳細'].str.contains(job_input))
 
     df_selected = df_haijin[conditions]
     st.write(f"{len(df_selected)}件の検索結果がありました。")
