@@ -115,7 +115,7 @@ else:
 
 col6, col7 = st.columns(2)
 col6.card(title="test")
-col7.card(title="test"))    
+col7.card(title="test")  
     
 st.write('■データベース一覧')
 st.dataframe(df_haijin, width=None, height=500)
