@@ -113,6 +113,10 @@ if haijin_input or location_input or job_input:
 else:
     st.write("条件を入力してください")
 
+col6, col7 = st.columns(2)
+col6.card(title="test")
+col7.card(title="test"))    
+    
 st.write('■データベース一覧')
 st.dataframe(df_haijin, width=None, height=500)
 st.write("■門下・派閥の人数")
