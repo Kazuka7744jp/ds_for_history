@@ -76,7 +76,7 @@ if haijin_input or location_input or job_input:
                 break
             person = df_selected.iloc[index]
             row.append(
-                st.card(
+                card(
                     title=person["俳名"],
                     text="【本名/別名】 " + person["本名/別名"] +
                     "\n\n【出身地】 " + person["出身地"] +
