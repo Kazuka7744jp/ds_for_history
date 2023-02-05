@@ -86,7 +86,7 @@ if haijin_input or location_input or job_input:
 #                 image= person["URL"],
 #                 url=""
                
-            )
+#             )
 
                               
     for index, person in df_selected.iterrows():
