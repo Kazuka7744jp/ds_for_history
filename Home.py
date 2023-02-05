@@ -116,10 +116,10 @@ else:
 col6, col7 = st.columns(2)
 
 with col6:
-    card(title="test",text="test")
+    st.write("test")
 
 with col7:
-    card(title="test",text="test")  
+    st.write("test")
     
 st.write('■データベース一覧')
 st.dataframe(df_haijin, width=None, height=500)
