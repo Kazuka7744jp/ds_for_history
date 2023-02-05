@@ -63,24 +63,32 @@ if haijin_input or location_input or job_input:
     st.write(f"{len(df_selected)}件の検索結果がありました。")
     st.write("■検索結果一覧")
     st.dataframe(df_selected)
-    st.write("■検索結果個人カード　※黄色い英文字が出る場合は読み込み中です")
-    
-    cards = []
-    for index, person in df_selected.iterrows():
-        cards.append(
-            card(
-                title=person["俳名"],
-                text="【本名/別名】 " + person["本名/別名"] +
-                "\n\n【出身地】 " + person["出身地"] +
-                "\n\n【職業】 " + person["職業_詳細"] +
-                "\n\n【句集登場回数】" + person["句集登場回数"] + "回" +
-                "\n\n【備考】 " + person["備考"],
-                image= person["URL"],
-                url=""
-            )
-        )
+    st.write("■検索結果個人カード")
 
-    st.deck_gl_chart(cards, num_cols=5)
+    # 5列ごとに並べる
+    num_cols = 5
+    num_rows = math.ceil(len(df_selected) / num_cols)
+    for i in range(num_rows):
+        row = []
+        for j in range(num_cols):
+            index = i * num_cols + j
+            if index >= len(df_selected):
+                break
+            person = df_selected.iloc[index]
+            row.append(
+                st.card(
+                    title=person["俳名"],
+                    text="【本名/別名】 " + person["本名/別名"] +
+                    "\n\n【出身地】 " + person["出身地"] +
+                    "\n\n【職業】 " + person["職業_詳細"] +
+                    "\n\n【句集登場回数】" + person["句集登場回数"] + "回" +
+                    "\n\n【備考】 " + person["備考"],
+                    image= person["URL"],
+                    url=""
+                )
+            )
+        st.row(row)
+
                               
 #     for index, person in df_selected.iterrows():
 #       card(
