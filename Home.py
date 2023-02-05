@@ -65,45 +65,43 @@ if haijin_input or location_input or job_input:
     st.dataframe(df_selected)
     st.write("■検索結果個人カード　※黄色い英文字が出る場合は読み込み中です")
 
-    num_columns = 5
-    num_cards = len(df_selected)
-    num_rows = (num_cards + num_columns - 1) // num_columns
+#     num_columns = 5
+#     num_cards = len(df_selected)
+#     num_rows = (num_cards + num_columns - 1) // num_columns
 
-    for row_index in range(num_rows):
-        st.empty()
-        for column_index in range(num_columns):
-            card_index = row_index * num_columns + column_index
-            if card_index >= num_cards:
-                break
-            person = df_selected.iloc[card_index]
-            card(
-                title=person["俳名"],
-                text="【本名/別名】 " + person["本名/別名"] +
-                "\n\n【出身地】 " + person["出身地"] +
-                "\n\n【職業】 " + person["職業_詳細"] +
-                "\n\n【句集登場回数】" + person["句集登場回数"] + "回" +
-                "\n\n【備考】 " + person["備考"],
-                image= person["URL"],
-                url=""
+#     for row_index in range(num_rows):
+#         st.empty()
+#         for column_index in range(num_columns):
+#             card_index = row_index * num_columns + column_index
+#             if card_index >= num_cards:
+#                 break
+#             person = df_selected.iloc[card_index]
+#             card(
+#                 title=person["俳名"],
+#                 text="【本名/別名】 " + person["本名/別名"] +
+#                 "\n\n【出身地】 " + person["出身地"] +
+#                 "\n\n【職業】 " + person["職業_詳細"] +
+#                 "\n\n【句集登場回数】" + person["句集登場回数"] + "回" +
+#                 "\n\n【備考】 " + person["備考"],
+#                 image= person["URL"],
+#                 url=""
                
             )
 
                               
-#     for index, person in df_selected.iterrows():
-#       card(
-#           title=person["俳名"],
-#           text="【本名/別名】 " + person["本名/別名"] +
-#           "\n\n【出身地】 " + person["出身地"] +
-#           "\n\n【職業】 " + person["職業_詳細"] +
-#           "\n\n【句集登場回数】" + person["句集登場回数"] + "回" +
-#           "\n\n【備考】 " + person["備考"],
-#           image= person["URL"],
-#           url=""
+    for index, person in df_selected.iterrows():
+      card(
+          title=person["俳名"],
+          text="【本名/別名】 " + person["本名/別名"] +
+          "\n\n【出身地】 " + person["出身地"] +
+          "\n\n【職業】 " + person["職業_詳細"] +
+          "\n\n【句集登場回数】" + person["句集登場回数"] + "回" +
+          "\n\n【備考】 " + person["備考"],
+          image= person["URL"],
+          url=""
          
-#       )
+      )
 
-else:
-    st.write("条件を入力してください")
 
 # if not haijin_input:
 #   st.write("何か単語を入力してください。")
@@ -111,6 +109,9 @@ else:
 #   df_selected = df_haijin[(df_haijin['俳名'].str.contains(haijin_input)) | (df_haijin['本名/別名'].str.contains(haijin_input))]
 #   st.write(f"{len(df_selected)}件の検索結果がありました。")
 #   st.dataframe(df_selected)
+
+else:
+    st.write("条件を入力してください")
 
 st.write('■データベース一覧')
 st.dataframe(df_haijin, width=None, height=500)
