@@ -24,7 +24,9 @@ import streamlit as st
 import pandas as pd
 from streamlit_card import card
     
-st.set_page_config(page_title="東烏", page_icon="pic/karasu.jpg", layout="wide", initial_sidebar_state="auto", menu_items=None)
+# st.set_page_config(page_title="東烏", page_icon="pic/karasu.jpg", layout="wide", initial_sidebar_state="auto", menu_items=None)
+st.set_page_config(page_title="東烏", page_icon="pic/karasu.jpg", initial_sidebar_state="auto", menu_items=None)
+
 
 @st.cache
 def load_data():
