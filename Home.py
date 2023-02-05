@@ -67,7 +67,7 @@ if haijin_input or location_input or job_input:
 
     # 5列ごとに並べる
     num_cols = 5
-    num_rows = -(-len(df_selected) // n_cols) 
+    num_rows = -(-len(df_selected) // num_cols) 
     for i in range(num_rows):
         row = []
         for j in range(num_cols):
