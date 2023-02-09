@@ -27,13 +27,18 @@ from streamlit_card import card
 # st.set_page_config(page_title="東烏", page_icon="pic/karasu.jpg", layout="wide", initial_sidebar_state="auto", menu_items=None)
 st.set_page_config(page_title="東烏", page_icon="pic/karasu.jpg", initial_sidebar_state="auto", menu_items=None)
 
-
 @st.cache
 def load_data():
     df_haijin = pd.read_csv("data/data_haijin.csv", keep_default_na=False)
     return df_haijin
 
 df_haijin = load_data()
+
+@st.cache
+def load_data_kusyu():
+    df_kusyu = pd.read_csv("data/kusyu.csv", usecols=["資料名", "年代", "内容", "備考", "所蔵", "チェック"])
+    return df_kusyu
+df_kusyu = load_data_kusyu()    
 
 st.image("pic/logo_small.jpg")
 st.header("三河俳人検索データベース")
@@ -42,10 +47,11 @@ st.write("三河俳人に関する情報をお持ちの方は、ぜひ情報提�
 
 st.write('■俳人検索')
 df_len = len(df_haijin)
+df_kusyu_len(df_kusyu)
 
 col1, col2, col3, col4, col5 = st.columns(5)
 col1.metric("登録人数", df_len)
-col2.metric("調査済句集", 223)
+col2.metric("調査済句集", df_kusyu)
 col3.metric("本名判明率", "{:.1%}".format((df_haijin["本名/別名"]!="").sum()/df_len))
 col4.metric("職業判明率", "{:.1%}".format((df_haijin["職業_詳細"]!="").sum()/df_len))
 col5.metric("出身判明率", "{:.1%}".format((df_haijin["出身地"]!="").sum()/df_len))
@@ -105,9 +111,4 @@ st.image("pic/network.png")
 
 st.write('■調査済句集一覧')
 
-@st.cache
-def load_data_kusyu():
-    df_kusyu = pd.read_csv("data/kusyu.csv", usecols=["資料名", "年代", "内容", "備考", "所蔵", "チェック"])
-    return df_kusyu
-df_kusyu = load_data_kusyu()    
 st.dataframe(df_kusyu)
