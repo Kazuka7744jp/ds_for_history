@@ -51,7 +51,7 @@ df_kusyu_len = len(df_kusyu)
 
 col1, col2, col3, col4, col5 = st.columns(5)
 col1.metric("登録人数", df_len)
-col2.metric("調査済句集", df_kusyu_len)
+col2.metric("調査句集数", df_kusyu_len)
 col3.metric("本名判明率", "{:.1%}".format((df_haijin["本名/別名"]!="").sum()/df_len))
 col4.metric("職業判明率", "{:.1%}".format((df_haijin["職業_詳細"]!="").sum()/df_len))
 col5.metric("出身判明率", "{:.1%}".format((df_haijin["出身地"]!="").sum()/df_len))
