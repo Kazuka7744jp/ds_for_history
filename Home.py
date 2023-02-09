@@ -32,12 +32,15 @@ def load_data():
     df_haijin = pd.read_csv("data/data_haijin.csv", keep_default_na=False)
     return df_haijin
 
+
 df_haijin = load_data()
 
 @st.cache
 def load_data_kusyu():
     df_kusyu = pd.read_csv("data/kusyu.csv", usecols=["資料名", "年代", "内容", "備考", "所蔵", "チェック"])
     return df_kusyu
+
+
 df_kusyu = load_data_kusyu()    
 
 st.image("pic/logo_small.jpg")
@@ -67,7 +70,7 @@ if haijin_input or location_input or job_input:
     df_selected = df_haijin[conditions]
     st.write(f"{len(df_selected)}件の検索結果がありました。")
     st.write("■検索結果一覧")
-    st.dataframe(df_selected)
+    st.dataframe(df_selected.drop("URL", axis=1))
     st.write("■検索結果個人カード　※黄色い英文字が出る場合は読み込み中です")
                               
     for index, person in df_selected.iterrows():
@@ -87,7 +90,7 @@ else:
     st.write("テキストボックスへの検索条件が未入力です")
     
 st.write('■データベース一覧')
-st.dataframe(df_haijin, width=None, height=500)
+st.dataframe(df_haijin.drop("URL", axis=1), width=None, height=500)
 st.write("■門下・派閥の人数")
 
 st.image("pic/deshi.png")
