@@ -69,9 +69,9 @@ if haijin_input or location_input or job_input:
 
     df_selected = df_haijin[conditions]
     st.write(f"{len(df_selected)}件の検索結果がありました。")
-    st.write(":right arrow:検索結果一覧")
+    st.write(":sparkles:検索結果一覧")
     st.dataframe(df_selected.drop("URL", axis=1))
-    st.write("■検索結果個人カード　※黄色い英文字が出る場合は読み込み中です")
+    st.write(":sparkles:検索結果個人カード　※黄色い英文字が出る場合は読み込み中です")
                               
     for index, person in df_selected.iterrows():
       card(
