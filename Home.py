@@ -44,7 +44,7 @@ def load_data_kusyu():
 df_kusyu = load_data_kusyu()    
 
 st.image("pic/logo_small.jpg")
-st.header("三河俳人検索データベース")
+st.header("三河俳人データベース「Mikupedia」")
 st.image("pic/head2.jpeg")
 st.write("三河俳人に関する情報をお持ちの方は、ぜひ情報提供をお願いいたします。japanhistorydiscovery@gmail.com")
 
