@@ -87,7 +87,7 @@ if haijin_input or location_input or job_input:
       )
 
 else:
-    st.write("テキストボックスへの検索条件が未入力です")
+    st.write("※テキストボックスへの検索条件が未入力です")
     
 st.write('■データベース一覧')
 st.dataframe(df_haijin.drop("URL", axis=1), width=None, height=500)
