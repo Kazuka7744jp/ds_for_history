@@ -52,11 +52,8 @@ col5.metric("出身判明率", "{:.1%}".format((df_haijin["出身地"]!="").sum(
 
 st.subheader("検索条件を入力または選択してください")
 haijin_input = st.text_input("俳名または本名・別名")
-# location_input = st.text_input("出身地")
 job_input = st.text_input("職業")
-# haijin_input = st.selectbox("俳名または本名・別名", [""] + sorted(list(df_haijin['俳名'].unique()) + sorted(list(df_haijin['本名/別名'].unique())))
 location_input = st.selectbox("出身地", [""] + sorted(list(df_haijin['出身地'].unique())))
-# job_input = st.selectbox("職業", [""] + sorted(list(df_haijin['職業_詳細'].unique())))
 
 if haijin_input or location_input or job_input:
     conditions = (df_haijin['俳名'].str.contains(haijin_input) | df_haijin['本名/別名'].str.contains(haijin_input)) &(df_haijin['出身地'].str.contains(location_input)) &(df_haijin['職業'].str.contains(job_input) | df_haijin['職業_詳細'].str.contains(job_input))
@@ -66,30 +63,6 @@ if haijin_input or location_input or job_input:
     st.write("■検索結果一覧")
     st.dataframe(df_selected)
     st.write("■検索結果個人カード　※黄色い英文字が出る場合は読み込み中です")
-
-#     num_columns = 5
-#     num_cards = len(df_selected)
-#     num_rows = (num_cards + num_columns - 1) // num_columns
-
-#     for row_index in range(num_rows):
-#         st.empty()
-#         for column_index in range(num_columns):
-#             card_index = row_index * num_columns + column_index
-#             if card_index >= num_cards:
-#                 break
-#             person = df_selected.iloc[card_index]
-#             card(
-#                 title=person["俳名"],
-#                 text="【本名/別名】 " + person["本名/別名"] +
-#                 "\n\n【出身地】 " + person["出身地"] +
-#                 "\n\n【職業】 " + person["職業_詳細"] +
-#                 "\n\n【句集登場回数】" + person["句集登場回数"] + "回" +
-#                 "\n\n【備考】 " + person["備考"],
-#                 image= person["URL"],
-#                 url=""
-               
-#             )
-
                               
     for index, person in df_selected.iterrows():
       card(
@@ -103,14 +76,6 @@ if haijin_input or location_input or job_input:
           url=""
          
       )
-
-
-# if not haijin_input:
-#   st.write("何か単語を入力してください。")
-# else:
-#   df_selected = df_haijin[(df_haijin['俳名'].str.contains(haijin_input)) | (df_haijin['本名/別名'].str.contains(haijin_input))]
-#   st.write(f"{len(df_selected)}件の検索結果がありました。")
-#   st.dataframe(df_selected)
 
 else:
     st.write("条件を入力してください")
@@ -146,4 +111,3 @@ def load_data_kusyu():
     return df_kusyu
 df_kusyu = load_data_kusyu()    
 st.dataframe(df_kusyu)
-
