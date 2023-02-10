@@ -62,7 +62,7 @@ col5.metric("出身判明率", "{:.1%}".format((df_haijin["出身地"]!="").sum(
 st.subheader(":white_check_mark:　検索条件を入力または選択してください")
 haijin_input = st.text_input("俳名または本名・別名")
 # job_input = st.text_input("職業")
-job_input = st.selectbox("職業", [""] + sorted(list(df_haijin['職業_詳細'].unique())))
+job_input = st.selectbox("職業", [""] + sorted(list(df_haijin['職業'].unique())))
 location_input = st.selectbox("出身地", [""] + sorted(list(df_haijin['出身地'].unique())))
 if haijin_input or location_input or job_input:
     conditions = (df_haijin['俳名'].str.contains(haijin_input) | df_haijin['本名/別名'].str.contains(haijin_input)) &(df_haijin['出身地'].str.contains(location_input)) &(df_haijin['職業'].str.contains(job_input) | df_haijin['職業_詳細'].str.contains(job_input))
