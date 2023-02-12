@@ -34,7 +34,7 @@ def load_data():
 
 
 df_haijin = load_data()
-
+st.dataframe(df_haijin.drop("URL", axis=1), width=None, height=500)
 # @st.cache
 def load_data_kusyu():
     df_kusyu = pd.read_csv("data/kusyu.csv", usecols=["資料名", "年代", "内容", "備考", "所蔵", "チェック"])
