@@ -94,12 +94,12 @@ st.write('■データベース一覧')
 st.dataframe(df_haijin.drop("URL", axis=1), width=None, height=500)
 
 with st.expander("門下・派閥の人数"):
-    st.write("■門下・派閥の人数")
+#     st.write("■門下・派閥の人数")
     st.image("pic/deshi.png")
-
 st.write('\n')
-st.write("■門下別の職業の割合「卓池」")
-st.image("pic/takuchi.png")
+with st.expander("門下別の職業の割合「卓池」"):
+#     st.write("■門下別の職業の割合「卓池」")
+    st.image("pic/takuchi.png")
 
 st.write('\n')
 st.write("■門下別の職業の割合「卓池以外」")
