@@ -27,7 +27,7 @@ from streamlit_card import card
 # st.set_page_config(page_title="東烏", page_icon="pic/karasu.jpg", layout="wide", initial_sidebar_state="auto", menu_items=None)
 st.set_page_config(page_title="東烏", page_icon="pic/karasu.jpg", initial_sidebar_state="auto", menu_items=None)
 
-# @st.cache
+@st.cache
 def load_data():
     df_haijin = pd.read_csv("data/data_haijin.csv", keep_default_na=False)
     return df_haijin
@@ -35,7 +35,7 @@ def load_data():
 
 df_haijin = load_data()
 st.dataframe(df_haijin.drop("URL", axis=1), width=None, height=500)
-# @st.cache
+@st.cache
 def load_data_kusyu():
     df_kusyu = pd.read_csv("data/kusyu.csv", usecols=["資料名", "年代", "内容", "備考", "所蔵", "チェック"])
     return df_kusyu
