@@ -93,7 +93,7 @@ else:
 st.write('■データベース一覧')
 st.dataframe(df_haijin.drop("URL", axis=1), width=None, height=500)
 
-with st.expander("門下・派閥の人数""):
+with st.expander("門下・派閥の人数"):
     st.write("■門下・派閥の人数")
     st.image("pic/deshi.png")
 
