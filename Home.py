@@ -91,7 +91,7 @@ else:
 
 
 st.write('■データベース一覧')
-st.dataframe(df_haijin.drop("URL", axis=1), width=None, height=500)
+st.dataframe(df_haijin.drop("URL", axis=1), width=None, height=300)
 
 st.write('■グラフ')
 with st.expander("門下・派閥の人数"):
