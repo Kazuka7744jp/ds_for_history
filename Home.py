@@ -88,11 +88,12 @@ if haijin_input or location_input or job_input:
 
 else:
     st.write("※テキストボックスへの検索条件が未入力です")
-    
-st.write('■データベース一覧')
-st.dataframe(df_haijin.drop("URL", axis=1), width=None, height=500)
-st.write("■門下・派閥の人数")
 
+with st.expander("データベース一覧"):
+    st.write('■データベース一覧')
+    st.dataframe(df_haijin.drop("URL", axis=1), width=None, height=500)
+
+st.write("■門下・派閥の人数")
 st.image("pic/deshi.png")
 
 st.write('\n')
